@@ -1,0 +1,51 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="114cf7a0-1" vueSlots="{{['content']}}">
+        <view slot="content">店铺信息</view>
+    </cu-custom>
+    <view class="box">
+        <view class="flex align-center text-bold">
+            <view class="text-red text-xxl">*</view>
+            <view class="text-lg">店铺信息</view>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商家名称</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'textarea',['$event'] ] ] ] ]}}" placeholder="请输入商家名称" placeholderStyle="color:lightgray" value="{{name}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商家地址</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'addressFun',['$event'] ] ] ] ]}}" placeholder="请输入商家地址" placeholderStyle="color:lightgray" value="{{address}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商家电话</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'phoneFun',['$event'] ] ] ] ]}}" placeholder="请输入商家电话" placeholderStyle="color:lightgray" type="numebr" value="{{phone}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>餐盒费</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','box_fee','$event',[] ] ] ] ] ]}}" placeholder="请输入餐盒费" placeholderStyle="color:lightgray" type="numebr" value="{{box_fee}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>服务费</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','service_price','$event',[] ] ] ] ] ]}}" placeholder="请输入服务费" placeholderStyle="color:lightgray" type="numebr" value="{{service_price}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>营业状态</view>
+            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindStatusChange',['$event'] ] ] ] ]}}" range="{{statusArray}}" value="{{status_index}}">{{''+statusArray[status_index]+''}}<text class="cuIcon-right"></text>
+            </picker>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>营业时间段</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','timeslot','$event',[] ] ] ] ] ]}}" placeholder="多个时间段用'|'隔开'" placeholderStyle="color:lightgray" style="width:400rpx;" value="{{timeslot}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>配送方式</view>
+            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindTypeChange',['$event'] ] ] ] ]}}" range="{{list}}" value="{{method}}">{{''+list[method]+''}}<text class="cuIcon-right"></text>
+            </picker>
+        </view>
+        <view class="size30 margin-top">店铺图片</view>
+        <image bindtap="__e" class="img" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="{{img?img:'../../../images/article/add.png'}}"></image>
+    </view>
+    <view class="tips margin-left">营业时间段格式：08:00-9:00|9:00-10:00|10:00-12:00</view>
+    <view class="flex btn_row justify-between">
+        <view bindtap="__e" class="btn_" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">提交</view>
+    </view>
+</view>

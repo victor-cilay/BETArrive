@@ -1,0 +1,188 @@
+<view>
+    <view class="container">
+        <view class="school">
+            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" range="{{school}}" rangeKey="s_name" value="{{index}}">
+                <view class="picker">
+                    <text class="cuIcon-locationfill"></text>{{''+(school[index].s_name?school[index].s_name:'选择学校')+''}}<text class="cuIcon-unfold"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="search bgmain">
+            <swiper autoplay="{{true}}" current="{{current}}" style="height:192px;">
+                <block wx:if="{{schoolInfo.school.thums.length>0}}">
+                    <swiper-item wx:for="{{schoolInfo.school.thums}}" wx:key="index">
+                        <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-type="{{item.url_type}}" data-url="{{item.url}}" mode="widthFix" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                        <image mode="widthFix" src="/static/images/banners.jpg" wx:else></image>
+                    </swiper-item>
+                </block>
+                <swiper-item wx:else>
+                    <image mode="widthFix" src="/static/images/banners.jpg"></image>
+                </swiper-item>
+            </swiper>
+            <swiper autoplay="{{true}}" circular="{{true}}" class="newest_toast" easingFunction="easeInOutCubic" vertical="{{true}}" wx:if="{{sysparment.is_home_slide==1}}">
+                <swiper-item wx:for="{{dataList}}" wx:key="index">
+                    <view class="item" wx:for="{{item}}" wx:for-index="index1" wx:for-item="items" wx:key="index1">
+                        <image src="{{items.nickimg}}"></image>
+                        <view class="word">{{items.nickname+items.time+'下单成功'}}</view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <view class="good-edit">
+                <view class="bg-white" id="cus">
+                    <view bindtap="__e" class="titl" data-event-opts="{{[ [ 'tap',[ [ 'test',['$event'] ] ] ] ]}}" style="padding-top:10rpx;">
+                        <text class="cuIcon-titles text-yellow"></text>{{''+(sys.modules_title||'想让你同学帮你做点什么')+''}}</view>
+                    <view class="tab-container">
+                        <view class="tab-item">
+                            <block wx:if="{{schoolInfo.modules.length==0}}">
+                                <image data-url bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-id="0" data-type="1" src="/static/images/qu.png"></image>
+                                <image data-url bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-event-type="jsUrl" data-id="0" data-type="2" src="/static/images/ji.png"></image>
+                                <image data-url bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-event-type="jsUrl" data-id="0" data-type="3" src="/static/images/shi.png"></image>
+                                <image data-url bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-event-type="jsUrl" data-id="0" data-type="4" src="/static/images/wanneng.png"></image>
+                            </block>
+                            <block wx:else>
+                                <block wx:for="{{schoolInfo.modules}}" wx:key="index">
+                                    <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-id="{{item.id}}" data-type="{{index+1}}" data-url="{{item.param}}" src="{{item.img==''?'/images/wanneng.png':item.img}}" wx:if="{{item.url_type==1}}"></image>
+                                    <image bindtap="__e" data-appid="{{item.param}}" data-event-opts="{{[ [ 'tap',[ [ 'toOther',['$event'] ] ] ] ]}}" src="{{item.img==''?'/images/wanneng.png':item.img}}" wx:else></image>
+                                </block>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="page-guide">
+            <view class="shop-wrapper">
+                <view class="shop">
+                    <view class="contents" wx:if="{{sysparment.is_rank_show==1}}">
+                        <navigator hoverClass="none" url="{{'/gc_school/pages/rank/index?s_id='+s_id}}">
+                            <view class="content_top" style="justify-content:space-between;">
+                                <view class="crol">
+                                    <text class="cuIcon-titles text-orange"></text>
+                                    <text class="titl">排行榜</text>
+                                </view>
+                                <view class="geng">
+                                    <text class="text-grey cuIcon-right"></text>
+                                </view>
+                            </view>
+                        </navigator>
+                        <view class="cont_con" wx:for="{{schoolInfo.rank}}" wx:key="index">
+                            <view class="img">
+                                <image src="{{item.pic}}"></image>
+                                <view class="names">
+                                    <view>{{item.username}}</view>
+                                </view>
+                            </view>
+                            <view class="names">
+                                <view class="money">{{'¥'+item.money}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="contents">
+                        <view class="content_top">
+                            <view bindtap="__e" class="crol" data-event-opts="{{[ [ 'tap',[ [ 'order_change',['$event'] ] ] ] ]}}" data-index="0">
+                                <text class="cuIcon-titles text-orange"></text>
+                                <text class="{{[ 'titl '+(order_index==0?'text-orange':'') ]}}">最新订单</text>
+                            </view>
+                            <view bindtap="__e" class="crol" data-event-opts="{{[ [ 'tap',[ [ 'order_change',['$event'] ] ] ] ]}}" data-index="1">
+                                <text class="cuIcon-titles text-orange"></text>
+                                <text class="{{[ 'titl '+(order_index==1?'text-orange':'') ]}}">历史订单</text>
+                            </view>
+                        </view>
+                        <view wx:if="{{order_index==0}}">
+                            <view class="block" style="width:100%;margin:auto;" wx:if="{{list.length>0}}">
+                                <view bindtap="__e" class="flex bg-white align-center padding-bottom justify-between" data-event-opts="{{[ [ 'tap',[ [ 'detail',['$event'] ] ] ] ]}}" data-index="{{index}}" id="lops" style="border-bottom:1rpx solid #f3eded;" wx:for="{{list}}" wx:key="index">
+                                    <view style="width:70%;">
+                                        <view class="padding-tb-sm" style="display:flex;">
+                                            <image class="type_icon" src="/static/images/jiicon.png" wx:if="{{item.type=='寄件'}}"></image>
+                                            <block wx:else>
+                                                <image class="type_icon" src="/static/images/quicon.png" wx:if="{{item.type=='取件'}}"></image>
+                                                <block wx:else>
+                                                    <image class="type_icon" src="/static/images/shiicon.png" wx:if="{{item.type=='超市食堂'}}"></image>
+                                                    <block wx:else>
+                                                        <image class="type_icon" src="/static/images/waiicon.png" wx:if="{{item.type=='无所不能/饮品'}}"></image>
+                                                    </block>
+                                                </block>
+                                            </block>
+                                            <view class="text-df text-cut" id="text-df">{{item.desc}}</view>
+                                        </view>
+                                        <view class="ft">
+                                            <view class="cu-tag sm radius" id="radius">{{''+item.createtime+''}}</view>
+                                            <view class="cu-tag sm radius" id="radius">{{'送达时间：'+item.start_time}}</view>
+                                        </view>
+                                    </view>
+                                    <view class="align-center text-center">
+                                        <view class="text-yellow text-xl" id="text-xl">{{'¥'+item.total}}</view>
+                                        <view wx:if="{{item.status=='待接单'}}">
+                                            <button class="cu-btn sm bgmain" id="cu-btn">待抢单</button>
+                                        </view>
+                                        <view wx:if="{{item.status!='待接单'}}">
+                                            <button class="cu-btn sm bgmain" id="cu-btn">{{item.status}}</button>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="text-center text-df" wx:if="{{list.length>=10}}">更多订单请前往抢单中心查看</view>
+                        </view>
+                        <view wx:else>
+                            <view class="block" style="width:100%;margin:auto;" wx:if="{{history.length>0}}">
+                                <view class="flex bg-white align-center padding-bottom justify-between" data-index="{{index}}" id="lops" style="border-bottom:1rpx solid #f3eded;" wx:for="{{history}}" wx:key="index">
+                                    <view style="width:70%;">
+                                        <view class="padding-tb-sm" style="display:flex;">
+                                            <image class="type_icon" src="/static/images/jiicon.png" wx:if="{{item.type=='寄件'}}"></image>
+                                            <block wx:else>
+                                                <image class="type_icon" src="/static/images/quicon.png" wx:if="{{item.type=='取件'}}"></image>
+                                                <block wx:else>
+                                                    <image class="type_icon" src="/static/images/shiicon.png" wx:if="{{item.type=='超市食堂'}}"></image>
+                                                    <block wx:else>
+                                                        <image class="type_icon" src="/static/images/waiicon.png" wx:if="{{item.type=='无所不能/饮品'}}"></image>
+                                                    </block>
+                                                </block>
+                                            </block>
+                                            <view class="text-df text-cut" id="text-df">{{item.desc}}</view>
+                                        </view>
+                                        <view class="ft">
+                                            <view class="cu-tag sm radius" id="radius" wx:if="{{item.createtime}}">{{''+item.createtime+''}}</view>
+                                            <view class="cu-tag sm radius" id="radius">{{'送达时间：'+item.start_time}}</view>
+                                        </view>
+                                    </view>
+                                    <view class="align-center text-center">
+                                        <view class="text-yellow text-xl" id="text-xl">{{'¥'+item.total}}</view>
+                                        <view wx:if="{{item.status=='待接单'}}">
+                                            <button class="cu-btn sm bgmain" id="cu-btn">待抢单</button>
+                                        </view>
+                                        <view wx:if="{{item.status!='待接单'}}">
+                                            <button class="cu-btn sm bgmain" id="cu-btn">{{item.status}}</button>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="text-center text-df" wx:if="{{history.length>=10}}">更多订单请前往抢单中心查看</view>
+                        </view>
+                    </view>
+                    <view class="grid flex-1 col-1 bg-white nodata" style="padding:100rpx auto;margin:auto;text-align:center;width:90%;margin-bottom:50rpx;" wx:if="{{list.length==0&&order_index==0||history.length==0&&order_index==1}}">
+                        <view class="padding-sm">
+                            <view class="padding radius text-center light">
+                                <text class="cuIcon-infofill lg text-lg" style="font-size:50rpx;"></text>
+                                <view class="text-lg padding-tb-sm'">暂无数据</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cover" wx:if="{{is_show_toast&&sysparment.is_show_toast==1}}">
+        <view class="toast">
+            <mp-html bind:__l="__l" content="{{article_toast_content}}" vueId="7a5f35e0-1"></mp-html>
+        </view>
+        <view bindtap="__e" class="sure" data-event-opts="{{[ [ 'tap',[ [ 'close',['$event'] ] ] ] ]}}">我知道了</view>
+    </view>
+    <block wx:if="{{sysparment.home_adv}}">
+        <view wx:if="{{sysparment.home_adv_type==0}}">
+            <ad unitId="{{sysparment.home_adv}}"></ad>
+        </view>
+        <view wx:else>
+            <ad adTheme="white" adType="video" unitId="{{sysparment.home_adv}}"></ad>
+        </view>
+    </block>
+</view>

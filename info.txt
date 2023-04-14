@@ -1,0 +1,6 @@
+http://showdoc.gechuang.net/web/#/157?page_id=1335
+
+
+运行目录public
+伪静态thinkphp 
+ssl必须配置

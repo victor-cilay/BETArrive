@@ -1,0 +1,14 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="3b170d5b-1" vueSlots="{{['content']}}">
+        <view slot="content">打赏数</view>
+    </cu-custom>
+    <view class="shang row margin-lr margin-top padding" wx:for="{{detail.reward_user_list}}" wx:key="index">
+        <image mode class="avatar" src="{{item.avatar}}"></image>
+        <view class="margin-left">
+            <view class="nickname">{{item.nickname}}</view>
+            <view class="time">{{item.pay_time}}</view>
+        </view>
+        <view class="price">{{'￥'+item.price}}</view>
+    </view>
+    <view class="text-center margin-top text-df" wx:if="{{detail.reward_user_list.length==0}}">暂无打赏数~</view>
+</view>

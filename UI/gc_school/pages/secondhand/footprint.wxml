@@ -1,0 +1,18 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="20aee2e2-1" vueSlots="{{['content']}}">
+        <view slot="content">我的足迹</view>
+    </cu-custom>
+    <view class="box">
+        <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$0'],[ [ ['dataList','',index,'m_id'] ] ] ] ] ] ]}}" data-id="{{item.gid}}" wx:for="{{dataList}}" wx:key="index">
+            <image mode="aspectFill" src="{{item.image}}"></image>
+            <view class="name">{{item.title}}</view>
+            <view class="price">{{'￥'+item.pay}}</view>
+            <view class="time">{{item.create_time}}</view>
+        </view>
+    </view>
+    <view class="nocontent" wx:if="{{dataList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">没有更多数据了~</view>
+</view>

@@ -1,0 +1,453 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="644756a9-1" vueSlots="{{['backText','content']}}">
+        <view slot="backText"></view>
+        <view slot="content">下单</view>
+    </cu-custom>
+    <view class="container">
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}">
+            <view class="cu-list menu margin border-radius">
+                <block wx:if="{{type=='1'}}">
+                    <view class="cu-form-group white">
+                        <textarea bindblur="__e" data-event-opts="{{[ [ 'blur',[ [ 'textareaAInput',['$event'] ] ] ] ]}}" maxlength="-1" name="name" placeholder="{{form.showText?'':sysparment.qu_tips}}" value="{{form.showText?form.showText:'此处不用填'}}"></textarea>
+                    </view>
+                    <view class="cu-form-group white padding-top-sm border-bottom-radius">
+                        <view class="col-2 grid-square flex-sub">
+                            <view class="up_text">上传图片</view>
+                            <view style="width:100%;">
+                                <add-image addedCount="{{addedCount}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImages'] ] ],[ '^deleteImage',[ ['deleteImage'] ] ] ]}}" images="{{images}}" vueId="644756a9-2"></add-image>
+                            </view>
+                            <view bindtap="__e" class="bg-img" data-event-opts="{{[ [ 'tap',[ [ 'ViewImage',['$event'] ] ] ] ]}}" data-url="{{t_pic[index]}}" wx:for="{{t_pic}}" wx:key="index">
+                                <image mode="aspectFill" src="{{t_pic[index]}}"></image>
+                            </view>
+                            <view class="del_remark">*长按图片可进行删除</view>
+                        </view>
+                    </view>
+                    <view class="cu-item arrow margin-top border-radius">
+                        <view class="content">
+                            <image class="icons" src="/static/images/quicon.png"></image>
+                            <text class="text-sm">在哪里取件</text>
+                            <text class="text-sm text-yellow">(必填)</text>
+                        </view>
+                        <view class="action flex right-bt">
+                            <picker bindchange="__e" class="point" data-event-opts="{{[ [ 'change',[ [ 'pointChange',['$event'] ] ] ] ]}}" range="{{point}}" rangeKey="title" value="{{point_index}}">
+                                <view class="picker text-orange text-sm">{{''+(!point[point_index].title?'暂无可选快递点':point[point_index].title)+''}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow" data-event-opts="{{[ [ 'tap',[ [ 'handleshaddress',['$event'] ] ] ] ]}}">
+                        <view class="content">
+                            <image class="icons" src="/static/images/send.png"></image>
+                            <text class="text-sm">送到哪里去</text>
+                            <text class="text-sm text-yellow">(必填)</text>
+                        </view>
+                        <view class="action right-bt point flex">
+                            <text class="text-grey text-sm">{{!form.a_addres?'暂无':form.a_addres}}</text>
+                            <text class="cuIcon-locationfill text-orange"></text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{type=='2'}}">
+                    <view class="cu-form-group white">
+                        <textarea bindblur="__e" data-event-opts="{{[ [ 'blur',[ [ 'textareaAInput',['$event'] ] ] ] ]}}" maxlength="-1" name="name" placeholder="{{form.showText?'':sysparment.ji_tips}}" value="{{form.showText?form.showText:''}}"></textarea>
+                    </view>
+                    <view class="cu-form-group white padding-top-sm border-bottom-radius">
+                        <view class="col-2 grid-square flex-sub">
+                            <view class="up_text">上传图片</view>
+                            <view style="width:100%;">
+                                <add-image addedCount="{{addedCount}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImages'] ] ],[ '^deleteImage',[ ['deleteImage'] ] ] ]}}" images="{{images}}" vueId="644756a9-3"></add-image>
+                            </view>
+                            <view bindtap="__e" class="bg-img" data-event-opts="{{[ [ 'tap',[ [ 'ViewImage',['$event'] ] ] ] ]}}" data-url="{{t_pic[index]}}" wx:for="{{t_pic}}" wx:key="index">
+                                <image mode="aspectFill" src="{{t_pic[index]}}"></image>
+                            </view>
+                            <view class="del_remark">*长按图片可进行删除</view>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow margin-top border-radius" data-event-opts="{{[ [ 'tap',[ [ 'onSelectBuyAddress',['$event'] ] ] ] ]}}">
+                        <view class="content">
+                            <image class="icons" src="/static/images/jiicon.png"></image>
+                            <text class="text-sm">要寄到哪里</text>
+                            <text class="text-sm text-yellow">(必填)</text>
+                        </view>
+                        <view class="action flex right-bt">
+                            <view class="text-grey text-df text-cut">{{buyaddress.address?buyaddress.address:'暂无'}}</view>
+                            <text class="cuIcon-locationfill text-orange"></text>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow" data-event-opts="{{[ [ 'tap',[ [ 'handleshaddress',['$event'] ] ] ] ]}}">
+                        <view class="content">
+                            <image class="icons" src="/static/images/quicon.png"></image>
+                            <text class="text-sm">在哪里取件</text>
+                            <text class="text-sm text-yellow">(必填)</text>
+                        </view>
+                        <view class="action right-bt point flex">
+                            <text class="text-grey text-df">{{!form.a_name?'暂无':form.a_name}}</text>
+                            <text class="cuIcon-locationfill text-orange"></text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{type=='3'}}">
+                    <view class="row storeType">
+                        <view bindtap="__e" class="{{['item',psType==0?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changePsType',[0] ] ] ] ]}}">骑手配送</view>
+                        <view bindtap="__e" class="{{['item',psType==1?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changePsType',[1] ] ] ] ]}}">到店自取</view>
+                    </view>
+                    <view class="store_name padding-left padding-top" wx:if="{{goods_det[0].store_name}}">{{''+goods_det[0].store_name+''}}</view>
+                    <view class="padding-lr bg-white padding-top">
+                        <view class="goods_list ">
+                            <view wx:for="{{goods_det}}" wx:key="index">
+                                <view class="detals row  padding">
+                                    <image class="main_img margin-xs margin-left" mode="scaleToFill" src="{{item.image}}"></image>
+                                    <view class="info h100 w100 padding-right">
+                                        <view class="row w100">
+                                            <view class="goods_name">{{''+item.goods_name}}</view>
+                                            <label class="price _span">{{item.sum_price+'元'}}</label>
+                                        </view>
+                                        <view class="nums">{{'x'+item.nums}}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <block wx:if="{{psType==1}}">
+                        <view class="cu-item  border-bottom-radius box_fee margin-top-lg" style="padding-top:20rpx;" wx:if="{{1==2}}">
+                            <view class="content">
+                                <text class="text-sm">是否堂食</text>
+                            </view>
+                            <view class="action">
+                                <radio-group bindchange="__e" class="row" data-event-opts="{{[ [ 'change',[ [ 'radioChange',['$event'] ] ] ] ]}}">
+                                    <label class="margin-left row" wx:for="{{items}}" wx:key="index">
+                                        <view class="margin-right-xs">
+                                            <radio checked="{{item.value==isTang}}" class="{{['blue','',isTang==item.value?'checked':'']}}" value="{{item.value}}"></radio>
+                                        </view>
+                                        <view>{{item.name}}</view>
+                                    </label>
+                                </radio-group>
+                                <text class="text-grey text-sm"></text>
+                            </view>
+                        </view>
+                        <view class="cu-item  border-bottom-radius box_fee" style="padding-top:20rpx;">
+                            <view class="content">
+                                <text class="text-sm">姓名</text>
+                            </view>
+                            <view class="action">
+                                <input bindinput="__e" class="text-right text-sm text-grey" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','name','$event',[] ],['u'] ] ] ] ]}}" placeholder="请输入姓名" placeholderClass="text-grey" style="width:300rpx;" value="{{u.name}}"></input>
+                            </view>
+                        </view>
+                        <view class="cu-item  border-bottom-radius box_fee " style="padding-top:20rpx;">
+                            <view class="content">
+                                <text class="text-sm">联系方式</text>
+                            </view>
+                            <view class="action">
+                                <input bindinput="__e" class="text-right text-sm text-grey" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','phone','$event',[] ],['u'] ] ] ] ]}}" placeholder="请输入手机号" placeholderClass="text-grey" style="width:300rpx;" type="number" value="{{u.phone}}"></input>
+                            </view>
+                        </view>
+                        <view class="cu-item  border-bottom-radius box_fee " style="padding-top:20rpx;">
+                            <view class="content">
+                                <text class="text-sm">到店时间</text>
+                            </view>
+                            <view class="action row">
+                                <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChangeTime',['$event'] ] ] ] ]}}" data-index="sexindex" data-range="sex" end="{{end}}" mode="time" range="{{sex}}" start="{{start}}" value="{{sexindex}}">
+                                    <view class="picker text-sm text-grey">{{''+(arrival_time||'请选择预计到店时间')+''}}</view>
+                                </picker>
+                                <text class="cuIcon-right text-grey text-sm"></text>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:if="{{psType==0||psType==1&&isTang==1}}">
+                        <view class="cu-item  border-bottom-radius box_fee" style="padding-top:20rpx;" wx:if="{{box_fee}}">
+                            <view class="content">
+                                <text class="text-sm">餐盒费</text>
+                            </view>
+                            <view class="action">
+                                <text class="text-grey text-sm">{{'￥'+box_fee+'元'}}</text>
+                            </view>
+                        </view>
+                        <view class="cu-item  border-bottom-radius box_fee" style="padding-top:20rpx;" wx:if="{{service_price}}">
+                            <view class="content">
+                                <text class="text-sm">服务费</text>
+                            </view>
+                            <view class="action">
+                                <text class="text-grey text-sm">{{'￥'+service_price+'元'}}</text>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:if="{{psType==0}}"></block>
+                    <view class="cu-form-group white">
+                        <textarea bindblur="__e" data-event-opts="{{[ [ 'blur',[ [ 'textareaAInput',['$event'] ] ] ] ]}}" maxlength="-1" name="name" placeholder="{{form.showText?'':sysparment.shi_tips}}" value="{{form.showText?form.showText:''}}"></textarea>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow margin-top" data-event-opts="{{[ [ 'tap',[ [ 'handleshaddress',['$event'] ] ] ] ]}}" wx:if="{{psType==0}}">
+                        <view class="content">
+                            <image class="icons" src="/static/images/send.png"></image>
+                            <text class="text-sm">送到哪里去</text>
+                            <text class="text-sm text-yellow">(必填)</text>
+                        </view>
+                        <view class="action right-bt point flex">
+                            <text class="text-grey text-sm">{{!form.a_addres?'暂无':form.a_addres}}</text>
+                            <text class="cuIcon-locationfill text-orange"></text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{type=='4'}}">
+                    <view style="padding:20rpx 30rpx 0;background:white;">
+                        <input bindinput="__e" class="input" data-event-opts="{{[ [ 'input',[ [ 'titleFun',['$event'] ] ] ] ]}}" placeholder="请输入服务标题(必填)" style="background:#f9f9f9;" value="{{title}}"></input>
+                    </view>
+                    <view class="cu-form-group white">
+                        <textarea bindblur="__e" data-event-opts="{{[ [ 'blur',[ [ 'textareaAInput',['$event'] ] ] ] ]}}" maxlength="-1" name="name" placeholder="{{form.showText?'':sysparment.wan_tips}}" value="{{form.showText?form.showText:''}}"></textarea>
+                    </view>
+                    <view class="cu-form-group white padding-top-sm border-bottom-radius">
+                        <view class="col-2 grid-square flex-sub">
+                            <view class="up_text">上传图片</view>
+                            <view style="width:100%;">
+                                <add-image addedCount="{{addedCount}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImages'] ] ],[ '^deleteImage',[ ['deleteImage'] ] ] ]}}" images="{{images}}" vueId="644756a9-4"></add-image>
+                            </view>
+                            <view bindtap="__e" class="bg-img" data-event-opts="{{[ [ 'tap',[ [ 'ViewImage',['$event'] ] ] ] ]}}" data-url="{{t_pic[index]}}" wx:for="{{t_pic}}" wx:key="index">
+                                <image mode="aspectFill" src="{{t_pic[index]}}"></image>
+                            </view>
+                            <view class="del_remark">*长按图片可进行删除</view>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow margin-top border-radius" data-event-opts="{{[ [ 'tap',[ [ 'handleshaddress',['$event'] ] ] ] ]}}" wx:if="{{sysparment.is_address_show==1}}">
+                        <view class="content">
+                            <image class="icons" src="/static/images/address.png" style="width:1.2em !important;"></image>
+                            <text class="text-sm">地址</text>
+                            <text class="text-sm text-yellow">{{'('+(sysparment.is_address_must==1?'':'非')+'必填)'}}</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm">{{!form.a_addres?'暂无':form.a_addres}}</text>
+                            <text class="cuIcon-locationfill text-orange"></text>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow  " data-event-opts="{{[ [ 'tap',[ [ 'uploadfile',['$event'] ] ] ] ]}}" wx:if="{{sysparment.is_attach_show==1}}">
+                        <view class="content">
+                            <text class="text-sm">附件上传</text>
+                            <text class="text-xs text-yellow" style="font-size:28rpx !important;">(仅限doc,docx,pdf,建议1M以内)</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm" wx:if="{{attach_file}}">已上传</text>
+                            <text class="text-grey text-sm" wx:else>待上传</text>
+                        </view>
+                    </view>
+                    <view class="cu-item arrow" wx:if="{{sysparment.is_servicetime_show==1}}">
+                        <view class="content">
+                            <text class="text-sm">服务时间</text>
+                        </view>
+                        <view class="action">
+                            <picker bindchange="__e" bindcolumnchange="__e" data-event-opts="{{[ [ 'change',[ [ 'MultiChange',['$event'] ] ] ],[ 'columnchange',[ [ 'MultiColumnChange',['$event'] ] ] ] ]}}" mode="multiSelector" range="{{tlist}}" value="{{multiIndex}}">
+                                <view class="picker text-orange text-sm">{{tlist[0][ multiIndex[0] ]+', '+tlist[1][ multiIndex[1] ]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="cu-item" wx:if="{{sysparment.is_servicenum_show==1}}">
+                        <view class="content">
+                            <view class="text-sm">服务人数<view class="bitian">*</view>
+                            </view>
+                        </view>
+                        <view class="action">
+                            <input bindinput="__e" class="text-right text-sm text-grey" data-event-opts="{{[ [ 'input',[ [ 'service_numFun',['$event'] ] ] ] ]}}" placeholder="请输入服务人数" placeholderClass="text-grey" style="width:300rpx;" type="number"></input>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{psType==0}}">
+                        <view class="cu-item arrow border-bottom-radius" wx:if="{{storeType==0}}">
+                            <view class="content">
+                                <text class="text-sm">送达时间</text>
+                            </view>
+                            <view class="action">
+                                <picker bindchange="__e" bindcolumnchange="__e" data-event-opts="{{[ [ 'change',[ [ 'MultiChange',['$event'] ] ] ],[ 'columnchange',[ [ 'MultiColumnChange',['$event'] ] ] ] ]}}" mode="multiSelector" range="{{tlist}}" value="{{multiIndex}}">
+                                    <view class="picker text-orange text-sm">{{tlist[0][ multiIndex[0] ]+', '+tlist[1][ multiIndex[1] ]}}</view>
+                                </picker>
+                            </view>
+                        </view>
+                        <view class="cu-item arrow border-bottom-radius" wx:else>
+                            <view class="content">
+                                <text class="text-sm">配送时间</text>
+                            </view>
+                            <view class="action">
+                                <picker bindchange="__e" bindinput="__e" data-event-opts="{{[ [ 'change',[ [ 'changeOrderTime',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '','ordertime','$event',[] ] ] ] ] ]}}" range="{{timeList}}" value="{{ordertime}}">
+                                    <view class="picker text-orange text-sm">{{''+(timeList[ordertime]||'请选择配送时间')+''}}</view>
+                                </picker>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <block wx:if="{{psType==0}}">
+                    <view class="jiqu cu-list menu  border-radius margin-tb" wx:if="{{(type=='1'||type=='2')&&specs.length>0}}">
+                        <view class="tit cu-item row">物品信息<view bindtap="__e" class="add row" data-event-opts="{{[ [ 'tap',[ ['addForm'] ] ] ]}}">
+                                <view class="cuIcon-add"></view>{{'增加'+(type==1?'取':'寄')+'件'}}</view>
+                        </view>
+                        <view class="spec cu-list menu" wx:for="{{express_info}}" wx:key="index">
+                            <view bindtap="__e" class="cuIcon-move del row" data-event-opts="{{[ [ 'tap',[ [ 'del',[index] ] ] ] ]}}" wx:if="{{index>0}}"></view>
+                            <picker bindchange="__e" class="row" data-event-opts="{{[ [ 'change',[ [ 'changeExpress',['$event'] ] ] ] ]}}" data-index="{{index}}" data-range="weight" range="{{specs}}" rangeKey="name" value="{{index}}">
+                                <view class="cu-list menu " style="width:620rpx;">
+                                    <view class="cu-item item row">
+                                        <view class="key">{{'('+index+1+')物品规格'}}</view>
+                                        <view class="row">
+                                            <view class="val">{{item.specs}}</view>
+                                            <view class="cuIcon-right"></view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </picker>
+                            <view class="cu-item item row">
+                                <view class="key">跑腿费</view>
+                                <view class="val">
+                                    <view class="nums row">
+                                        <view bindtap="__e" class="jian row" data-event-opts="{{[ [ 'tap',[ [ 'jian',[index] ] ] ] ]}}">-</view>
+                                        <input bindblur="__e" bindinput="__e" data-event-opts="{{[ [ 'blur',[ [ 'checkPrice',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '$0','price','$event',[] ],[ [ ['express_info','',index] ] ] ] ] ] ]}}" data-index="{{index}}" placeholder=" " placeholderClass="input-placeholder" type="digit" value="{{item.price}}"></input>
+                                        <view bindtap="__e" class="jia row" data-event-opts="{{[ [ 'tap',[ [ 'jia',[index] ] ] ] ]}}">+</view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="cu-item item row" wx:if="{{type==1}}">
+                                <view class="key">取件码<view class="bitian">*</view>
+                                </view>
+                                <input bindinput="__e" class="code" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','code','$event',[] ],[ [ ['express_info','',index] ] ] ] ] ] ]}}" placeholder="请输入取件码" placeholderClass="input-placeholder" value="{{item.code}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="cu-item" wx:if="{{type=='3'&&1==2}}">
+                        <view class="content">
+                            <text class="text-sm">数量</text>
+                        </view>
+                        <view class="action flex">
+                            <view class="text-lg num_cut" style="{{express_num==1?'background:#F2F2F2':''}}" wx:if="{{express_num==1}}">-</view>
+                            <view bindtap="__e" class="text-lg num_cut" data-event-opts="{{[ [ 'tap',[ [ 'numCut',['$event'] ] ] ] ]}}" style="{{express_num==1?'background:#F2F2F2':''}}" wx:else>-</view>
+                            <view class="text-lg margin-left margin-right" style="line-height:60rpx;">{{express_num+''}}</view>
+                            <view bindtap="__e" class="text-lg num_add" data-event-opts="{{[ [ 'tap',[ [ 'numAdd',['$event'] ] ] ] ]}}">+</view>
+                        </view>
+                    </view>
+                    <view class="cu-item arrow">
+                        <view class="content">
+                            <text class="text-sm">抢单限制</text>
+                        </view>
+                        <view class="action">
+                            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" data-index="sexindex" data-range="sex" range="{{sex}}" value="{{sexindex}}">
+                                <view class="picker text-sm text-grey">{{''+sex[sexindex]+''}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow border-bottom-radius" data-event-opts="{{[ [ 'tap',[ [ 'timeModalFun',['$event'] ] ] ] ]}}" data-target="timeModal">
+                        <view class="content">
+                            <text class="text-sm">订单自动取消</text>
+                        </view>
+                        <view class="action">
+                            <view class="text-grey text-sm" wx:if="{{!form.out_time_num}}">暂无</view>
+                            <view class="text-grey text-sm" wx:if="{{form.out_time_num}}">下单后<text class="text-orange">{{form.out_time_num+'小时'}}</text>未接单</view>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow margin-top border-radius" data-event-opts="{{[ [ 'tap',[ [ 'handlescupon',['$event'] ] ] ] ]}}">
+                        <view class="content">
+                            <text class="text-sm">优惠券</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm">{{!form.co_title?'请选择优惠券':form.co_title}}</text>
+                        </view>
+                    </view>
+                    <view bindtap="__e" class="cu-item arrow border-bottom-radius" data-event-opts="{{[ [ 'tap',[ [ 'showModal',['$event'] ] ] ] ]}}" data-target="ChooseModal">
+                        <view class="content">
+                            <text class="text-sm">配送费</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm">{{user_price==0?'暂无':'¥'+user_price+'元'}}</text>
+                        </view>
+                    </view>
+                    <view class="tips margin-top-sm" wx:if="{{userInfo.is_vip==1}}">{{'您是尊贵的VIP用户，已为您减免'+form.MinRunPrice+'元配送费'}}</view>
+                </block>
+            </view>
+            <view class="{{[ 'cu-modal bottom-modal '+(timeModal?'show':'') ]}}">
+                <view catchtap="{{true}}" class="cu-dialog">
+                    <view class="cu-bar bg-white">
+                        <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'timeHide',['$event'] ] ] ] ]}}" data-type="1" style="color:black;">取消</view>
+                        <view bindtap="__e" class="action text-m text-df" data-event-opts="{{[ [ 'tap',[ [ 'timeHide',['$event'] ] ] ] ]}}" data-type="2">确定</view>
+                    </view>
+                    <view class="padding-xl">
+                        <view class="margin text-center text-green text-lg">{{out_time+'小时'}}</view>
+                        <slider bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'sliderchange',['$event'] ] ] ] ]}}" max="12" min="2" showValue="{{true}}"></slider>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="__e" class="{{[ 'cu-modal bottom-modal '+(modalName=='ChooseModal'?'show':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">
+                <view catchtap="{{true}}" class="cu-dialog">
+                    <view class="cu-bar bg-white">
+                        <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}" style="color:black;"></view>
+                        <view bindtap="__e" class="action text-m text-df" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">确定</view>
+                    </view>
+                    <view class="padding-xl">
+                        <view class="cu-form-group">
+                            <view class="title">其他金额</view>
+                            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','user_price','$event',[] ] ],[ 'totalchange',['$event'] ] ] ] ]}}" placeholder="点击此处输入金额" type="digit" value="{{user_price}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="{{[ 'cu-modal bottom-modal '+(modalName=='ygpice'?'show':'') ]}}">
+                <view class="cu-dialog">
+                    <view class="cu-bar bg-white">
+                        <view bindtap="__e" class="action text-grey" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">取消</view>
+                        <view bindtap="__e" class="action text-main text-df" data-event-opts="{{[ [ 'tap',[ [ 'confinModal',['$event'] ] ] ] ]}}" data-target="ygpice">确定</view>
+                    </view>
+                    <view class="padding-xl">
+                        <view class="prefee-tips padding-xl">供骑手代购时参考（可选填）</view>
+                        <view class="cu-form-group">
+                            <view class="title">预估￥</view>
+                            <input placeholder bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'guess_prcieAInput',['$event'] ] ] ] ]}}" name="price" type="number"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="{{[ 'cu-modal bottom-modal '+(modalName=='cupon'?'show':'') ]}}">
+                <view class="cu-dialog">
+                    <view class="cu-bar bg-white">
+                        <view bindtap="__e" class="action text-grey" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">取消</view>
+                        <view bindtap="__e" class="action text-main text-df" data-event-opts="{{[ [ 'tap',[ [ 'confinModal',['$event'] ] ] ] ]}}" data-target="cupon">确定</view>
+                    </view>
+                    <view class="padding-xl">
+                        <view class="prefee-tips padding-xl">供骑手代购时参考（可选填）</view>
+                        <view class="cu-form-group">
+                            <view class="title">预估￥</view>
+                            <input placeholder name="addres" value="{{form.addres}}"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="{{[ 'cu-modal bottom-modal '+(modalName=='tips'?'show':'') ]}}">
+                <view class="cu-dialog">
+                    <view class="cu-bar bg-white">
+                        <view bindtap="__e" class="action text-grey" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">取消</view>
+                        <view bindtap="__e" class="action text-main text-df" data-event-opts="{{[ [ 'tap',[ [ 'confinModal',['$event'] ] ] ] ]}}" data-target="tips">确定</view>
+                    </view>
+                    <view class="padding-xl">
+                        <view class="prefee-tips padding-xl">{{'小费 ¥'+form.fee+'元'}}</view>
+                        <slider bindchange="__e" class="slide-line" data-event-opts="{{[ [ 'change',[ [ 'onChangeTips',['$event'] ] ] ] ]}}" max="{{form.maxfee}}" min="{{form.minfee}}" step="1"></slider>
+                        <view class="slide-line-bottom">
+                            <text class="left">
+                                <text class="left-label">{{form.minfee+'元'}}</text>
+                            </text>
+                            <text class="right">
+                                <text class="right-label">{{form.maxfee+'元'}}</text>
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="cu-tabbar-height"></view>
+            <view class="flex" style="position:fixed;width:90%;bottom:10rpx;left:5%;">
+                <view class="money_box">实际金额：￥<text class="text-white money text-xl">{{''+amount+''}}</text>
+                </view>
+                <button class="{{['cu-btn','btn_bg',is_click?'':'filter']}}" formType="submit">确认提交</button>
+            </view>
+        </form>
+    </view>
+</view>
+<wxs module="my">
+var tofixed = (function(str) {
+    if (str == 'NaN') {
+        return (0)
+    } else {
+        var pick = parseFloat(str).toFixed(2);
+        console.log(pick);
+        return (Math.abs(pick))
+    }
+});
+module.exports.tofixed = tofixed;
+</wxs>

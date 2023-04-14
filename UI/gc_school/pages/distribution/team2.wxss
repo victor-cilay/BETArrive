@@ -1,0 +1,75 @@
+.bgmains {
+    background: transparent!important;
+    position: absolute;
+}
+
+.avatar {
+    border: 10rpx solid #fff;
+    border-radius: 50%;
+    height: 150rpx;
+    margin-right: 10rpx;
+    width: 150rpx;
+}
+
+.userbox {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin-top: -80rpx;
+    padding: 30rpx;
+}
+
+.userbox .title {
+    color: #121212;
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+}
+
+.userbox .num {
+    color: #ff4c49;
+    font-size: 28rpx;
+}
+
+.userbox .date {
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 16rpx;
+}
+
+.position {
+    margin-top: -50rpx;
+    position: relative;
+    z-index: 99;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.box .avatar {
+    border-radius: 50%;
+    height: 90rpx;
+    margin-right: 20rpx;
+    width: 90rpx;
+}
+
+.box .userinfo {
+    flex-grow: 1;
+}
+
+.box .userinfo .nickname {
+    color: #121212;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.box .userinfo .date {
+    color: #666;
+    font-size: 22rpx;
+    margin-top: 10rpx;
+}
+
+.box .userinfo .date text {
+    color: #ff4c49;
+    font-size: 28rpx;
+}

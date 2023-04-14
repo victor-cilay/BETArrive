@@ -1,0 +1,381 @@
+page {
+    background: #f2f2f2;
+}
+
+.Highlight {
+    position: relative;
+    z-index: 2;
+}
+
+.modality {
+    background-color: rgba(0,0,0,.5);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+
+.bgmain {
+    background-color: #fff;
+    color: #121212;
+}
+
+.contents {
+    background: #ff6444;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 70rpx 0 30rpx;
+    text-align: center;
+}
+
+.search_bg {
+    background-color: #fff;
+    padding: 30rpx;
+}
+
+.search_box {
+    background: #f7f5f6;
+    border-radius: 44rpx;
+    position: relative;
+}
+
+.search_box input {
+    height: 88rpx;
+    line-height: 88rpx;
+    padding-left: 93rpx;
+    width: 100%;
+}
+
+.cuIcon-search {
+    font-size: 34rpx;
+    left: 36rpx;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cate_box {
+    background: #fff;
+    display: flex;
+    overflow: scroll;
+}
+
+.cate_item {
+    flex-shrink: 0;
+    font-size: 34rpx;
+    height: 80rpx;
+    line-height: 70rpx;
+    position: relative;
+    text-align: center;
+    width: 25%;
+}
+
+.cate_item.cate_active {
+    font-weight: 700;
+}
+
+.cate_item.cate_active::before {
+    background: #ff4c4d;
+    border-radius: 6px;
+    bottom: 18rpx;
+    content: "";
+    height: 12rpx;
+    left: 50%;
+    opacity: .6;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 72rpx;
+}
+
+.filterList {
+    position: relative;
+}
+
+.filter {
+    background-color: #fff;
+    height: 70rpx;
+    justify-content: space-between;
+    padding: 0 30rpx;
+}
+
+.filter,.filter .filterItem {
+    align-items: center;
+    display: flex;
+}
+
+.filter .filterItem .names {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.filter .filterItem .downUpGrayIcon {
+    height: 16rpx;
+    margin-left: 11px;
+    width: 10rpx;
+}
+
+.filter .filterItem .downGrayIcon {
+    height: 8rpx;
+    margin-left: 11px;
+    width: 12rpx;
+}
+
+.filterList .sortList {
+    background-color: #fff;
+    border-radius: 0 0 20rpx 20rpx;
+    line-height: 70rpx;
+    padding: 10px 30rpx 40rpx;
+    position: absolute;
+    width: 100%;
+}
+
+.sortList .sotrTitle {
+    color: #232323;
+    font-size: 28rpx;
+}
+
+.sortList .sotrTitle .active {
+    color: #ff4c4d;
+}
+
+.sortList .oldtitle {
+    flex-wrap: wrap;
+}
+
+.sortList .Button,.sortList .oldtitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sortList .Button {
+    margin-top: 20px;
+}
+
+.sortList .Button .Reset {
+    border: 1px solid #1b1b1b;
+    width: 32%;
+}
+
+.sortList .Button .Reset,.sortList .Button .sure {
+    border-radius: 34rpx;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.sortList .Button .sure {
+    background-color: #ff4c5c;
+    color: #fff;
+    width: 60%;
+}
+
+.sortList .oldtitle view {
+    background: #f7f5f6;
+    border-radius: 10px;
+    height: 64rpx;
+    line-height: 64rpx;
+    margin-top: 20px;
+    text-align: center;
+    width: 24%;
+}
+
+.sortList .oldtitle view.active {
+    background-color: #faf1f1;
+    border: 1px solid #ff4c5c;
+    color: #ff4c4d;
+}
+
+.sortList .oldtitle .nulls {
+    background-color: initial;
+}
+
+.goods_line {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    padding: 0 30rpx;
+}
+
+.goods_item {
+    background-color: #fff;
+    border: 10rpx;
+    border-radius: 10rpx;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    margin-top: 20rpx;
+    width: 49%;
+}
+
+.goods_item image {
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+    height: 300rpx;
+    width: 100%;
+}
+
+.goods_item .name {
+    font-size: 30rpx;
+    font-weight: 700;
+    overflow: hidden;
+    padding: 30rpx 30rpx 0 20rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.goods_item .oldArrangement {
+    background-color: #f7f5f6;
+    border-radius: 16px;
+    color: #666;
+    font-size: 20rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    margin: 20rpx;
+    text-align: center;
+    width: 98rpx;
+}
+
+.goods_item .price {
+    align-items: flex-end;
+    color: #919191;
+    display: flex;
+    font-size: 28rpx;
+    padding: 0rpx 20rpx 10rpx;
+}
+
+.goods_item .price view {
+    font-size: 28rpx;
+    text-decoration: line-through;
+}
+
+.goods_item .price .price_item {
+    color: #ff6344!important;
+    font-size: 32rpx!important;
+    font-weight: 700;
+    margin-right: 23rpx;
+    text-decoration: none!important;
+}
+
+.goods_item .price .price_item .Company {
+    font-size: 26rpx;
+}
+
+.goods_item .userInfo {
+    font-size: 22rpx;
+    justify-content: space-between;
+    padding: 10rpx 20rpx 30rpx;
+}
+
+.goods_item .userInfo,.goods_item .userInfo .left {
+    align-items: center;
+    display: flex;
+}
+
+.goods_item .userInfo .avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 35rpx;
+    margin-right: 10rpx;
+    width: 35rpx;
+}
+
+.goods_item .userInfo .nickname {
+    max-width: 140rpx;
+}
+
+.text-orange {
+    color: #ff6344;
+    font-size: 28rpx;
+    margin-right: 10rpx;
+}
+
+.tab-on {
+    color: #7acfa6;
+    font-size: 32rpx!important;
+    font-weight: 600;
+}
+
+.list_author {
+    color: #818181;
+    font-size: 27rpx;
+    letter-spacing: 3rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+    padding-top: 10rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.nocontent {
+    align-items: center;
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20rpx;
+    width: 100%;
+}
+
+.nomore {
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.nocontent image {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.blank_text {
+    color: #c6c6c8;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-top: 10rpx;
+}
+
+.allEntry {
+    bottom: 0;
+    position: fixed;
+    right: 0;
+}
+
+.allEntry,.allEntry .entryoperation {
+    height: 148rpx;
+    width: 148rpx;
+}
+
+.allEntry .childImage {
+    height: 168rpx;
+    position: absolute;
+    width: 168rpx;
+}
+
+.allEntry .OpenOperation .entryorder {
+    bottom: 200rpx;
+    right: 0;
+}
+
+.allEntry .OpenOperation .entryrelease {
+    bottom: 150rpx;
+    right: 170rpx;
+}
+
+.allEntry .OpenOperation .entryadmin {
+    bottom: 0;
+    right: 232rpx;
+}
+
+.xihuan {
+    height: 21rpx!important;
+    margin-right: 7rpx!important;
+    width: 23rpx!important;
+}
+
+.swiper-box {
+    background-color: #fff;
+    height: 320rpx;
+    padding: 0 20rpx 30rpx;
+    width: 750rpx;
+}

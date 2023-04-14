@@ -1,0 +1,157 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="29dffd4e-1" vueSlots="{{['content']}}">
+        <view slot="content">商品管理</view>
+    </cu-custom>
+    <view class="box">
+        <view class="flex align-center text-bold">
+            <view class="text-red text-xxl">*</view>
+            <view class="text-lg">商品信息</view>
+        </view>
+        <view class="name text-lg margin-top">名称</view>
+        <view style="position:relative;">
+            <textarea bindinput="__e" class="textarea" data-event-opts="{{[ [ 'input',[ [ 'textarea',['$event'] ] ] ] ]}}" maxlength="{{maxTextLen}}" placeholder="请输入名称" placeholderStyle="color:#D1D1D1;" value="{{name}}"></textarea>
+            <view class="left_num">{{word_num+'/'+maxTextLen}}</view>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商品分类</view>
+            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" range="{{cate}}" rangeKey="goods_type_name" value="{{cate_index}}">
+                <view class="picker text-gray">{{''+(cate[cate_index].goods_type_name?cate[cate_index].goods_type_name:'选择分类')+''}}<text class="cuIcon-right"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="flex size30 margin-top align-center">
+            <view>规格设置</view>
+            <view class="row" style="margin-left:auto;">
+                <view bindtap="__e" class="add margin-left" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specsName'] ] ] ] ]}}" wx:if="{{!specsName}}">添加基础规格</view>
+            </view>
+        </view>
+        <view class="justify-between size30 margin-top align-center" wx:if="{{specsName}}">
+            <view class="row">{{specsName+''}}<image bindtap="__e" class="edit" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specsName'] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/edit.png"></image>
+                <image bindtap="__e" class="del" data-event-opts="{{[ [ 'tap',[ [ 'delAll',['specs'] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/del.png"></image>
+            </view>
+            <view class="specs row ">
+                <view class="item row margin-right margin-top" wx:for="{{specs}}" wx:key="index">
+                    <view class="type">{{item.type}}</view>
+                    <view class="price row">{{item.price}}</view>
+                    <image bindtap="__e" class="close" data-event-opts="{{[ [ 'tap',[ [ 'del',['specs',index] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/close.png"></image>
+                </view>
+                <view bindtap="__e" class="adds row margin-top" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specs'] ] ] ] ]}}">
+                    <view class="cuIcon-add"></view>
+                </view>
+            </view>
+        </view>
+        <view class="justify-between size30 margin-top align-center" wx:if="{{attributeName}}">
+            <view class="row">{{attributeName+''}}<image bindtap="__e" class="edit" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['attributeName'] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/edit.png"></image>
+                <image bindtap="__e" class="del" data-event-opts="{{[ [ 'tap',[ [ 'delAll',['attribute'] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/del.png"></image>
+            </view>
+            <view class="specs row ">
+                <view class="item row margin-right margin-top" wx:for="{{attribute}}" wx:key="index">
+                    <view class="type">{{item}}</view>
+                    <image bindtap="__e" class="close" data-event-opts="{{[ [ 'tap',[ [ 'del',['attribute',index] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/close.png"></image>
+                </view>
+                <view bindtap="__e" class="adds row margin-top" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['attribute'] ] ] ] ]}}">
+                    <view class="cuIcon-add"></view>
+                </view>
+            </view>
+        </view>
+        <view class="flex size30 margin-top align-center">
+            <view>多规格</view>
+            <view class="row" style="margin-left:auto;">
+                <view bindtap="__e" class="add margin-left" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specsListKey'] ] ] ] ]}}">添加多规格</view>
+            </view>
+        </view>
+        <view class="justify-between size30 margin-top align-center" wx:for="{{specs_list}}" wx:for-index="sindex" wx:key="sindex">
+            <view class="row">{{item.name+''}}<image bindtap="__e" class="edit" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specsListKey',sindex] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/edit.png"></image>
+                <image bindtap="__e" class="del" data-event-opts="{{[ [ 'tap',[ [ 'delAll',['specsListKey',sindex] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/del.png"></image>
+            </view>
+            <view class="specs row ">
+                <view class="item row margin-right margin-top" wx:for="{{item.list}}" wx:for-item="items" wx:key="index">
+                    <view class="type">{{items.type}}</view>
+                    <view class="price row">{{'+'+items.price}}</view>
+                    <image bindtap="__e" class="close" data-event-opts="{{[ [ 'tap',[ [ 'del',['specss',index,sindex] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/specs/close.png"></image>
+                </view>
+                <view bindtap="__e" class="adds row margin-top" data-event-opts="{{[ [ 'tap',[ [ 'showAdd',['specss',sindex] ] ] ] ]}}">
+                    <view class="cuIcon-add"></view>
+                </view>
+            </view>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商品价格</view>
+            <input bindinput="__e" class="name_input text-right" data-event-opts="{{[ [ 'input',[ [ 'priceFun',['$event'] ] ] ] ]}}" placeholder="请输入价格" placeholderStyle="color:#D1D1D1;" type="digit" value="{{price}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>商品库存</view>
+            <input bindinput="__e" class="name_input text-right" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','stock','$event',[] ] ] ] ] ]}}" placeholder="请输入库存" placeholderStyle="color:#D1D1D1;" type="number" value="{{stock}}"></input>
+        </view>
+        <view class="flex justify-between size30 margin-top align-center">
+            <view>限购数量</view>
+            <input bindinput="__e" class="name_input text-right" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','quota','$event',[] ] ] ] ] ]}}" placeholder="请输入商品限购数量，0或不填为不限制" placeholderStyle="color:#D1D1D1;" type="number" value="{{quota}}"></input>
+        </view>
+        <view class="size30 margin-top">商品图片</view>
+        <image bindtap="__e" class="img" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="{{img?img:'/static/images/article/add.png'}}"></image>
+    </view>
+    <view class="flex btn_row justify-between">
+        <view bindtap="__e" class="btn_" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}" data-status="2">存为草稿</view>
+        <view bindtap="__e" class="btn_" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}" data-status="1">发布上架</view>
+    </view>
+    <view class="{{['cu-modal',modalName?'show':'']}}">
+        <view class="cu-dialog">
+            <view class="cu-bar bg-white justify-end">
+                <view class="content">
+                    <block wx:if="{{modalName=='specsName'}}">规格名称</block>
+                    <block wx:if="{{modalName=='specs'}}">商品规格</block>
+                    <block wx:if="{{modalName=='attributeName'}}">属性名称</block>
+                    <block wx:if="{{modalName=='attribute'}}">商品属性</block>
+                    <block wx:if="{{modalName=='specsListKey'}}">规格名称</block>
+                    <block wx:if="{{modalName=='specss'}}">多规格属性</block>
+                </view>
+                <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'close',['$event'] ] ] ] ]}}">
+                    <text class="cuIcon-close text-red"></text>
+                </view>
+            </view>
+            <view class="addModal">
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specsName')}}">
+                    <view class="key">规格名称</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','specsName','$event',[] ] ] ] ] ]}}" placeholder="请输入规格值" value="{{specsName}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specs')}}">
+                    <view class="key">规格值</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','type','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入规格值" value="{{formData.type}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specs')}}">
+                    <view class="key">价格</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','price','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入价格" type="digit" value="{{formData.price}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='attributeName')}}">
+                    <view class="key">属性名称</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','attributeName','$event',[] ] ] ] ] ]}}" placeholder="请输入属性名称" value="{{attributeName}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='attribute')}}">
+                    <view class="key">属性值</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','type','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入属性值" value="{{formData.type}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specsListKey')}}">
+                    <view class="key">规格名称</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','type','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入属性名称" value="{{formData.type}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specss')}}">
+                    <view class="key">规格值</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','type','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入规格值" value="{{formData.type}}"></input>
+                </view>
+                <view class="item margin-bottom margin-lr flex padding-lr" hidden="{{!(modalName=='specss')}}">
+                    <view class="key">价格</view>
+                    <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','price','$event',[] ],['formData'] ] ] ] ]}}" placeholder="请输入价格" type="digit" value="{{formData.price}}"></input>
+                </view>
+                <view class="tips row padding-left" wx:if="{{modalName=='specsName'}}">温馨提醒：基础规格为产品的基础价格，例如:大、中、小碗</view>
+                <view class="tips row padding-left" hidden="{{!(modalName=='attributeName')}}">温馨提醒： 属性不影响价格</view>
+                <view class="tips row padding-left" hidden="{{!(modalName=='specsListKey')}}">温馨提醒： 多规格为基础规格额外的规格例如：可乐、加面、加某种佐料</view>
+            </view>
+            <view class="cu-bar bg-white">
+                <view class="action btns">
+                    <button bindtap="__e" class="cu-btn close" data-event-opts="{{[ [ 'tap',[ [ 'close',['$event'] ] ] ] ]}}">取消</button>
+                    <button bindtap="__e" class="cu-btn enter" data-event-opts="{{[ [ 'tap',[ [ 'addSpecs',['$event'] ] ] ] ]}}">确定</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

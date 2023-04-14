@@ -1,0 +1,57 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="98352d50-1" vueSlots="{{['content']}}">
+        <view slot="content">分销收益</view>
+    </cu-custom>
+    <view class="margin box padding">
+        <view class="date">今日</view>
+        <view class="flex">
+            <view>累计收益</view>
+            <view>累计订单</view>
+            <view>新增下线</view>
+        </view>
+        <view class="flex num">
+            <view>{{data.today_money}}</view>
+            <view>{{data.today_order}}</view>
+            <view>{{data.today_count}}</view>
+        </view>
+    </view>
+    <view class="margin box padding">
+        <view class="date">昨日</view>
+        <view class="flex">
+            <view>累计收益</view>
+            <view>累计订单</view>
+            <view>新增下线</view>
+        </view>
+        <view class="flex num">
+            <view>{{data.yesterday_money}}</view>
+            <view>{{data.yesterday_order}}</view>
+            <view>{{data.yesterday_count}}</view>
+        </view>
+    </view>
+    <view class="margin box padding">
+        <view class="date">本月</view>
+        <view class="flex">
+            <view>累计收益</view>
+            <view>累计订单</view>
+            <view>新增下线</view>
+        </view>
+        <view class="flex num">
+            <view>{{data.month_money}}</view>
+            <view>{{data.month_order}}</view>
+            <view>{{data.month_count}}</view>
+        </view>
+    </view>
+    <view class="margin box padding">
+        <view class="date">今年</view>
+        <view class="flex">
+            <view>累计收益</view>
+            <view>累计订单</view>
+            <view>新增下线</view>
+        </view>
+        <view class="flex num">
+            <view>{{data.year_money}}</view>
+            <view>{{data.year_order}}</view>
+            <view>{{data.year_count}}</view>
+        </view>
+    </view>
+</view>

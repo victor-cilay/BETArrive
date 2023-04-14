@@ -1,0 +1,60 @@
+<view style="background:#F9FAFB;">
+    <view class="headers" style="{{'margin-top:'+'-'+top+'px'+';'+'padding-top:'+top+'px'+';'}}">
+        <view bindtap="__e" class="search row" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/canteen/list'] ] ] ] ]}}">店铺名称/美食名称<view class="cuIcon-search"></view>
+        </view>
+        <swiper autoplay="{{true}}" class="{{['banner','margin-lr',rank_show?'':'margin-top']}}" current="{{current}}" wx:if="{{schoolInfo.slide.length>0}}">
+            <block wx:if="{{schoolInfo.slide.length>0}}">
+                <swiper-item wx:for="{{schoolInfo.slide}}" wx:key="index">
+                    <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-type="{{item.url_type}}" data-url="{{item.url}}" mode="widthFix" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                    <image mode="widthFix" src="/static/images/banners.jpg" wx:else></image>
+                </swiper-item>
+            </block>
+            <swiper-item wx:else>
+                <image mode="widthFix" src="/static/images/banners.jpg"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="navs">
+        <school-store-classify bind:__l="__l" vueId="66275ed8-1"></school-store-classify>
+    </view>
+    <view class="tipss">
+        <uni-notice-bar backgroundColor="#fff" bind:__l="__l" bind:click="__e" class="margin-lr tips" color="#000" data-event-opts="{{[ [ '^click',[ [ 'go',['/gc_school/pages/notice/notice?id='+schoolInfo.notice[0].id] ] ] ] ]}}" scrollable="{{true}}" showIcon="{{true}}" text="{{schoolInfo.notice[0].title}}" vueId="66275ed8-2" wx:if="{{schoolInfo.notice.length>0}}"></uni-notice-bar>
+    </view>
+    <view class="hart_store" wx:if="{{hart.length>0}}">
+        <view class="tit row">
+            <view class="cuIcon-hotfill cuIcon"></view>点餐热榜<view class="sub_tit">| 看看他们在吃什么</view>
+        </view>
+        <view class="hart_list row">
+            <view bindtap="__e" class="hart_item" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/foold/foold?id='+item.business_id] ] ] ] ]}}" wx:for="{{hart}}" wx:key="index">
+                <image class="main_img" mode="scaleToFill" src="{{item.goods.goods_img}}"></image>
+                <view class="title">{{item.goods.goods_name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="topp" style="{{'top:'+top+'px'+';'}}">
+        <view class="cates row">
+            <view bindtap="__e" class="{{['cate','col',flg==index?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'tagetCate',['$0',index],[ [ ['list','',index,'type_id'] ] ] ] ] ] ]}}" wx:for="{{list}}" wx:key="index">{{''+item.type_name+''}}</view>
+        </view>
+    </view>
+    <view class="store_list">
+        <view bindtap="__e" class="store_item" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/foold/foold?id='+item.business_id] ] ] ] ]}}" wx:for="{{goods}}" wx:key="index">
+            <view class="store_info row">
+                <image class="main_img" mode="scaleToFill" src="{{item.business_image}}"></image>
+                <view class="info">
+                    <view class="name row">{{''+item.business_name+''}}<view class="tag row tag2" wx:if="{{item.is_dormitory_store==1}}">宿舍小店</view>
+                        <view class="{{['tag','row',item.type!=1?'tag1':'tag2']}}" wx:else>{{''+(item.type!=1?'校外':'校内')+''}}</view>
+                    </view>
+                    <view class="date">{{'营业时间：'+item.timeslot}}</view>
+                    <view class="date">{{'已售'+item.sale_num+'份 ¥'+item.service_price+'起送'}}</view>
+                </view>
+            </view>
+            <view class="goods_list row" wx:if="{{item.goods.length>0}}">
+                <view class="goods_item" wx:for="{{item.goods}}" wx:for-index="gindex" wx:for-item="gitem" wx:key="gindex">
+                    <image class="main_img" mode="scaleToFill" src="{{gitem.goods_img}}"></image>
+                    <view class="title">{{gitem.goods_name}}</view>
+                    <view class="price">{{'￥'+gitem.price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

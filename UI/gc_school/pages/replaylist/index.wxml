@@ -1,0 +1,30 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="883a51e6-1" vueSlots="{{['content']}}">
+        <view slot="content">提现记录</view>
+    </cu-custom>
+    <view class="container">
+        <view class="grid radius col-1">
+            <view class="radius">
+                <view class="radius light">
+                    <view class="cu-list menu">
+                        <view class="cu-item" wx:for="{{$root.l0}}" wx:key="index">
+                            <view class="content">
+                                <view>
+                                    <text class="text-df" wx:if="{{item.$orig.status==1}}">审核中</text>
+                                    <text class="text-df" wx:if="{{item.$orig.status==2}}">提现成功</text>
+                                    <text class="text-df" wx:if="{{item.$orig.status==3}}">提现拒绝</text>
+                                </view>
+                                <view>
+                                    <text class="text-sm">{{item.f0}}</text>
+                                </view>
+                            </view>
+                            <view class="action">
+                                <text class="text-grey text-df">{{'¥'+item.$orig.price}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

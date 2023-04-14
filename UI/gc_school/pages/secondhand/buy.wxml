@@ -1,0 +1,35 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="7d3fc5fb-1" vueSlots="{{['content']}}">
+        <view slot="content">下单</view>
+    </cu-custom>
+    <form catchsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}">
+        <view class="padding">
+            <view class="detail_box flex">
+                <image class="img" src="{{data.image}}"></image>
+                <view>
+                    <view class="shop-title" style="height:70%;">{{data.title}}</view>
+                    <view class="pays flex" style="height:30%;">{{'￥'+data.pay+''}}<view class="prices" style="margin-left:16rpx;">{{'￥'+data.price}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="info_box margin-top-lg">
+                <view class="info_item">
+                    <view class="item_title">联系人</view>
+                    <input name="linkman" placeholder="请输入联系人姓名" style="text-align:right;"></input>
+                </view>
+                <view class="info_item">
+                    <view class="item_title">联系电话</view>
+                    <input name="phone" placeholder="请输入联系电话" style="text-align:right;"></input>
+                </view>
+                <textarea name="remark" placeholder="请输入交易地点等其他信息"></textarea>
+            </view>
+        </view>
+        <view style="padding:0 30rpx;">
+            <view class="bottom flex dibu">
+                <view class="text-df heji" style="color:#FFFFFF;margin-left:30rpx;">合计金额：<text class="text-red text-xl text-bold pays" style="color:#FFFFFF;">{{'￥'+data.pay}}</text>
+                </view>
+                <button class="sure" formType="submit">确认购买</button>
+            </view>
+        </view>
+    </form>
+</view>

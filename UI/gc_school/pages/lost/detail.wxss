@@ -1,0 +1,168 @@
+page {
+    background: #f7f5f6;
+}
+
+.top_box {
+    background-color: #fff;
+    border-bottom-left-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+}
+
+.article_box .avatar {
+    border-radius: 50%;
+    height: 85rpx;
+    margin-right: 20rpx;
+    width: 85rpx;
+}
+
+.article_box .nickname {
+    font-size: 28rpx;
+    font-weight: 700;
+}
+
+.article_box .date {
+    color: #888;
+    font-size: 28rpx;
+    margin-left: auto;
+}
+
+.icon_item image {
+    height: 35rpx;
+    width: 35rpx;
+}
+
+.icon_item text {
+    color: #999;
+    margin-left: 10rpx;
+}
+
+.item_img {
+    height: 180rpx;
+    margin-right: 20rpx;
+    width: 180rpx;
+}
+
+.comment_box {
+    background: #fff;
+    border-radius: 40rpx;
+    margin-bottom: 150rpx;
+    margin-top: 20px;
+}
+
+.comment_box .name {
+    padding: 20rpx 30rpx 0;
+}
+
+.comment_item_first {
+    padding: 20rpx 30rpx;
+}
+
+.comment_item_first image {
+    border-radius: 50%;
+    height: 50rpx;
+    margin-right: 20rpx;
+    width: 50rpx;
+}
+
+.content {
+    font-size: 26rpx;
+    margin-left: 70rpx;
+}
+
+.time {
+    color: #b7b7b7;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+}
+
+.comment_item_child {
+    border-top: 1px solid hsla(0,0%,79%,.6);
+    margin-left: 80rpx;
+    padding: 20rpx 30rpx 20rpx 0;
+}
+
+.comment_item_child image {
+    border-radius: 50%;
+    height: 50rpx;
+    margin-right: 20rpx;
+    width: 50rpx;
+}
+
+.comment_input {
+    background-color: #fff;
+    border-top: 1rpx solid #eee;
+    bottom: 0rpx;
+    display: flex;
+    height: 120rpx;
+    left: 0rpx;
+    padding: 20rpx;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
+
+.comment_input input {
+    background-color: #f2f2f2;
+    border-radius: 10rpx;
+    font-size: 30rpx;
+    height: 80rpx;
+    padding-left: 10rpx;
+    width: 85%;
+}
+
+.comment_input .submit {
+    border-radius: 10rpx;
+    color: #fff;
+    flex-shrink: 0;
+    margin-left: 20rpx;
+    padding: 10rpx 20rpx;
+}
+
+.top {
+    align-items: center;
+    display: flex;
+}
+
+.more {
+    margin-bottom: 10rpx;
+    text-align: center;
+}
+
+.item,.more {
+    font-size: 28rpx;
+}
+
+.item {
+    margin: 20rpx 0;
+}
+
+.icon {
+    height: 30rpx;
+    margin-right: 10rpx;
+    width: 30rpx;
+}
+
+.val {
+    color: #666;
+    font-size: 28rpx;
+    font-weight: 200;
+}
+
+button {
+    background: #fff;
+    line-height: 30rpx;
+}
+
+button::after {
+    border: 0;
+    outline: none;
+}
+
+.button-hover {
+    background: #fff;
+}
+
+.share_icon {
+    height: 44rpx;
+    width: 44rpx;
+}

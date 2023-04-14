@@ -1,0 +1,28 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="7ab3884a-1" vueSlots="{{['content']}}">
+        <view slot="content">个人资料</view>
+    </cu-custom>
+    <view class="margin-sm box padding">
+        <view class="flex align-center justify-between margin-bottom border-bottom">
+            <view class="text-df margin-right">头像</view>
+            <view class="text-right" style="flex-grow:1;">
+                <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="{{avatar}}"></image>
+            </view>
+            <text class="cuIcon-right text-gray"></text>
+        </view>
+        <view class="flex align-center justify-between margin-bottom border-bottom">
+            <view class="text-df margin-right" style="flex-shrink:0;">昵称</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','nickname','$event',[] ] ] ] ] ]}}" maxlength="16" placeholder="请输入昵称" value="{{nickname}}"></input>
+            <text class="cuIcon-right text-gray"></text>
+        </view>
+        <view class="flex align-center justify-between " wx:if="{{sys.is_real==1}}">
+            <view class="text-df margin-right" style="flex-shrink:0;">认证状态</view>
+            <input disabled maxlength="16" value="已认证" wx:if="{{student==1}}"></input>
+            <input disabled bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['tiao'] ] ] ]}}" maxlength="16" value="未通过" wx:if="{{student==2}}"></input>
+            <input disabled bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['tiao'] ] ] ]}}" maxlength="16" value="未认证" wx:if="{{student==-1}}"></input>
+            <input disabled maxlength="16" value="申请中" wx:if="{{student==0}}"></input>
+            <text class="cuIcon-right text-gray"></text>
+        </view>
+    </view>
+    <view bindtap="__e" class="btns" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">提交修改</view>
+</view>

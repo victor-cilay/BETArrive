@@ -1,0 +1,30 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="77824d77-1" vueSlots="{{['content']}}">
+        <view slot="content">充值</view>
+    </cu-custom>
+    <view class="padding" style="position:relative;">
+        <image mode="widthFix" src="{{fileUrl+'shop_bg1.png'}}" style="width:100%;"></image>
+        <view class="balance_item">
+            <view bindtap="__e" class="flex justify-end margin-bottom-lg align-center" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">
+                <image src="../../../static/rule.png" style="width:30rpx;height:30rpx;"></image>
+                <view class="text-white text-sm margin-left-sm opacity">规则说明</view>
+            </view>
+            <view class="text-xxl text-white text-center margin-top-lg">{{storeInfo.info.balance}}</view>
+            <view class="text-df text-white margin-top-sm text-center opacity">我的金豆</view>
+        </view>
+    </view>
+    <view class="box">
+        <view bindtap="__e" class="{{[ 'item flex align-center justify-between '+(type==index?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'current',['$event'] ] ] ] ]}}" data-item="{{item}}" data-type="{{index}}" wx:for="{{dataList}}" wx:key="index">
+            <view class="name">{{item.number+'金豆'}}</view>
+            <text class="text-bold text-black">{{'￥'+item.price}}</text>
+        </view>
+    </view>
+    <view bindtap="__e" class="btns" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">立即支付</view>
+    <view bindtap="__e" class="cover" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}" wx:if="{{show}}">
+        <view class="content">
+            <text class="cuIcon-close"></text>
+            <view class="text-xl text-bold text-center margin-bottom-sm">规则说明</view>
+            <mp-html bind:__l="__l" content="{{rule}}" vueId="77824d77-2"></mp-html>
+        </view>
+    </view>
+</view>

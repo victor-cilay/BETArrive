@@ -1,0 +1,10 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="6ae9cfc4-1" vueSlots="{{['content']}}">
+        <view slot="content">上传凭证</view>
+    </cu-custom>
+    <view class="padding">
+        <view bindtap="__e" class="image" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" wx:if="{{!img}}">+</view>
+        <image bindtap="__e" class="image" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="{{img}}" wx:else></image>
+        <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">提交</view>
+    </view>
+</view>

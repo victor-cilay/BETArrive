@@ -1,0 +1,91 @@
+.images-box {
+    border-radius: 10rpx;
+    width: 100%;
+}
+
+.imageCount {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.images {
+    align-items: center;
+    display: flex;
+    height: 240rpx;
+}
+
+.addImageIcon {
+    background-color: #f7f7f7;
+    line-height: 200rpx;
+    text-align: center;
+}
+
+.addImageIconHover {
+    background-color: #c0c4cc;
+}
+
+.image {
+    border-radius: 10rpx;
+    color: #ff6344;
+    font-size: 80rpx;
+    height: 200rpx;
+    margin-right: 20rpx;
+    width: 30%;
+}
+
+.del {
+    height: 60rpx;
+    width: 60rpx;
+}
+
+.bgcolor {
+    background: linear-gradient(0deg,#fff,#4786fa,#f8f8f8 0,#f75d3d 56.99999999999999%,#ff5853);
+    height: 425rpx;
+    width: 100%;
+}
+
+.bgmain {
+    background-color: initial;
+    color: #fff;
+}
+
+.heads {
+    height: 749rpx;
+    margin-top: -244rpx;
+}
+
+.heads,.heads-bg {
+    padding: 0 30rpx;
+    width: 100%;
+}
+
+.heads-bg {
+    background: #fff;
+    border-radius: 20rpx;
+    height: 100%;
+}
+
+.title-input {
+    padding-right: 0rpx!important;
+    text-align: right;
+}
+
+.title-address {
+    color: #ff5853;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 18rpx;
+}
+
+.cu-form-group {
+    padding: 0!important;
+}
+
+.picker,.shop-details {
+    color: #666;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 18rpx;
+}

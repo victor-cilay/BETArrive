@@ -1,0 +1,25 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="bff4009a-1" vueSlots="{{['content']}}">
+        <view slot="content">话费充值</view>
+    </cu-custom>
+    <view class="line"></view>
+    <input bindinput="__e" class="margin" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','phone','$event',[] ] ] ] ] ]}}" placeholder="请输入手机号" type="number" value="{{phone}}"></input>
+    <view class="text-df padding padding-bottom-xs">请选择运营商</view>
+    <radio-group bindchange="__e" class="flex-direction margin-left margin-right" data-event-opts="{{[ [ 'change',[ [ 'radioChange',['$event'] ] ] ] ]}}" style="width:96%;">
+        <label class="uni-list-cell uni-list-cell-pd" wx:for="{{items}}" wx:key="value">
+            <view class="flex align-center margin-right margin-bottom-sm justify-between">
+                <image class="icon" src="{{item.icon}}"></image>
+                <view class="radio_name">{{item.name}}</view>
+                <radio checked="{{index===current}}" style="transform:scale(0.77);" value="{{item.value}}"></radio>
+            </view>
+        </label>
+    </radio-group>
+    <view class="flex flex-wrap padding charge_box">
+        <view bindtap="__e" class="{{['item','padding','text-center',index==indexs?'item_active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'choose',[index] ] ] ] ]}}" wx:for="{{dataList}}" wx:key="index">
+            <view class="val">{{item.price_val+'元'}}</view>
+            <view class="price">{{'优惠价'+item.price+'元'}}</view>
+        </view>
+    </view>
+    <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">
+        <text class="margin-right-sm" wx:if="{{data.price>0}}">{{'￥'+data.price}}</text>立即充值</view>
+</view>

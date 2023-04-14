@@ -1,0 +1,119 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" vueId="bb3ddfe4-1" vueSlots="{{['content']}}">
+        <view slot="content">校园圈子</view>
+    </cu-custom>
+    <view class="header padding-lr">
+        <view class="slide_box" wx:if="{{slideList.length>0}}">
+            <swiper autoplay="{{autoplay}}" bindchange="__e" circular="{{true}}" class="swiper-box" data-event-opts="{{[ [ 'change',[ [ 'index_swiperChange',['$event'] ] ] ] ]}}" duration="{{duration}}">
+                <block wx:if="{{slideList.length>0}}">
+                    <swiper-item wx:for="{{slideList}}" wx:key="index">
+                        <image bindtap="__e" class="{{['banner',index_swiperCurrent==index?'on slide-image':' slide-image']}}" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="{{true}}" src="{{item.img}}"></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <view class="indicator-dots">
+                <view class="{{[index_swiperCurrent==index?'dots_on':'']}}" wx:for="{{slideList}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="classify_list flex" wx:if="{{cateList.length>0}}">
+            <view bindtap="__e" class="classify flex" data-event-opts="{{[ [ 'tap',[ [ 'toList',[1,'$0','$1','$2','$3'],[ [ ['cateList','',index,'class_id'] ],[ ['cateList','',index,'is_auth_watch'] ],[ ['cateList','',index,'url'] ],[ ['cateList','',index,'class_name'] ] ] ] ] ] ]}}" wx:for="{{cateList}}" wx:key="index">
+                <image class="icon margin-tb-xs" mode="scaleToFill" src="{{item.icon}}"></image>{{''+item.class_name+''}}</view>
+        </view>
+    </view>
+    <view class="margin">
+        <view class="tab_bar flex">
+            <view bindtap="__e" class="{{['tab',type==0?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changetype',['$event'] ] ] ] ]}}" data-type="0">全部</view>
+            <view bindtap="__e" class="{{['tab',type==2?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changetype',['$event'] ] ] ] ]}}" data-type="2">最新</view>
+            <view bindtap="__e" class="{{['tab',type==1?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changetype',['$event'] ] ] ] ]}}" data-type="1">最热</view>
+        </view>
+        <view class="cate_box flex margin-top justify-between" wx:if="{{1==2}}">
+            <view class="cate_item_box flex">
+                <view bindtap="__e" class="{{[ 'cate_item '+(cate_index==index?'cate_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'cateChange',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="index">{{item.class_name}}</view>
+            </view>
+            <view class="flex label_box" wx:if="{{cateList.length>0}}">
+                <view bindtap="__e" class="{{[ 'label_item '+(type==2?'label_item_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changetype',['$event'] ] ] ] ]}}" data-type="2">最新</view>
+                <view bindtap="__e" class="{{[ 'label_item '+(type==1?'label_item_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changetype',['$event'] ] ] ] ]}}" data-type="1">最热</view>
+            </view>
+        </view>
+        <view class="padding-bottom" style="padding-bottom:100rpx;">
+            <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+            <view bindtap="__e" class="article padding" data-event-opts="{{[ [ 'tap',[ [ 'toList',[2,'$0','$1'],[ [ ['dataList','',index,'article_id'] ],[ ['dataList','',index,'is_auth'] ] ] ] ] ] ]}}" data-id="{{item.article_id}}" wx:for="{{dataList}}" wx:key="index">
+                <view class="flex row">
+                    <image class="avatar" mode="scaleToFill" src="{{item.avatar?item.avatar:fileUrl+'avatar.jpg'}}" wx:if="{{item.is_anonymous==0}}"></image>
+                    <image class="avatar" mode="scaleToFill" src="{{fileUrl+'avatar.jpg'}}" wx:else></image>
+                    <view class="nickname">{{item.is_anonymous==1?'匿名用户':item.nickname}}</view>
+                    <view class="date">{{item.createtime}}</view>
+                    <image class="top" src="/static/icon/top.png" wx:if="{{item.is_expired==1}}"></image>
+                </view>
+                <view class="content margin-tb" wx:if="{{ditems}}" wx:for="{{item.topic}}" wx:for-index="dindexs" wx:for-item="ditems" wx:key="dindexs">
+                    <view class="topic-title">{{'# '+ditems.title}}</view>
+                </view>
+                <view class="content margin-tb">
+                    <text class="line_two" decode="{{true}}" space="nbsp" style="-webkit-line-clamp:3;word-break:break-word;">{{item.content}}</text>
+                </view>
+                <view class="imgs row  margin-bottom" wx:if="{{item.image.length>0}}">
+                    <image class="img" mode="aspectFill" src="{{image}}" wx:for="{{item.image}}" wx:for-item="image" wx:key="index"></image>
+                </view>
+                <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{item.video}}">
+                    <video class="margin-bottom" src="{{item.video}}" style="width:100%;"></video>
+                </view>
+                <view class="footer row">
+                    <view class="class_name" wx:if="{{item.class_name}}">{{''+item.class_name+''}}</view>
+                    <view class="view">
+                        <image class="icon" mode="scaleToFill" src="/static/icon/views.png" style="height:45rpx;"></image>{{''+item.views_num+''}}</view>
+                    <view class="comment">
+                        <image class="icon" mode="scaleToFill" src="/static/icon/comment.png"></image>{{''+item.comments_num+''}}</view>
+                    <view class="{{['love',item.is_fav==1?'cur':'']}}">
+                        <image class="icon" mode="scaleToFill" src="/static/icon/love.png"></image>{{''+item.likes_num+''}}</view>
+                </view>
+            </view>
+            <view bindtap="__e" class="article_box padding" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{item.article_id}}" wx:if="{{1==2}}" wx:for="{{dataList}}" wx:key="index">
+                <view class="flex">
+                    <block wx:if="{{item.is_anonymous==0}}">
+                        <image class="avatar" src="{{item.avatar?item.avatar:'https://gcwe7.link1024.com/web/img/avatar.png'}}"></image>
+                        <view>
+                            <view class="nickname">{{item.nickname}}</view>
+                            <view class="date">{{item.createtime}}</view>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <image class="avatar" src="https://gcwe7.link1024.com/web/img/avatar.png"></image>
+                        <view>
+                            <view class="nickname">匿名用户</view>
+                            <view class="date">{{item.createtime}}</view>
+                        </view>
+                    </block>
+                </view>
+                <view class="content margin-top">{{item.content}}</view>
+                <view class="margin-top" wx:if="{{item.media_type=='1'}}">
+                    <video catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'play',['$event'] ] ] ] ]}}" src="{{item.video}}" style="width:100%;"></video>
+                </view>
+                <block wx:else>
+                    <view class="margin-top" wx:if="{{item.media_type=='2'}}">
+                        <image catchtap="__e" class="item_img" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-list="{{item.image}}" mode="aspectFill" src="{{img}}" wx:for="{{item.image}}" wx:for-index="index1" wx:for-item="img" wx:key="index1"></image>
+                    </view>
+                </block>
+                <view class="flex justify-between margin-top">
+                    <view class="flex icon_item">
+                        <image src="/static/images/article/share.png"></image>
+                        <text>{{item.collections_num}}</text>
+                    </view>
+                    <view class="flex icon_item">
+                        <image src="/static/images/article/comment.png"></image>
+                        <text>{{item.comments_num}}</text>
+                    </view>
+                    <view class="flex icon_item">
+                        <image src="/static/images/article/fav.png"></image>
+                        <text>{{item.likes_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="right_fixed" wx:if="{{userstate!=-1}}">
+        <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/article/post" src="/static/images/article/i_fabu.png" wx:if="{{cateList.length>0}}"></image>
+        <image bindtap="__e" class="top_icon" data-event-opts="{{[ [ 'tap',[ [ 'top',['$event'] ] ] ] ]}}" src="/static/images/article/tops2.png" wx:if="{{isTop}}"></image>
+    </view>
+    <view style="height:100rpx;"></view>
+    <pt-footer bind:__l="__l" flg="圈子" vueId="bb3ddfe4-2"></pt-footer>
+</view>

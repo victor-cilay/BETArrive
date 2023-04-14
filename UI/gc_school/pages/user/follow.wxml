@@ -1,0 +1,15 @@
+<scroll-view class="scrollPage" scrollY="{{true}}">
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="7dd47bd2-1" vueSlots="{{['content']}}">
+        <view slot="content">我的关注</view>
+    </cu-custom>
+    <block wx:if="{{dataList.length>0}}">
+        <view class="bg-white flex align-center justify-between padding border-radius20 list" wx:for="{{dataList}}" wx:key="index">
+            <image src="{{item.avatar}}"></image>
+            <view class="text-lg text-black text-bold nickname">{{item.nickname}}</view>
+            <view bindtap="__e" class="text-sm follow_box" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$0'],[ [ ['dataList','',index,'f_uid'] ] ] ] ] ] ]}}">
+                <image src="{{item.is_mutual==1?'../../../static/images/user/change.png':'../../../static/images/user/right.png'}}"></image>
+            </view>
+        </view>
+    </block>
+    <view class="text-lg text-center margin-top" wx:else>暂无相关数据~</view>
+</scroll-view>

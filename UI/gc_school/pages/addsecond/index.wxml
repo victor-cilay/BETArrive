@@ -1,0 +1,68 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="8afa3de2-1" vueSlots="{{['content']}}">
+        <view slot="content">发布二手</view>
+    </cu-custom>
+    <view class="weui-cells weui-cells_after-title page">
+        <view class="beijing">
+            <view class="box">
+                <view class="cu-bar bg-white">
+                    <view class="info">
+                        <image src="../../../static/images/jibens.png" style="width:32rpx;height:32rpx;"></image>
+                        <text class="jiben">商品基本信息</text>
+                    </view>
+                </view>
+            </view>
+            <view class="cu-form-group">
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'bookNameInput',['$event'] ] ] ] ]}}" placeholder="请输入商品的名称"></input>
+            </view>
+            <view class="cu-form-group margin-bottom">
+                <textarea autoHeight="{{true}}" bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'descInput',['$event'] ] ] ] ]}}" maxlength="-1" placeholder="在此输入商品描述"></textarea>
+            </view>
+            <view class="margin-left">
+                <add-image addedCount="{{addedCount}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImages'] ] ],[ '^deleteImage',[ ['deleteImage'] ] ] ]}}" images="{{images}}" vueId="8afa3de2-2"></add-image>
+            </view>
+            <view class="imagess">添加商品图片</view>
+        </view>
+        <view class="beijing">
+            <view class="cu-form-group">
+                <view>
+                    <view class="title">新旧程度</view>
+                </view>
+                <view>
+                    <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindPickerChange',['$event'] ] ] ] ]}}" range="{{array}}" value="{{index}}">
+                        <view class="picker">{{''+array[index]+''}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="cu-form-group">
+                <view>
+                    <view class="title">分类</view>
+                </view>
+                <view>
+                    <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindPickerChanges',['$event'] ] ] ] ]}}" range="{{cateList}}" rangeKey="title" value="{{cateList[indexs].id}}">
+                        <view class="picker">{{''+cateList[indexs].title+''}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">原价</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','oldprice','$event',[] ] ],[ 'oldpriceInput',['$event'] ] ] ] ]}}" name="oldPrice" placeholder="最多保留两位小数" style="text-align:right;" type="digit" value="{{oldprice}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">现价</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','newprice','$event',[] ] ],[ 'newpriceInput',['$event'] ] ] ] ]}}" name="newPrice" placeholder="最多保留两位小数" style="text-align:right;" type="digit" value="{{newprice}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">库存</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'stockFun',['$event'] ] ] ] ]}}" name="stock" placeholder="请输入库存" style="text-align:right;" type="number"></input>
+            </view>
+        </view>
+        <view class="beijing">
+            <view class="cu-form-group">
+                <view class="title">联系电话</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'phoneFun',['$event'] ] ] ] ]}}" name="phone" placeholder="请输入电话" style="text-align:right;" type="number"></input>
+            </view>
+        </view>
+        <button bindtap="__e" class="my_button" data-event-opts="{{[ [ 'tap',[ [ 'save',['$event'] ] ] ] ]}}" type="primary">发布</button>
+    </view>
+</view>

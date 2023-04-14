@@ -1,0 +1,55 @@
+page {
+    background-color: #f7f5f6;
+}
+
+.bgmains {
+    background-color: #fff!important;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.box .avatar {
+    border-radius: 50%;
+    height: 90rpx;
+    margin-right: 20rpx;
+    width: 90rpx;
+}
+
+.box .userinfo {
+    flex-grow: 1;
+}
+
+.box .userinfo .nickname {
+    color: #121212;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.box .userinfo .date {
+    color: #666;
+    font-size: 22rpx;
+    margin-top: 10rpx;
+}
+
+.box .userinfo .date text {
+    font-size: 24rpx;
+    margin-left: 20rpx;
+}
+
+.box .profit {
+    background-color: #fbfbfb;
+    border-radius: 10rpx;
+    color: #121212;
+    font-size: 26rpx;
+    font-weight: 700;
+    margin-top: 30rpx;
+    padding: 30rpx;
+}
+
+.box .profit text {
+    color: #ff4c49;
+    font-size: 30rpx;
+}

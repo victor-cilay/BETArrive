@@ -1,0 +1,80 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" class="bgmains" isBack="{{true}}" vueId="b9c1753c-1" vueSlots="{{['content']}}">
+        <view slot="content">我的小店</view>
+    </cu-custom>
+    <view>
+        <image mode="aspectFill" src="{{data.info.business_image}}" style="filter:blur(12rpx);height:700rpx;position:relative;width:100%;"></image>
+        <view class="main">
+            <image class="avatar" mode="scaleToFill" src="{{data.info.business_image}}"></image>
+            <view bindtap="__e" class="name margin-top margin-bottom-xs" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/info'] ] ] ] ]}}">{{data.info.business_name+''}}<image class="margin-left-sm" src="{{fileUrl+'store/edit.png'}}" style="width:30rpx;height:30rpx;"></image>
+            </view>
+            <view class="zi">{{'所属学院：'+(data.school_name?data.school_name:'学校不存在')}}</view>
+            <view class="price_info padding">
+                <view class="row">
+                    <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/balancelog'] ] ] ] ]}}">
+                        <view class="key">我的余额（元）</view>
+                        <view class="val margin-top-xs">{{data.store_balance}}</view>
+                    </view>
+                    <view bindtap="__e" class="tx_btn" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/tixian'] ] ] ] ]}}">提现</view>
+                </view>
+                <view class="tj row margin-top-lg">
+                    <view bindtap="__e" class="flex-col" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/order'] ] ] ] ]}}">
+                        <view class="key">今日订单</view>
+                        <view class="val">{{data.order_day_num||0}}</view>
+                    </view>
+                    <view bindtap="__e" class="flex-col" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/order'] ] ] ] ]}}">
+                        <view class="key">总订单</view>
+                        <view class="val">{{data.order_num||0}}</view>
+                    </view>
+                    <view bindtap="__e" class="flex-col padding-right" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/beanlog'] ] ] ] ]}}" wx:if="{{data.store_bean_switch==1}}">
+                        <view class="key">金豆</view>
+                        <view class="val">{{data.info.balance}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tit padding-left margin-top">常用功能</view>
+    <view class="nav_list padding" style="{{show==true?'padding-bottom: 300rpx;':''}}">
+        <view bindtap="__e" class="nav row padding" data-event-opts="{{[ [ 'tap',[ [ 'go',['$0'],[ [ ['navList','',index,'url'] ] ] ] ] ] ]}}" wx:if="{{index==0&&data.store_bean_switch==1||index>0}}" wx:for="{{navList}}" wx:key="index">
+            <image class="icon" mode="scaleToFill" src="{{item.icon}}"></image>{{''+item.name+''}}<view class="cuIcon-right"></view>
+        </view>
+    </view>
+    <view class="menu" wx:if="{{1==2}}">
+        <view bindtap="__e" class="menu_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/shop/recharge">
+            <image src="/static/images/store/recharge.png"></image>
+            <view>金豆充值</view>
+        </view>
+        <view bindtap="__e" class="menu_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/shop/info">
+            <image src="/static/images/store/store.png"></image>
+            <view>店铺管理</view>
+        </view>
+        <view bindtap="__e" class="menu_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/shop/order">
+            <image src="/static/images/store/order.png"></image>
+            <view>订单列表</view>
+        </view>
+        <view bindtap="__e" class="menu_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/shop/cate">
+            <image src="/static/images/store/cate.png"></image>
+            <view>分类管理</view>
+        </view>
+        <view bindtap="__e" class="menu_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/shop/goods">
+            <image src="/static/images/store/goods.png"></image>
+            <view>商品管理</view>
+        </view>
+    </view>
+    <view class="notice_fixed padding-sm" wx:if="{{show&&data.store_bean_switch==1}}">
+        <image class="bg" mode="widthFix" src="{{fileUrl+'store/notice_bg.png'}}"></image>
+        <view class="padding notice_con">
+            <view class="flex align-center" style="width:100%;">
+                <image class="icon" src="{{fileUrl+'store/icon6.png'}}"></image>
+                <view class="text-lg titles text-bold">{{'您的店铺金豆'+(data.info.balance>0?'即将':'已')+'用完'}}</view>
+                <text bindtap="__e" class="cuIcon-close" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}"></text>
+            </view>
+            <view class="text-df margin-top-sm">{{data.info.balance>0?'即将影响您店铺接单收益，请尽快充值哦～':'店铺接单和商家提现会受到影响，请尽快充值哦～'}}</view>
+            <view class="flex justify-end margin-top-sm">
+                <view bindtap="__e" class="recharge_btn close_btn" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">关闭</view>
+                <view bindtap="__e" class="recharge_btn" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/shop/pointrecharge'] ] ] ] ]}}">立即充值</view>
+            </view>
+        </view>
+    </view>
+</view>

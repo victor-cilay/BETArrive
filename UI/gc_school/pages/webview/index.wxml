@@ -1,0 +1,3 @@
+<view>
+    <web-view bindload="__e" data-event-opts="{{[ [ 'load',[ [ 'bindload',['$event'] ] ] ] ]}}" src="{{url}}"></web-view>
+</view>

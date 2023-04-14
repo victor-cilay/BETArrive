@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom",
+        "pt-footer": "/components/footer/footer"
+    }
+}

@@ -1,0 +1,190 @@
+.bgmain,.cu-bar .action:first-child {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.clear {
+    clear: both;
+    overflow: hidden;
+}
+
+.menu {
+    height: 40px;
+}
+
+.list {
+    padding-bottom: 50rpx;
+}
+
+.list,.m {
+    width: 100%;
+}
+
+.list_item {
+    background-color: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 10px;
+    box-shadow: 0 0 10rpx rgba(0,0,0,.1);
+    height: 90px;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.list_item .img {
+    float: left;
+    height: 70px;
+    width: 25%;
+}
+
+.list_item .img image {
+    border-radius: 10rpx;
+    height: 100%;
+    width: 100%;
+}
+
+.list_item .info {
+    float: right;
+    height: 70px;
+    width: 75%;
+}
+
+.list_item .info .title {
+    color: #333;
+    font-size: 32rpx;
+    font-weight: 700;
+    margin-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.eye-card {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.college {
+    color: #333;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80px;
+}
+
+.list_item .info .oldornew {
+    color: #333;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.list_item .info .price {
+    color: #ff2727;
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 30rpx;
+}
+
+.p {
+    margin-right: 110px;
+}
+
+.list_item .info .num {
+    bottom: 10px;
+    color: #747474;
+    font-size: 15px;
+    left: 0;
+    margin-left: 10px;
+    position: absolute;
+}
+
+.eye {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.eye image {
+    height: 40rpx;
+    padding-right: 5px;
+    width: 40rpx;
+}
+
+.eye.viewnum {
+    font-size: 5px;
+}
+
+.buy {
+    display: flex;
+    float: right;
+    height: 45rpx;
+    width: 45rpx;
+}
+
+.goTop {
+    background: #fff;
+    border-radius: 50%;
+    bottom: 50rpx;
+    height: 80rpx;
+    position: fixed;
+    right: 30rpx;
+    width: 80rpx;
+}
+
+.nocontent {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nocontent image {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.blank_text {
+    color: #c6c6c8;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-top: 10rpx;
+}
+
+.search {
+    background-color: #fff;
+    display: flex;
+    padding: 20rpx;
+    width: 100%;
+}
+
+.search input {
+    background-color: #f8f7fa;
+    font-size: 28rpx;
+    padding: 10rpx;
+    width: 80%;
+}
+
+.search .text,.search input {
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.search .text {
+    background-color: #ff6444;
+    color: #fff;
+    margin-left: 20rpx;
+    text-align: center;
+    width: 90rpx;
+}

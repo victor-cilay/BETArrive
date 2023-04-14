@@ -1,0 +1,64 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="ed79b08c-1" vueSlots="{{['content']}}">
+        <view slot="content">我的抢单</view>
+    </cu-custom>
+    <view class="container">
+        <view class="modal" wx:if="{{getUseInfo}}">
+            <view class="m_box tc">
+                <view class="title">提示</view>
+                <view class="fs30 p20">请先开启用户授权</view>
+                <view class="border_top_2">
+                    <button bindgetuserinfo="__e" class="m_btn" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getUsetInfo',['$event'] ] ] ] ]}}" openType="getUserInfo">确定</button>
+                </view>
+            </view>
+        </view>
+        <view class="page">
+            <scroll-view class="nav text-center bg-white" scrollLeft="{{scrollLeft}}" scrollWithAnimation="{{true}}" scrollX="{{true}}">
+                <view class="flex text-center" style="flex:1;">
+                    <view bindtap="__e" class="{{[ 'cu-item  flex-sub '+(0==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="0" data-index="3">待取货</view>
+                    <view bindtap="__e" class="{{[ 'cu-item flex-sub '+(1==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="1" data-index="7">待送达</view>
+                    <view bindtap="__e" class="{{[ 'cu-item flex-sub '+(11==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="11" data-index="11">已送达</view>
+                    <view bindtap="__e" class="{{[ 'cu-item flex-sub '+(2==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="2" data-index="4">已完成</view>
+                    <view bindtap="__e" class="{{[ 'cu-item flex-sub '+(9==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="9" data-index="9">取消中</view>
+                </view>
+            </scroll-view>
+            <view class="page-container">
+                <view class="block" style="width:100%;" wx:if="{{list.length==0}}">
+                    <view class="col-1 nodata" style="margin:100rpx auto;text-align:center;width:100%;" wx:if="{{list.length==0}}">
+                        <view class="padding-sm" style="flex:1;">
+                            <view class="padding radius text-center light">
+                                <text class="cuIcon-infofill lg text-lg" style="font-size:50rpx;"></text>
+                                <view class="text-lg padding-tb-sm'">暂无数据</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="block" style="width:100%;" wx:if="{{list.length>0}}">
+                    <view bindtap="__e" class="box bg-white padding align-center" data-event-opts="{{[ [ 'tap',[ [ 'detail',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:for="{{list}}" wx:key="index">
+                        <view class="flex align-center justify-between">
+                            <view class="text-lg text-bold text-black">{{item._type_txt+'-'+(item.type!=4?item.remarks:item.title)}}</view>
+                            <view class="status_btn" style="flex-shrink:0;">{{item._status_txt}}</view>
+                        </view>
+                        <view class="time">{{item.create_time}}</view>
+                        <view class="flex addr_box align-center">
+                            <view style="width:80%;">
+                                <view class="flex align-center">
+                                    <view class="blue circle"></view>
+                                    <view class="addr margin-left">{{item.type!=4?item.qu_addres:item.remarks}}</view>
+                                </view>
+                                <text class="cuIcon-moreandroid" wx:if="{{item.type!=4||item.sh_addres!=''}}"></text>
+                                <view class="flex align-center" wx:if="{{item.type!=4||item.sh_addres!=''}}">
+                                    <view class="orange circle"></view>
+                                    <view class="addr margin-left">{{item.sh_addres}}</view>
+                                </view>
+                            </view>
+                            <view class="text-lg text-red text-bold">{{'￥'+item.total}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-tabbar-height"></view>
+    </view>
+    <view class="cu-tabbar-height"></view>
+</view>

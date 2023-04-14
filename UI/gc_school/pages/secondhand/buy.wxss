@@ -1,0 +1,129 @@
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.img {
+    border-radius: 20rpx;
+    flex-shrink: 0;
+    height: 180rpx;
+    margin-right: 20rpx;
+    width: 180rpx;
+}
+
+.detail_box,.info_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+
+.info_box {
+    padding-bottom: 50rpx;
+}
+
+.info_item {
+    border-bottom: 1rpx solid #f2f2f2;
+    display: flex;
+    font-size: 30rpx;
+    padding: 20rpx;
+}
+
+.item_title {
+    color: #323232;
+    flex-shrink: 0;
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    font-weight: 700;
+    line-height: 18rpx;
+}
+
+input {
+    padding-left: 20rpx;
+    width: 100%;
+}
+
+textarea {
+    border: 1rpx solid #f2f2f2;
+    border-radius: 10rpx;
+    margin-top: 40rpx;
+    padding: 20rpx;
+    width: 100%;
+}
+
+.bottom {
+    background-color: #fff;
+    bottom: 0;
+    height: 120rpx;
+    justify-content: space-between;
+    line-height: 100rpx;
+    position: fixed;
+    width: 92%;
+}
+
+.sure {
+    align-items: center;
+    background-color: #ff6444;
+    border-bottom-right-radius: 90rpx;
+    border-top-right-radius: 90rpx;
+    color: #fff;
+    display: flex;
+    font-family: PingFang SC;
+    font-size: 34rpx;
+    font-weight: 700;
+    height: 100%;
+    justify-content: center;
+    line-height: 44rpx;
+    margin-right: 0;
+    width: 220rpx;
+}
+
+.dibu {
+    background: #222;
+    border-radius: 45px;
+}
+
+.heji {
+    align-items: center;
+    display: flex;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    justify-content: center;
+}
+
+.heji,.pays {
+    color: #fff;
+    line-height: 44rpx;
+}
+
+.pays {
+    font-size: 40rpx;
+}
+
+.shop-title {
+    color: #141414;
+    font-size: 30rpx;
+    height: 58rpx;
+    line-height: 44rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pays,.shop-title {
+    font-family: PingFang SC;
+    font-weight: 700;
+}
+
+.pays {
+    color: #f42e2f;
+    font-size: 36rpx;
+}
+
+.prices {
+    color: #999;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 500;
+    text-decoration: line-through;
+}

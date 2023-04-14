@@ -1,0 +1,183 @@
+page {
+    background: #f7f5f6;
+}
+
+.search_box {
+    padding: 10rpx 20rpx;
+}
+
+.contents {
+    background: #ff6444;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 70rpx 0 30rpx;
+    text-align: center;
+}
+
+.slide_box {
+    background-color: #fff;
+    position: relative;
+}
+
+.indicator-dots {
+    bottom: 30rpx;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.indicator-dots view {
+    background: #d1d1d1;
+    border-radius: 50%;
+    height: 12rpx;
+    margin: 0 5rpx;
+    width: 12rpx;
+}
+
+.indicator-dots view.dots_on {
+    background: #fff;
+}
+
+.cate_item_box {
+    height: 60rpx;
+    margin-right: 20rpx;
+    overflow: scroll;
+    width: 100%;
+}
+
+.cate_item {
+    color: #999;
+    flex-shrink: 0;
+    font-size: 34rpx;
+    height: 40rpx;
+    margin: 0 30rpx;
+    position: relative;
+}
+
+.cate_active {
+    color: #000;
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.cate_active::after {
+    background: #ff6344;
+    bottom: -10rpx;
+    content: "";
+    height: 2rpx;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    width: 60rpx;
+}
+
+.label_box {
+    flex-shrink: 0;
+}
+
+.label_item {
+    border: 2rpx solid #ff6344;
+    color: #ff6344;
+    padding: 5rpx 15rpx;
+}
+
+.label_item_active {
+    background: #ff6344;
+    color: #fff;
+}
+
+.article_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin-top: 40rpx;
+}
+
+.article_box .avatar {
+    border-radius: 50%;
+    height: 75rpx;
+    margin-right: 20rpx;
+    width: 75rpx;
+}
+
+.article_box .nickname {
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.article_box .date {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.icon_item image {
+    height: 35rpx;
+    width: 35rpx;
+}
+
+.icon_item text {
+    color: #999;
+    margin-left: 10rpx;
+}
+
+.btn {
+    background: #ff6344;
+    border-radius: 50rpx;
+    bottom: 20rpx;
+    color: #fff;
+    margin-left: 15%;
+    padding: 30rpx;
+    position: fixed;
+    width: 70%;
+}
+
+.item_img {
+    height: 180rpx;
+    margin-right: 20rpx;
+    width: 180rpx;
+}
+
+.my_fixed {
+    background: #ff6344;
+    border-radius: 50%;
+    bottom: 20%;
+    color: #fff;
+    height: 90rpx;
+    line-height: 90rpx;
+    position: fixed;
+    right: 0;
+    width: 90rpx;
+}
+
+.my_fixed,input {
+    text-align: center;
+}
+
+input {
+    background: #f2f2f2;
+    border-radius: 50rpx;
+    color: grey;
+    font-size: 28rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    margin: 10rpx auto 15rpx;
+    width: 90%;
+}
+
+.item {
+    font-size: 30rpx;
+    margin: 20rpx 0;
+}
+
+.icon {
+    height: 30rpx;
+    margin-right: 10rpx;
+    width: 30rpx;
+}
+
+.val {
+    color: #666;
+    font-size: 28rpx;
+}

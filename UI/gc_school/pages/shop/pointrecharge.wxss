@@ -1,0 +1,113 @@
+page {
+    background-color: #fff;
+}
+
+.box {
+    margin-top: 10rpx;
+    padding: 0 30rpx 30rpx;
+}
+
+.item {
+    border: 4rpx solid #f7f8f9;
+    border-radius: 16rpx 46rpx 16rpx 46rpx;
+    color: #dfaa4c;
+    font-size: 30rpx;
+    height: 150rpx;
+    margin-top: 40rpx;
+    padding: 30rpx;
+    text-align: center;
+}
+
+.active,.item {
+    background-color: #f7f8f9;
+}
+
+.active {
+    border: 4rpx solid #ff6647;
+}
+
+.active .name {
+    color: #ff6849!important;
+}
+
+.active text {
+    color: #ff4c4d!important;
+}
+
+.item .name {
+    color: #000;
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.item text {
+    font-size: 40rpx;
+}
+
+.btns {
+    background: linear-gradient(270deg,#ff716c,#ff484a);
+    border-radius: 60rpx;
+    color: #fff;
+    font-weight: 700;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: 50rpx 5% 60rpx;
+    width: 90%;
+}
+
+.btns,.time {
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.time {
+    margin-top: 100rpx;
+}
+
+.rule_line {
+    display: flex;
+    font-size: 30rpx;
+    justify-content: center;
+}
+
+.rule {
+    font-weight: 700;
+}
+
+.balance_item {
+    position: absolute;
+    top: 17%;
+    width: 90%;
+}
+
+.opacity {
+    opacity: .7;
+}
+
+.cover {
+    background-color: rgba(0,0,0,.5);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.cover .content {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin-left: 5%;
+    max-height: 600rpx;
+    overflow-y: scroll;
+    padding: 30rpx 40rpx;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+}
+
+.cover .content .cuIcon-close {
+    float: right;
+    font-size: 44rpx;
+    font-weight: 700;
+}

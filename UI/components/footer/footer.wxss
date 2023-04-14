@@ -1,0 +1,37 @@
+.footer {
+    background: #fff;
+    border-top: 2rpx solid hsla(0,0%,95%,.95);
+    bottom: 0;
+    justify-content: space-around;
+    left: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: 20rpx;
+    position: fixed;
+    width: 100vw;
+    z-index: 99;
+}
+
+.footer .item {
+    align-items: center;
+    color: #a1a6b3;
+    flex-direction: column;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+}
+
+.footer .item.cur {
+    color: #f02036;
+}
+
+.footer .item .icon {
+    height: 50rpx;
+    width: 50rpx;
+}
+
+.aaa {
+    position: static;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -10px;
+}

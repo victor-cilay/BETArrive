@@ -1,0 +1,78 @@
+<view>
+    <cu-custom bgColor bind:__l="__l" class="bgmains" isBack="{{true}}" vueId="ec677b24-1" vueSlots="{{['content']}}">
+        <view slot="content">我的分销</view>
+    </cu-custom>
+    <image mode="widthFix" src="{{fileUrl+'dis/bg.png'}}" style="width:100%;"></image>
+    <view class="padding" style="position:absolute;top:10%;width:100%;">
+        <view class="flex align-center margin-bottom">
+            <image class="avatar" src="{{userInfo.avatar}}"></image>
+            <view class="text-lg text-bold">{{userInfo.nickname}}</view>
+        </view>
+        <view class="number_box">
+            <image mode="widthFix" src="{{fileUrl+'dis/bg-black.png'}}" style="width:100%;"></image>
+            <view class="info_box">
+                <view class="title">可提现</view>
+                <view class="flex align-center justify-between">
+                    <view class="balance">{{userInfo.spread_balance}}</view>
+                    <view bindtap="__e" class="btns" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/tixian'] ] ] ] ]}}">提现</view>
+                </view>
+                <view class="flex margin-top price_box justify-around">
+                    <view class="price_item">
+                        <view class="title">提现中（元）</view>
+                        <view class="price">{{userInfo.tixian_ing}}</view>
+                    </view>
+                    <view class="price_item">
+                        <view class="title">已提现（元）</view>
+                        <view class="price">{{userInfo.tixian_have}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="flex middle_box padding justify-between margin-top">
+        <view class="middle_item flex align-center">
+            <image src="{{fileUrl+'dis/money.png'}}"></image>
+            <view>
+                <view class="num">{{userInfo.spread_money}}</view>
+                <view class="explain">累计佣金（元）</view>
+            </view>
+        </view>
+        <view class="middle_item flex align-center">
+            <image src="{{fileUrl+'dis/tuiguang.png'}}"></image>
+            <view>
+                <view class="num">{{userInfo.spread_num}}</view>
+                <view class="explain">推广人数（人）</view>
+            </view>
+        </view>
+    </view>
+    <view class="padding menu flex">
+        <view bindtap="__e" class="menu_item flex align-center" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/profit'] ] ] ] ]}}">
+            <image src="{{fileUrl+'dis/shouyi.png'}}"></image>
+            <view>
+                <view class="explain">收益报表</view>
+                <view class="num">查看收益</view>
+            </view>
+        </view>
+        <view bindtap="__e" class="menu_item flex align-center" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/accountlog'] ] ] ] ]}}">
+            <image src="{{fileUrl+'dis/order.png'}}"></image>
+            <view>
+                <view class="explain">佣金明细</view>
+                <view class="num">变动记录</view>
+            </view>
+        </view>
+        <view bindtap="__e" class="menu_item flex align-center" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/team'] ] ] ] ]}}">
+            <image src="{{fileUrl+'dis/team.png'}}"></image>
+            <view>
+                <view class="explain">我的团队</view>
+                <view class="num">{{userInfo.team_count+'人'}}</view>
+            </view>
+        </view>
+        <view bindtap="__e" class="menu_item flex align-center" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/poster'] ] ] ] ]}}">
+            <image src="{{fileUrl+'dis/share.png'}}"></image>
+            <view>
+                <view class="explain">分享海报</view>
+                <view class="num">查看海报</view>
+            </view>
+        </view>
+    </view>
+</view>

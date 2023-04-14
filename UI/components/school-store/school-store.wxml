@@ -1,0 +1,25 @@
+<view>
+    <view class="quan margin">
+        <view class="flex tit">
+            <image mode="scaleToFill" src="/static/icon/shop.png"></image>{{''+title+''}}<view bindtap="__e" class="all" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/canteen/canteen'] ] ] ] ]}}">更多+</view>
+        </view>
+    </view>
+    <view class="store_list" wx:if="{{schoolInfo.store.length>0}}">
+        <view bindtap="__e" class="{{['store','margin-lr','margin-bottom','flex',title=='商家列表'?'pd':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/foold/foold?id='+item.business_id] ] ] ] ]}}" wx:if="{{title=='商家推荐'||title=='商家列表'&&index>2}}" wx:for="{{schoolInfo.store}}" wx:key="index">
+            <image mode class="main_img" src="{{item.business_image==''||item.business_image=='undefined/undefined'?fileUrl+'empty.jpg':item.business_image}}"></image>
+            <view class="store_info padding">
+                <view class="tit">{{item.business_name}}</view>
+                <image mode class="store_close" src="/static/icon/store_closes.png" wx:if="{{!item.is_open}}"></image>
+                <view class="flex margin-top-xs">
+                    <view class="sale">{{'已售:'+item.sale_num}}</view>
+                    <view class="mi" style="margin-left:auto;">{{item.juli+'km'}}</view>
+                </view>
+                <view class="tags flex margin-top-sm">
+                    <view class="typenei" wx:if="{{item.type==1}}">校内</view>
+                    <view class="typewai" wx:else>校外</view>
+                    <view class="tag">{{'起送￥'+item.starting_fee}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,70 @@
+page {
+    background: #f9f9f9;
+}
+
+.box {
+    background: #fff;
+    margin: 30rpx;
+    padding: 30rpx;
+}
+
+.box,.textarea {
+    border-radius: 10rpx;
+}
+
+.textarea {
+    background: #f9f9f9;
+    height: 150rpx;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    width: 100%;
+}
+
+.left_num {
+    bottom: 20rpx;
+    color: #d1d1d1;
+    position: absolute;
+    right: 20rpx;
+}
+
+.size30 {
+    font-size: 30rpx;
+}
+
+.name_input {
+    width: 50%;
+}
+
+.btn_row {
+    margin: 70rpx 50rpx 30rpx;
+}
+
+.btn_:first-child {
+    background: #00bb69!important;
+}
+
+.btn_ {
+    background: #ff6344;
+    border-radius: 10rpx;
+    color: #fff;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-left: 5%;
+    text-align: center;
+    width: 90%;
+}
+
+input {
+    font-size: 28rpx;
+    text-align: right;
+}
+
+.img,input {
+    width: 200rpx;
+}
+
+.img {
+    height: 200rpx;
+    margin-top: 30rpx;
+}

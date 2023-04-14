@@ -1,0 +1,92 @@
+page {
+    background-color: #f7f5f6;
+}
+
+.bgmain {
+    background-color: #fff;
+    color: #000;
+}
+
+.type_box {
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 30rpx;
+    display: flex;
+    font-size: 26rpx;
+    height: 60rpx;
+    padding: 0 40rpx;
+}
+
+.type_box text {
+    font-size: 36rpx!important;
+}
+
+.type_item {
+    background-color: #f2f2f2;
+    border-radius: 10rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+    margin-right: 20rpx;
+    text-align: center;
+    width: 210rpx;
+}
+
+.cu-dialog {
+    background-color: #fff!important;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+}
+
+.type_active {
+    background: #feeded;
+    border: 2rpx solid #ff4c4d;
+    color: #ff4c4d;
+}
+
+.list,.type_active {
+    border-radius: 10rpx;
+}
+
+.list {
+    background-color: #fff;
+}
+
+.list image {
+    flex-shrink: 0;
+    height: 35rpx;
+    margin-right: 15rpx;
+    width: 35rpx;
+}
+
+.list .date {
+    color: #a9a6b0;
+    margin: 16rpx 0 0 55rpx;
+}
+
+.menu {
+    font-size: 30rpx;
+}
+
+.menu .menu_item {
+    margin-right: 30rpx;
+    position: relative;
+}
+
+.menu .active {
+    color: #e54d42!important;
+    font-size: 32rpx;
+}
+
+.menu .active::after {
+    background-color: #e54d42;
+    bottom: -10rpx;
+    content: "";
+    height: 6rpx;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    width: 50rpx;
+}

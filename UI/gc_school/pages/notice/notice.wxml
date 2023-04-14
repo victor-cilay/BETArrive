@@ -1,0 +1,8 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="48f31350-1" vueSlots="{{['content']}}">
+        <view slot="content">通知公告</view>
+    </cu-custom>
+    <view class="content margin padding-sm">
+        <rich-text nodes="{{item.content}}"></rich-text>
+    </view>
+</view>

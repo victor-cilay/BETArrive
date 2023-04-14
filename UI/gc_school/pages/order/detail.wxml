@@ -1,0 +1,335 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="69462c3a-1" vueSlots="{{['content']}}">
+        <view slot="content">订单信息</view>
+    </cu-custom>
+    <view class="container">
+        <view class="white_box margin padding">
+            <view class="cu-item flex justify-between align-center">
+                <text class="text-lg text-grey">订单编号:</text>
+                <text class="text-df text-grey">{{detail.ordersn}}</text>
+            </view>
+            <view class="cu-item flex justify-between align-center">
+                <text class="text-lg text-grey">下单时间:</text>
+                <text class="text-df text-grey">{{detail.create_time}}</text>
+            </view>
+        </view>
+        <view class="white_box detail margin">
+            <view class="text-lg margin-bottom" wx:if="{{detail.type=='4'&&detail.title}}">{{'标题：'+detail.title+''}}</view>
+            <view class="action">
+                <text id class="text-sm text-grey text-bold">订单详情</text>
+            </view>
+            <view class="cu-item desc">
+                <view bindtap="__e" class="content" data-content="{{detail.remarks}}" data-event-opts="{{[ [ 'tap',[ [ 'copy',['$event'] ] ] ] ]}}">
+                    <text>{{detail.remarks}}</text>
+                </view>
+            </view>
+            <view id="ilo" wx:if="{{detail.is_watch==true}}">
+                <block wx:if="{{detail.img.length>0}}">
+                    <view class="content padding-top">
+                        <text class="text-grey text-lg">图片说明:</text>
+                    </view>
+                    <view class="action image_flex" id="actiom">
+                        <image bindtap="__e" class="imgs" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-index="{{index}}" mode="aspectFill" src="{{item}}" wx:for="{{detail.img}}" wx:key="index"></image>
+                    </view>
+                </block>
+                <block wx:else></block>
+            </view>
+            <block wx:if="{{detail.type=='3'}}">
+                <view class="cu-item row" wx:if="{{detail.pick_number}}">
+                    <view class="content">
+                        <text class="text-grey text-lg">取餐序号:</text>
+                    </view>
+                    <view class="action" style="margin-left:auto;">
+                        <text class="text-grey text-lg">{{detail.pick_number}}</text>
+                    </view>
+                </view>
+                <view id="ilo">
+                    <view class="content padding-top">
+                        <text class="text-grey text-lg">取单信息:</text>
+                    </view>
+                    <view class="action" wx:for="{{good_details}}" wx:key="index">
+                        <view class="xiang text-lg">{{item}}</view>
+                    </view>
+                </view>
+                <view id="ilo">
+                    <view class="content padding-top">
+                        <text class="text-grey text-lg">店铺名称:</text>
+                    </view>
+                    <view class="action">{{''+detail.store.business_name+''}}</view>
+                </view>
+                <view id="ilo">
+                    <view class="content padding-top">
+                        <text class="text-grey text-lg">店铺地址:</text>
+                    </view>
+                    <view class="action">{{''+detail.store.business_address+''}}</view>
+                </view>
+            </block>
+            <block wx:else></block>
+        </view>
+        <view class="white_box detail margin" wx:if="{{(detail.type==1||detail.type==2)&&detail.express_info.length>0}}">
+            <view class="action">
+                <text id class="text-sm text-grey text-bold">物品信息详情</text>
+            </view>
+            <view class="cu-list menu">
+                <view class="cu-item" wx:for="{{detail.express_info}}" wx:key="index">
+                    <view bindtap="__e" class="content" data-content="{{detail.remarks}}" data-event-opts="{{[ [ 'tap',[ [ 'copy',['$event'] ] ] ] ]}}">{{''+item.specs+''}}<block wx:if="{{item.code&&detail.is_watch}}">{{'(取件码：'+item.code+')'}}</block>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-sm">{{item.price+'元'}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-list menu sm-border white_box margin">
+            <view class="cu-item" wx:if="{{detail.attach_file&&detail.type=='4'&&detail.is_watch==true}}">
+                <view class="content">
+                    <text class="text-grey">附件下载:</text>
+                </view>
+                <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'down',['$event'] ] ] ] ]}}">
+                    <text class="text-grey text-sm">点击打开文件</text>
+                </view>
+            </view>
+            <block wx:if="{{detail.type=='2'}}">
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">联系人姓名:</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-sm">{{detail.qu_name}}</text>
+                    </view>
+                </view>
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">联系人电话:</text>
+                    </view>
+                    <view class="action">
+                        <text bindtap="__e" class="cuIcon-dianhua text-green" data-event-opts="{{[ [ 'tap',[ [ 'makecall',['$event'] ] ] ] ]}}" data-phone="{{detail.qu_phone}}" style="font-size:30rpx;"></text>
+                        <text bindtap="__e" class="text-grey text-sm" data-event-opts="{{[ [ 'tap',[ [ 'makecall',['$event'] ] ] ] ]}}" data-phone="{{detail.qu_phone}}">{{detail.qu_phone}}</text>
+                    </view>
+                </view>
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">取件地址:</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-sm" style="flex-basis:auto;white-space:normal;">{{detail.qu_addres}}</text>
+                    </view>
+                </view>
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">寄件地址:</text>
+                    </view>
+                    <view class="action" style="width:50%;text-align:right;">
+                        <text class="text-grey text-sm" style="flex-basis:auto;white-space:normal;">{{detail.sh_addres}}</text>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="cu-item" wx:if="{{detail.sh_name}}">
+                    <view class="content">
+                        <text class="text-grey">收件人:</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-sm">{{detail.sh_name}}</text>
+                    </view>
+                </view>
+                <view class="cu-item" wx:if="{{detail.sh_phone}}">
+                    <view class="content">
+                        <text class="text-grey">收件电话:</text>
+                    </view>
+                    <view class="action">
+                        <text bindtap="__e" class="cuIcon-dianhua text-green" data-event-opts="{{[ [ 'tap',[ [ 'makecall',['$event'] ] ] ] ]}}" data-phone="{{detail.sh_phone}}" style="font-size:30rpx;"></text>
+                        <text bindtap="__e" class="text-grey text-sm" data-event-opts="{{[ [ 'tap',[ [ 'makecall',['$event'] ] ] ] ]}}" data-phone="{{detail.sh_phone}}">{{detail.sh_phone}}</text>
+                    </view>
+                </view>
+                <view class="cu-item" wx:if="{{detail.sh_name&&detail.sh_phone}}">
+                    <view class="content">
+                        <text class="text-grey">收件地址:</text>
+                    </view>
+                    <view class="action">
+                        <text class="text-grey text-sm" style="flex-basis:auto;white-space:normal;">{{detail.sh_addres}}</text>
+                    </view>
+                </view>
+                <view class="cu-item" wx:if="{{detail.type=='1'||detail.type=='2'}}">
+                    <view class="content">
+                        <text class="text-grey">取货地址:</text>
+                    </view>
+                    <view class="action" style="width:65%;text-align:right;">
+                        <text class="text-grey text-sm" style="flex-basis:auto;white-space:normal;">{{detail.qu_addres}}</text>
+                    </view>
+                </view>
+            </block>
+            <view class="cu-item" wx:if="{{detail.is_self_lifting!=1}}">
+                <view class="content">
+                    <text class="text-grey">性别限制:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail._sex_limit_txt}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail.service_num>0&&detail.type=='4'}}">
+                <view class="content">
+                    <text class="text-grey">服务人数:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.service_num}}</text>
+                </view>
+            </view>
+            <block wx:if="{{detail.is_self_lifting!=1}}">
+                <block wx:if="{{detail.givetype==1}}">
+                    <view class="cu-item" wx:if="{{detail.is_start_show==1||detail.type!=4}}">
+                        <view class="content">
+                            <text class="text-grey">配送时间:</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm">{{detail.ordertime}}</text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="cu-item" wx:if="{{detail.is_start_show==1||detail.type!=4}}">
+                        <view class="content">
+                            <text class="text-grey">{{(detail.type==4?'服务时间':'送达时间')+':'}}</text>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-sm">{{detail._start_time}}</text>
+                        </view>
+                    </view>
+                </block>
+                <view class="cu-item" wx:if="{{detail.type=='3'}}">
+                    <view class="content">
+                        <text class="text-grey">数量:</text>
+                    </view>
+                    <view class="action" style="width:65%;text-align:right;">
+                        <text class="text-grey text-sm" style="flex-basis:auto;white-space:normal;">{{detail.express_num}}</text>
+                    </view>
+                </view>
+            </block>
+            <view class="cu-item" wx:if="{{detail.y_money>0}}">
+                <view class="content">
+                    <text class="text-grey">优惠金额:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.y_money}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail.type=='3'&&detail.box_fee>0}}">
+                <view class="content">
+                    <text class="text-grey">餐盒费:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.box_fee}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail.type=='3'&&detail.service_price>0}}">
+                <view class="content">
+                    <text class="text-grey">服务费:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.service_price}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail.type=='3'}}">
+                <view class="content">
+                    <text class="text-grey">商品总费用:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.food_money}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail.is_self_lifting!=1}}">
+                <view class="content">
+                    <text class="text-grey">跑腿费:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.user_type?detail.totals:detail.total}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail._status_txt=='待取货'||detail._status_txt=='待送达'||detail._status_txt=='已完成'}}">
+                <view class="content">
+                    <text class="text-grey">实际收入:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.actual_income}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail._status_txt=='取消中'}}">
+                <view class="content">
+                    <text class="text-grey">取消原因:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.cancel_reason}}</text>
+                </view>
+            </view>
+            <view class="cu-item" wx:if="{{detail._status_txt=='待取货'&&detail.is_refuse==1}}">
+                <view class="content">
+                    <text class="text-grey">拒绝原因:</text>
+                </view>
+                <view class="action">
+                    <text class="text-grey text-sm">{{detail.refuse_reason}}</text>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{detail.end_openid}}">
+            <view class="margin bg-white padding-sm" style="border-radius:20rpx;">
+                <view class="qisho">骑手</view>
+                <view class="flex align-center ">
+                    <image mode src="{{detail.end_user.avatar}}" style="width:110rpx;height:110rpx;border-radius:50%;"></image>
+                    <view class="margin-left">
+                        <view class="text-lg text-bold">{{detail.end_user.nickname}}</view>
+                        <view class="margin-top-xs">{{detail.end_user.phone}}</view>
+                    </view>
+                    <view bindtap="__e" class="text-lg text-red flex align-center" data-event-opts="{{[ [ 'tap',[ [ 'makecall',['$event'] ] ] ] ]}}" data-phone="{{detail.end_user.phone}}" style="margin-left:auto;">联系<image src="/static/images/tele.png" style="width:40rpx;height:50rpx;"></image>
+                    </view>
+                </view>
+                <view class="flex  margin-top" wx:if="{{detail.proof}}">
+                    <view class="conten margin-right">
+                        <text class="text-grey">凭证:</text>
+                    </view>
+                    <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'previews',['$event'] ] ] ] ]}}" data-src="{{detail.proof}}" mode="aspectFill" src="{{detail.proof}}" style="width:200rpx;height:150rpx;margin:20rpx 0;"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cu-tabbar-height"></view>
+    <view class="cu-bar bg-white foot tabbar border shop" style="height:120rpx;">
+        <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'chat',['?s_id='+detail.start_user.u_id] ] ] ] ]}}" wx:if="{{chatStatus==1}}">
+            <view class="cuIcon-message"></view>联系用户</view>
+        <block wx:else>
+            <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'chat',['?s_id='+detail.end_user.u_id] ] ] ] ]}}" wx:if="{{chatStatus==2}}">
+                <view class="cuIcon-message"></view>联系骑手</view>
+            <button class="action" openType="contact" style="color:black;" wx:else>
+                <view class="cuIcon-service text-red"></view>联系客服</button>
+        </block>
+        <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'handleZF',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='未支付'}}">{{'立即支付 ¥'+detail.t_money+''}}</view>
+        <block wx:if="{{detail.user_type==true}}">
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='待接单'}}">待接单</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='待取货'}}">待取货</view>
+            <view bindtap="__e" class="bgmain submit cancel" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}" data-type="1" wx:if="{{detail._status_txt=='待取货'}}">取消抢单</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='取消中'&&detail.cancel_from=='user'}}">取消中</view>
+            <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'handleWc',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='待送达'||detail._status_txt=='已送达'}}">确认完成</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='已完成'}}">已完成</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='已过期'}}">已过期</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='已取消'}}">已取消</view>
+            <view catchtap="__e" class="bgmain submit cancel" data-event-opts="{{[ [ 'tap',[ [ 'handleQX',['$event'] ] ] ] ]}}" data-type="1" wx:if="{{detail._status_txt=='待到店'}}">取消到店</view>
+            <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'handleWc',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='待到店'}}">确认到店</view>
+        </block>
+        <block wx:if="{{detail.user_type!=true}}">
+            <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'handleQd',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='待接单'}}">抢单</view>
+            <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'handleQh',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='待取货'}}">确认取货</view>
+            <block wx:if="{{detail.type==3}}">
+                <view class="bgmain submit" wx:if="{{detail._status_txt=='取消中'&&detail.cancel_from=='user'}}">待商家操作</view>
+            </block>
+            <block wx:else>
+                <view bindtap="__e" class="bgmain submit" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='取消中'&&detail.cancel_from=='user'}}">同意</view>
+                <view bindtap="__e" class="bgmain submit cancel" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}" data-type="2" wx:if="{{detail._status_txt=='取消中'&&detail.cancel_from=='user'}}">拒绝</view>
+            </block>
+            <view bindtap="__e" class="bg-grey submit cancel" data-event-opts="{{[ [ 'tap',[ [ 'proof',['$event'] ] ] ] ]}}" wx:if="{{detail._status_txt=='待送达'&&!detail.proof}}">上传凭证</view>
+            <view bindtap="__e" class="bg-grey submit" data-event-opts="{{[ [ 'tap',[ [ 'qrsd',['$event'] ] ] ] ]}}" style="margin-left:10rpx;" wx:if="{{detail._status_txt=='待送达'}}">确认送达</view>
+            <view class="bg-grey submit" wx:if="{{detail._status_txt=='已送达'}}">待用户确认完成</view>
+            <view class="bg-grey submit" wx:if="{{detail._status_txt=='已完成'}}">已完成</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='已过期'}}">已过期</view>
+            <view class="bgmain submit" wx:if="{{detail._status_txt=='已取消'}}">已取消</view>
+        </block>
+    </view>
+</view>

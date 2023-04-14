@@ -1,0 +1,17 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="136c3e86-1" vueSlots="{{['content']}}">
+        <view slot="content">错误日志</view>
+    </cu-custom>
+    <view bindtap="__e" class="cu-btn bg-red del" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" wx:if="{{errorList.length>0}}">清空</view>
+    <view class="error margin-lr padding-sm margin-top" wx:if="{{item.url}}" wx:for="{{errorList}}" wx:key="index">
+        <view class="url">{{'URL:'+item.url}}</view>
+        <view class="header">请求参数:<view class="{{['row',key]}}" wx:for="{{item.data}}" wx:for-index="key" wx:for-item="header" wx:key="key">
+                <view class="key">{{''+key+' :'}}</view>
+                <view class="val">{{''+header+''}}</view>
+            </view>
+        </view>
+        <view class="footer row margin-top-sm">
+            <view bindtap="__e" class="btn1 cu-btn round bg-green margin-lefts" data-event-opts="{{[ [ 'tap',[ [ 'copy',['$0'],[ [ ['errorList','',index] ] ] ] ] ] ]}}">复制参数</view>
+        </view>
+    </view>
+</view>

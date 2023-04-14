@@ -1,0 +1,34 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="24c9dd9f-1" vueSlots="{{['content']}}">
+        <view slot="content">分类管理</view>
+    </cu-custom>
+    <view class="box">
+        <block wx:if="{{cate.length>0}}">
+            <view class="item flex justify-between" wx:for="{{cate}}" wx:key="index">
+                <view class="name text-df">{{item.goods_type_name}}</view>
+                <view>
+                    <image bindtap="__e" class="edit_icon" data-event-opts="{{[ [ 'tap',[ [ 'edit',['$event'] ] ] ] ]}}" data-id="{{item.goods_type_id}}" data-type="1" src="/static/images/store/edit.png"></image>
+                    <image bindtap="__e" class="del_icon" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{item.goods_type_id}}" src="/static/images/store/del3.png"></image>
+                </view>
+            </view>
+        </block>
+        <view class="empty" wx:else>
+            <image mode="widthFix" src="/static/images/store/empty.png"></image>
+            <view>暂无分类~</view>
+        </view>
+    </view>
+    <view class="cover" wx:if="{{modal_show}}">
+        <view class="cate_content padding">
+            <view class="text-right">
+                <image bindtap="__e" class="close" data-event-opts="{{[ [ 'tap',[ [ 'close',['$event'] ] ] ] ]}}" src="/static/images/store/close.png"></image>
+            </view>
+            <view class="text-bold text-lg flex">
+                <text class="text-red text-bold text-xxl">*</text>{{''+(type==1?'编辑分类':'添加分类')+''}}</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'getName',['$event'] ] ] ] ]}}" placeholder="请输入分类名称" value="{{name}}"></input>
+            <view bindtap="__e" class="submit_btn" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">确认</view>
+        </view>
+    </view>
+    <view class="bottom_fixed">
+        <view bindtap="__e" class="create" data-event-opts="{{[ [ 'tap',[ [ 'add',['$event'] ] ] ] ]}}" data-type="2">创建分类</view>
+    </view>
+</view>

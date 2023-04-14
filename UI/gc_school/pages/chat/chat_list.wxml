@@ -1,0 +1,25 @@
+<view>
+    <view class="bgcolor">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="2906f0a7-1" vueSlots="{{['content']}}">
+            <view slot="content">消息列表</view>
+        </cu-custom>
+    </view>
+    <view class="cu-list menu-avatar">
+        <view bindtap="__e" bindtouchend="__e" bindtouchmove="__e" bindtouchstart="__e" class="{{['cu-item',modalName=='move-box-'+index?'move-cur':'']}}" data-event-opts="{{[ [ 'touchstart',[ [ 'ListTouchStart',['$event'] ] ] ],[ 'touchmove',[ [ 'ListTouchMove',['$event'] ] ] ],[ 'touchend',[ [ 'ListTouchEnd',['$event'] ] ] ],[ 'tap',[ [ 'goChat',['$0'],[ [ ['chatList','',index,'chat_user.u_id'] ] ] ] ] ] ]}}" data-target="{{'move-box-'+index}}" wx:for="{{chatList}}" wx:key="index">
+            <view class="cu-avatar round lg" style="{{'background-image:'+'url('+item.chat_user.avatar+')'+';'}}"></view>
+            <view class="content">
+                <view class="text-grey">{{item.chat_user.nickname}}</view>
+                <view class="text-gray text-sm text-cut" style="height:60rpx;">
+                    <rich-text nodes="{{item.last_info}}"></rich-text>
+                </view>
+            </view>
+            <view class="action">
+                <view class="text-grey text-xs">{{item.record_time}}</view>
+                <view class="cu-tag round bg-grey sm" wx:if="{{item.unread_num>0}}">{{item.unread_num}}</view>
+            </view>
+            <view class="move">
+                <view catchtap="__e" class="bg-red" data-event-opts="{{[ [ 'tap',[ [ 'removeChat',['$0'],[ [ ['chatList','',index,'id'] ] ] ] ] ] ]}}">删除</view>
+            </view>
+        </view>
+    </view>
+</view>

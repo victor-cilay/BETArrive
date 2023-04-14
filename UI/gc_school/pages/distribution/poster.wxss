@@ -1,0 +1,39 @@
+page {
+    height: 100%;
+    width: 100%;
+}
+
+.bgmains {
+    color: #000!important;
+    position: absolute;
+}
+
+.code {
+    bottom: 190rpx;
+    height: 350rpx;
+    left: 0;
+    right: 0;
+    width: 330rpx;
+}
+
+.code,.notice {
+    margin: 0 auto;
+    position: fixed;
+}
+
+.notice {
+    background-color: #fff;
+    border-radius: 50rpx;
+    bottom: 150rpx;
+    font-size: 30rpx;
+    left: 10%;
+    padding: 30rpx 0;
+    right: 10%;
+    text-align: center;
+}
+
+.firse_cavas {
+    left: 200%;
+    position: fixed;
+    top: 200%;
+}

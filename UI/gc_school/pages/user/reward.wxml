@@ -1,0 +1,22 @@
+<scroll-view class="scrollPage" scrollY="{{true}}">
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="5438e714-1" vueSlots="{{['content']}}">
+        <view slot="content">我的打赏</view>
+    </cu-custom>
+    <block wx:if="{{dataList.length>0}}">
+        <view bindtap="__e" class="margin-lg padding list" data-event-opts="{{[ [ 'tap',[ [ 'link',['$0'],[ [ ['dataList','',index,'a_id'] ] ] ] ] ] ]}}" wx:for="{{dataList}}" wx:key="index">
+            <view class="flex align-center justify-between">
+                <view class="text-lg text-bold content">{{item.content}}</view>
+                <text class="cuIcon-right text-gray"></text>
+            </view>
+            <view class="text-sm text-gray margin-top-sm">{{item.addtime}}</view>
+            <view class="flex justify-between align-center margin-top-sm">
+                <image class="avatar" src="{{item.avatar?item.avatar:fileUrl+'avatar.jpg'}}" wx:if="{{item.is_anonymous==0}}"></image>
+                <image class="avatar" src="{{fileUrl+'avatar.jpg'}}" wx:else></image>
+                <view class="nickname">{{''+(item.is_anonymous==1?'匿名用户':item.nickname)+''}}</view>
+                <view class="text-df text-red text-bold">￥<text class="text-xl">{{item.price}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="text-lg text-center margin-top" wx:else>暂无相关数据~</view>
+</scroll-view>

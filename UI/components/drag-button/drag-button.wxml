@@ -1,0 +1,5 @@
+<view>
+    <view bindtouchend="__e" bindtouchstart="__e" catchtap="__e" catchtouchmove="__e" class="{{['drag',isDock&&!isMove?'transition':'']}}" data-event-opts="{{[ [ 'touchstart',[ [ 'touchstart',['$event'] ] ] ],[ 'touchmove',[ [ 'touchmove',['$event'] ] ] ],[ 'touchend',[ [ 'touchend',['$event'] ] ] ],[ 'tap',[ [ 'click',['$event'] ] ] ] ]}}" id="_drag_button" style="{{'left: '+left+'px; top:'+top+'px;'}}">
+        <image bindtap="__e" class="jiedan" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/grab/index'] ] ] ] ]}}" hidden="{{!(top>-100)}}" mode="scaleToFill" src="{{fileUrl+'grab.png'}}"></image>
+    </view>
+</view>

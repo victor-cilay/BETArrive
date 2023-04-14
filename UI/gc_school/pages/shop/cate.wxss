@@ -1,0 +1,106 @@
+page {
+    background: #fff;
+}
+
+.empty {
+    color: grey;
+    font-size: 30rpx;
+    margin: 100rpx auto;
+    text-align: center;
+}
+
+.empty image {
+    width: 300rpx;
+}
+
+.box {
+    padding-bottom: 170rpx;
+}
+
+.item {
+    border-bottom: 1rpx solid #f9f9f9;
+    line-height: 70rpx;
+    padding: 10rpx 40rpx;
+}
+
+.edit_icon {
+    height: 31rpx;
+    margin-right: 20rpx;
+    width: 31rpx;
+}
+
+.del_icon {
+    height: 45rpx;
+    width: 45rpx;
+}
+
+.name {
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cover {
+    background: rgba(0,0,0,.4);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.cate_content {
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin-left: 5%;
+    margin-top: 50%;
+    padding-bottom: 50rpx;
+    width: 90%;
+}
+
+.close {
+    height: 40rpx;
+    width: 40rpx;
+}
+
+input {
+    background-color: #f9f9f9;
+    border-radius: 10rpx;
+    font-size: 28rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top: 20rpx;
+    padding-left: 10rpx;
+}
+
+.submit_btn {
+    line-height: 70rpx;
+    margin: 100rpx auto 0;
+    width: 250rpx;
+}
+
+.create,.submit_btn {
+    background-color: #ff6344;
+    border-radius: 10rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.create {
+    bottom: 40rpx;
+    font-size: 30rpx;
+    left: 5%;
+    line-height: 80rpx;
+    position: fixed;
+    width: 90%;
+}
+
+.bottom_fixed {
+    background: #fff;
+    bottom: 0;
+    height: 170rpx;
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+}

@@ -1,0 +1,30 @@
+.bgmain,page {
+    background-color: #f7f5f6;
+}
+
+.bgmain {
+    color: #000;
+}
+
+.list {
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.list .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list .avatar {
+    border-radius: 50%;
+    height: 60rpx;
+    margin-right: 20rpx;
+    width: 60rpx;
+}
+
+.list .nickname {
+    flex-grow: 1;
+    font-size: 30rpx;
+}

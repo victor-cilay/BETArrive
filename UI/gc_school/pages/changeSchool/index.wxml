@@ -1,0 +1,29 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" id="vont" vueId="21807ca4-1" vueSlots="{{['content']}}">
+        <view slot="content">选择学校</view>
+    </cu-custom>
+    <view class="row padding" style="width:100%;">
+        <pick bind:__l="__l" bind:getRegion="__e" data-event-opts="{{[ [ '^getRegion',[ ['handleGetRegion'] ] ] ]}}" vueId="21807ca4-2" vueSlots="{{['default']}}">
+            <view class="city row">
+                <view class="font">{{formData.city||'选择城市'}}</view>
+                <view class="cuIcon-triangledownfill"></view>
+            </view>
+        </pick>
+        <view class="search row padding-lr">
+            <image class="icon margin-right-sm" mode="scaleToFill" src="/static/search2.png"></image>
+            <input type bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','kwd','$event',[] ] ] ] ] ]}}" placeholder="请输入学校名称" value="{{kwd}}"></input>
+        </view>
+    </view>
+    <view class="schools margin">
+        <view bindtap="__e" class="{{['school','margin-bottom',index==flg?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changeSchool',[index] ] ] ] ]}}" wx:for="{{schoolList}}" wx:key="index">
+            <image class="logo" mode="scaleToFill" src="{{item.logo}}"></image>
+            <view class="ciy margin-top-xs">{{item.city}}</view>
+            <view class="name">{{item.s_name}}</view>
+        </view>
+        <view class="kong"></view>
+        <view class="kong"></view>
+        <view class="kong"></view>
+        <view class="kong"></view>
+    </view>
+    <view class="notData" wx:if="{{schoolList.length==0}}">暂无学校</view>
+</view>

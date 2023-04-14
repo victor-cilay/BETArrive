@@ -1,0 +1,49 @@
+<view class="page-subscribeWxMessage" style="{{themeColor}}">
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="6150d4f6-1" vueSlots="{{['content']}}">
+        <view slot="content">温馨提示</view>
+    </cu-custom>
+    <view class="page-subscribeWxMessag__header">
+        <view class="page-subscribeWxMessage__rules">
+            <view class="page-subscribeWxMessage__rules__item">1、为了您及时接收本程序的消息，请进行手动订阅操作。</view>
+            <view class="page-subscribeWxMessage__rules__item">2、请选择“总是保存以上选择，不再询问”。</view>
+        </view>
+    </view>
+    <view class="page-subscribeWxMessag__content">
+        <view class="page-subscribeWxMessag-card">
+            <view class="page-subscribeWxMessag-card__title">消息订阅</view>
+            <view class="page-subscribeWxMessag-card__list">
+                <view class="page-subscribeWxMessag-card__item" wx:if="{{item.temp_id.length>10}}" wx:for="{{temps}}" wx:key="index">
+                    <view class="page-subscribeWxMessag-card__item__title">{{index+1+'、'+item.name}}</view>
+                    <view bindtap="__e" class="page-subscribeWxMessag-card__item__btn" data-event-opts="{{[ [ 'tap',[ [ 'handleBtnSubscribe',['$0'],[ [ ['temps','',index] ] ] ] ] ] ]}}">订阅</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <popup-view bind:__l="__l" show="{{servicePopupVisible&&cServicePopupCanShow}}" vueId="6150d4f6-2" vueSlots="{{['default']}}">
+        <view class="shade-box" wx:if="{{servicePopupVisible}}">
+            <view class="invite-bg m-btm40" style="{{'background-image:'+$root.m0+';'}}">
+                <view class="invite-textbox p-r">
+                    <view class="invite-title f-44 col-3 t-c m-btm40">添加客服</view>
+                    <view class="commun-detail" style="margin-top:80rpx;">
+                        <view class="commun-bg-style bor-radius-10upx b-f commun-bg-style-top dis-flex flex-y-center flex-x-between p-left-right-30" wx:if="{{!!serviceRes['kf_phone']}}">
+                            <view class="commun-left dis-flex flex-y-center">
+                                <image mode class="commun-mobile" src="/static/images/merchant/mobile.png"></image>
+                                <view class="col-3 f-24">{{serviceRes['kf_phone']}}</view>
+                            </view>
+                            <view bindtap="__e" class="commun-right commun-right-mobile f-24 col-3 t-c main-bg-color auxiliary-color" data-event-opts="{{[ [ 'tap',[ [ 'commun',['mobile','$0'],['serviceRes.kf_phone'] ] ] ] ]}}">拨号</view>
+                        </view>
+                        <view class="commun-bg-style bor-radius-10upx b-f dis-flex flex-y-center flex-x-between p-left-right-30" wx:if="{{!!serviceRes['kf_wxid']}}">
+                            <view class="commun-left dis-flex">
+                                <image mode class="commun-weixin" src="/static/images/merchant/wx.png"></image>
+                                <view class="col-3 f-24">{{serviceRes['kf_wxid']}}</view>
+                            </view>
+                            <view bindtap="__e" class="commun-right commun-right-copy f-24 col-f t-c" data-event-opts="{{[ [ 'tap',[ [ 'commun',['wx','$0'],['serviceRes.kf_wxid'] ] ] ] ]}}">复制</view>
+                        </view>
+                    </view>
+                </view>.</view>
+            <view class="shade-close t-c">
+                <text bindtap="__e" class="iconfont icon-roundclose shade-close-icon" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}"></text>
+            </view>
+        </view>
+    </popup-view>
+</view>

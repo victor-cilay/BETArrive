@@ -1,0 +1,35 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="e05d3ed8-1" vueSlots="{{['content']}}">
+        <view slot="content">我卖出的</view>
+    </cu-custom>
+    <view class="trade_box">
+        <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+            <view bindtap="__e" class="trade2" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{good.id}}" data-status="{{good.status}}">
+                <image class="bookimage" mode="aspectFill" src="{{good.market.image}}"></image>
+                <view class="second-left">
+                    <view class="textdet">
+                        <view class="text-bookname">{{good.market.title}}</view>
+                    </view>
+                    <view class="price">{{'￥'+good.market.pay}}</view>
+                </view>
+            </view>
+            <view class="margin" wx:if="{{good.status==3}}">{{'申请退款理由：'+good.reason}}</view>
+            <view class="trade3">
+                <view class="margin-tb-sm-my text-center">
+                    <view class="sm button" wx:if="{{good.paystate==1}}">待完成</view>
+                    <view class="sm button" wx:if="{{good.paystate==2}}">已完成</view>
+                    <view class="flex" wx:if="{{good.paystate==3}}">
+                        <view bindtap="__e" class="sm button refund" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-type="1">同意退款</view>
+                        <view bindtap="__e" class="sm button refund" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-type="2">拒绝退款</view>
+                    </view>
+                    <view class="sm button" data-id="{{good.oid}}" data-status="{{good.paystate}}" wx:if="{{good.paystate==4}}">退款完成</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nocontent" wx:if="{{dataList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">没有更多数据了~</view>
+</view>

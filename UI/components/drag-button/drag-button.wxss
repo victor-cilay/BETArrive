@@ -1,0 +1,26 @@
+.drag {
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 12px;
+    height: 164rpx;
+    justify-content: center;
+    position: fixed;
+    width: 220rpx;
+    z-index: 999999;
+}
+
+.drag.transition {
+    transition: left .3s ease,top .3s ease;
+}
+
+.jiedan {
+    zoom: .6;
+    bottom: 0rpx;
+    flex-shrink: 0;
+    height: 164rpx;
+    position: absolute;
+    right: 0rpx;
+    width: 220rpx;
+}

@@ -1,0 +1,9 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="7d6eafd0-1" vueSlots="{{['content']}}">
+        <view slot="content">原因填写</view>
+    </cu-custom>
+    <view class="box">
+        <textarea bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'getVal',['$event'] ] ] ] ]}}" placeholder="{{placeholder}}" rows="5"></textarea>
+        <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">提交</view>
+    </view>
+</view>

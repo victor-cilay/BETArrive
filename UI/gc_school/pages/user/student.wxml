@@ -1,0 +1,46 @@
+<view>
+    <scroll-view class="scrollPage" scrollY="{{true}}">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="0633cb3e-1" vueSlots="{{['content']}}">
+            <view slot="content">身份认证</view>
+        </cu-custom>
+    </scroll-view>
+    <view class="bg-color" wx:if="{{reason&&state==2}}">
+        <view class="bg-colors">
+            <view class="text-red-title">{{'拒绝原因：'+reason+''}}</view>
+        </view>
+    </view>
+    <view class="bg-color">
+        <view class="bg-colors">
+            <view class="cu-form-group margin-top">
+                <view class="title">
+                    <text class="xing">*</text>姓名</view>
+                <input bindinput="__e" class="inp-riget" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','name','$event',[] ] ] ] ] ]}}" placeholder="请输入姓名" value="{{name}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">{{studentdmh}}</view>
+                <input bindinput="__e" class="inp-riget" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','student','$event',[] ] ] ] ] ]}}" placeholder="请输入" value="{{student}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">
+                    <text class="xing">*</text>联系电话</view>
+                <input bindinput="__e" class="inp-riget" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','phone','$event',[] ] ] ] ] ]}}" placeholder="请输入联系电话" value="{{phone}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">备注</view>
+                <input bindinput="__e" class="inp-riget" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','remarks','$event',[] ] ] ] ] ]}}" placeholder="选填" value="{{remarks}}"></input>
+            </view>
+            <view class="text-title">{{''+dmgexplain+''}}</view>
+            <view class="zhengjian">
+                <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'chooseImagesss',['$event'] ] ] ] ]}}" src="{{images}}" wx:if="{{images}}"></image>
+                <image bindtap="__e" class="img" data-event-opts="{{[ [ 'tap',[ [ 'chooseImagesss',['$event'] ] ] ] ]}}" src="{{dmhimage}}" wx:else></image>
+            </view>
+            <view class="shuoming">说明：</view>
+            <view class="shuoming-neirong">
+                <mp-html bind:__l="__l" content="{{setting}}" vueId="0633cb3e-2"></mp-html>
+            </view>
+        </view>
+    </view>
+    <view class="buts">
+        <view bindtap="__e" class="but" data-event-opts="{{[ [ 'tap',[ [ 'sub',['$event'] ] ] ] ]}}">点击提交</view>
+    </view>
+</view>

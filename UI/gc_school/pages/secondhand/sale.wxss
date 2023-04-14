@@ -1,0 +1,260 @@
+page {
+    background-color: #fff;
+}
+
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.tab_contain {
+    border-bottom: 1rpx solid #eee;
+    height: 90rpx;
+    width: 100%;
+}
+
+.tab_contain,.tab_one {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.tab_one {
+    height: 100%;
+    justify-content: center;
+    margin-bottom: 10rpx;
+    width: 25%;
+}
+
+.tab_one view {
+    align-items: center;
+    display: flex;
+    font-size: 30rpx;
+    height: 100%;
+    letter-spacing: 2rpx;
+}
+
+.tab_on {
+    border-bottom: 4rpx solid #7acfa6;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.trade_box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+}
+
+.trade_box .single-trade:last-child {
+    border-bottom: none;
+}
+
+.single-trade {
+    background-color: #fff;
+    border-bottom: 2rpx solid #c9c9c9;
+    border-radius: 6rpx;
+    height: 100%;
+    padding: 10rpx 10rpx 20rpx;
+    position: relative;
+    width: 100%;
+}
+
+.trade {
+    border-bottom: 1px solid hsla(0,0%,50%,.068);
+    justify-content: center;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+    width: 100%;
+}
+
+.first,.trade {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 21px;
+}
+
+.first {
+    width: 80%;
+}
+
+.first view {
+    font-size: 12px;
+    padding-left: 12rpx;
+}
+
+.status {
+    float: right;
+    font-size: 12px;
+}
+
+.trade2 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
+}
+
+.text-coursename {
+    font-size: 27rpx;
+    letter-spacing: 3rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+    padding-top: 10rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-bookname {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    font-size: 28rpx;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.second-left {
+    width: 100%;
+}
+
+.price {
+    color: #ff2a00;
+    font-size: 30rpx;
+    font-weight: 700;
+    line-height: 50rpx;
+}
+
+.count {
+    font-size: 24rpx;
+}
+
+.bookimage {
+    border-radius: 10rpx;
+    flex-shrink: 0;
+    height: 150rpx;
+    margin-right: 20rpx;
+    width: 170rpx;
+}
+
+.textdet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.textdet view {
+    padding-left: 10rpx;
+}
+
+.second-right {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+}
+
+.second-right image {
+    height: 35rpx;
+    width: 35rpx;
+}
+
+.second-right view {
+    font-size: 30rpx;
+}
+
+.trade3 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: flex-end;
+    margin: 20rpx;
+}
+
+.third-left {
+    color: #a9a9a9;
+    float: left;
+    font-size: 27rpx;
+    padding-left: 20rpx;
+}
+
+.third-right {
+    align-items: center;
+    float: right;
+    justify-content: flex-end;
+}
+
+.third-right,.trade4 {
+    display: flex;
+}
+
+.trade4 {
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    margin-top: 10rpx;
+}
+
+.price {
+    padding-left: 10rpx;
+}
+
+.blank {
+    color: grey;
+    height: 2px;
+    width: 100%;
+}
+
+.nocontent {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nocontent image {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.blank_text {
+    color: #c6c6c8;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-top: 10rpx;
+}
+
+.sm {
+    font-size: 26rpx!important;
+    margin-left: 15rpx;
+}
+
+.button {
+    background: #fff;
+    border: 2rpx solid #ccc;
+    border-radius: 50rpx;
+    color: #000;
+    line-height: 50rpx;
+    padding: 5rpx 20rpx;
+}
+
+.bg-orange {
+    background-color: #ff6344!important;
+    border: 2rpx solid #ff6344;
+    color: #fff!important;
+}
+
+.refund {
+    background: #e54d42;
+    border: none;
+    color: #fff;
+}

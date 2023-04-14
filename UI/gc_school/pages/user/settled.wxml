@@ -1,0 +1,76 @@
+<view>
+    <view class="bgcolor">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="7c8d6bc0-1" vueSlots="{{['content']}}">
+            <view slot="content">商家入驻</view>
+        </cu-custom>
+    </view>
+    <view class="heads">
+        <view class="heads-bg">
+            <view class="cu-form-group">
+                <view class="title">商家名称</view>
+                <input bindinput="__e" class="title-input" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','name','$event',[] ] ] ] ] ]}}" placeholder="请输入店铺名称 2-10个字" value="{{name}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">联系电话</view>
+                <input bindinput="__e" class="title-input" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','phone','$event',[] ] ] ] ] ]}}" placeholder="请输入店铺联系电话" value="{{phone}}"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">详细地址</view>
+                <input bindinput="__e" class="title-input" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','address','$event',[] ] ] ] ] ]}}" placeholder="请输入店铺地址" value="{{address}}" wx:if="{{address}}"></input>
+                <view bindtap="__e" class="title-address" data-event-opts="{{[ [ 'tap',[ ['adds'] ] ] ]}}" wx:else>获取位置</view>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">店铺门头</view>
+            </view>
+            <view class="margin-left">
+                <add-image addedCount="{{addedCount}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImages'] ] ],[ '^deleteImage',[ ['deleteImage'] ] ] ]}}" images="{{images}}" vueId="7c8d6bc0-2"></add-image>
+                <view class="del_remark text-sm  margin-bottom">*长按图片可进行删除</view>
+            </view>
+        </view>
+    </view>
+    <view class="heads" style="height:327rpx;margin-top:22rpx;">
+        <view class="heads-bg">
+            <view class="cu-form-group margin-top">
+                <view class="title">店铺类型</view>
+                <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" range="{{picker}}" rangeKey="type_name" value="{{index}}">
+                    <view class="picker">{{''+picker[index].type_name+''}}</view>
+                </picker>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">开始营业时间</view>
+                <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'TimeChange',['$event'] ] ] ] ]}}" end="23:59" mode="time" start="00:01" value="{{time}}">
+                    <view class="picker">{{''+time+''}}</view>
+                </picker>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">结束营业时间</view>
+                <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'TimeChanges',['$event'] ] ] ] ]}}" end="23:59" mode="time" start="00:01" value="{{times}}">
+                    <view class="picker">{{''+times+''}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="heads" style="height:427rpx;margin-top:22rpx;">
+        <view class="heads-bg">
+            <view class="cu-form-group">
+                <view class="title">店铺资质<text class="shop-details">（例如营业执照、食品卫生许可证、经营许可证等）</text>
+                </view>
+            </view>
+            <view class="margin-left" style="margin-top: 30rpx;">
+                <add-image addedCount="{{addedCountss}}" bind:__l="__l" bind:chooseImage="__e" bind:deleteImage="__e" count="{{count}}" data-event-opts="{{[ [ '^chooseImage',[ ['chooseImagesss'] ] ],[ '^deleteImage',[ ['deleteImages'] ] ] ]}}" images="{{imagesss}}" vueId="7c8d6bc0-3"></add-image>
+                <view class="del_remark text-sm  margin-bottom">*长按图片可进行删除</view>
+            </view>
+        </view>
+    </view>
+    <view class="heads" style="height:120rpx;margin-top:22rpx;" wx:if="{{schoolpays.charge_mode==1}}">
+        <view class="heads-bg">
+            <view class="cu-form-group">
+                <view class="title">保证金</view>
+                <view class="title-address">{{schoolpays.charge_price+'元'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="padding">
+        <view type bindtap="__e" class="cu-btn block bg-blue margin-tb-sm lg" data-event-opts="{{[ [ 'tap',[ ['submits'] ] ] ]}}" disabled="{{true}}" style="border-radius:45rpx;background:#FF5853 !important;opacity:1;">确认提交</view>
+    </view>
+</view>

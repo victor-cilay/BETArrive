@@ -1,0 +1,23 @@
+.pages {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.login,.pages {
+    display: flex;
+}
+
+.login {
+    align-items: center;
+    background-color: #ff6344;
+    border-radius: 10rpx;
+    color: #fff;
+    font-size: 40rpx;
+    height: 100rpx;
+    justify-content: center;
+    margin: auto auto 200rpx;
+    width: 600rpx;
+}

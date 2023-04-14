@@ -1,0 +1,107 @@
+page {
+    background: #f3f3f3;
+}
+
+.container .block {
+    background-color: #fff;
+    margin-top: 10rpx;
+    padding: 20rpx;
+    position: relative;
+    z-index: 200;
+}
+
+.container .block.top {
+    border-radius: 10rpx 10rpx 0 0;
+    margin-top: -30rpx;
+}
+
+.title {
+    display: flex;
+    font-size: 28rpx;
+    justify-content: space-between;
+}
+
+.price,.title .status {
+    color: #64edac;
+}
+
+.price {
+    font-size: 32rpx;
+    margin: 20rpx 0;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .sm {
+    flex: 1;
+}
+
+.footer .sm .ct {
+    color: #ccc;
+    font-size: 24rpx;
+    margin-bottom: 5rpx;
+}
+
+.footer .sm .cw {
+    color: #000;
+    font-size: 32rpx;
+}
+
+.submit[size="mini"] {
+    background: #64edac;
+    border-radius: 10rpx;
+    color: #fff;
+    font-size: 28rpx;
+    left: 50%;
+    margin: 50rpx 0;
+    padding: 10rpx 50rpx;
+    transform: translateX(-50%);
+    width: 95%;
+}
+
+.useinfo {
+    display: flex;
+}
+
+.useinfo .head {
+    background-position: 50%;
+    background-size: cover;
+    border-radius: 50%;
+    height: 80rpx;
+    margin-right: 20rpx;
+    width: 80rpx;
+}
+
+.useinfo .user .t1 {
+    font-size: 28rpx;
+}
+
+.useinfo .user .t2 {
+    color: #ccc;
+}
+
+.detail .sm {
+    font-size: 28rpx;
+    margin: 10rpx 0;
+}
+
+.detail .item {
+    margin-bottom: 15rpx;
+}
+
+.sure_btn {
+    background: #64edac;
+    border-radius: 20rpx;
+    bottom: 50rpx;
+    color: #fff;
+    font-size: 28rpx;
+    left: 50%;
+    padding: 20rpx 0;
+    position: fixed;
+    text-align: center;
+    transform: translateX(-50%);
+    width: 95%;
+}

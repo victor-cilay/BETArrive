@@ -1,0 +1,4 @@
+<view class="navs flex margin-lr">
+    <view bindtap="__e" class="nav" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/canteen/list?type_id='+item.type_id] ] ] ] ]}}" wx:for="{{list}}" wx:key="index">
+        <image class="icon" mode="scaleToFill" src="{{item.type_image}}"></image>{{''+item.type_name+''}}</view>
+</view>

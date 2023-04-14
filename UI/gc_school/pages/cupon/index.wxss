@@ -1,0 +1,152 @@
+page {
+    background-color: #fff;
+}
+
+.list {
+    padding: 20rpx;
+}
+
+.yhj_cont {
+    color: #cdcccc;
+    padding: 0 20rpx;
+}
+
+.j_left {
+    background: #fff;
+    border-radius: 10rpx;
+    border-top: 10rpx solid #eca72c;
+    box-shadow: 0 10rpx 10px #f0f0f0;
+}
+
+.j_left .j_l_top {
+    border-bottom: 2rpx dashed #eca72c;
+    color: #eca72c;
+    padding: 10rpx 0;
+}
+
+.j_l_bot {
+    color: #a6a6a6;
+    font-size: 24rpx;
+    padding: 20rpx 0;
+}
+
+.dian {
+    background: #eca72c;
+    border-radius: 50%;
+    display: inline-block;
+    height: 10rpx;
+    margin-right: 10rpx;
+    width: 10rpx;
+}
+
+.j_right {
+    width: 25%;
+}
+
+.label {
+    background: #f0ac2d;
+    border-radius: 10rpx;
+    color: #fff;
+    font-size: 24rpx;
+    padding: 5rpx 20rpx;
+}
+
+.j_left.failure {
+    background: #f8f8f8;
+    border-top: 10rpx solid #cdcccc;
+    box-shadow: 0 10rpx 10rpx #cdcccc;
+}
+
+.j_left.failure .j_l_top {
+    border-bottom: 2rpx dashed #cdcccc;
+    color: #cdcccc;
+}
+
+.j_left.failure .j_l_bot {
+    color: #cdcccc;
+}
+
+.j_left.failure .dian,.j_left.failure .label {
+    background: #cdcccc;
+}
+
+.action {
+    color: #000!important;
+}
+
+.box {
+    background-color: #fff;
+    border-top-left-radius: 40rpx;
+    border-top-right-radius: 40rpx;
+    height: 400rpx;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+}
+
+.box .tab .tab_item {
+    margin-right: 20rpx;
+    position: relative;
+}
+
+.box .tab .active {
+    color: #ff4c4d;
+}
+
+.box .tab .active:after {
+    background-color: #ff4c4d;
+    border-radius: 20rpx;
+    bottom: -15rpx;
+    content: "";
+    height: 10rpx;
+    left: 0;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    width: 45rpx;
+}
+
+.box .coupon_item {
+    background-color: #ff4c4d;
+    border-radius: 16rpx;
+    position: relative;
+}
+
+.box .coupon_item .type_name {
+    background-color: #ffd8ad;
+    border-bottom-right-radius: 16rpx;
+    border-top-left-radius: 16rpx;
+    color: #ff4c4d;
+    left: 0;
+    padding: 10rpx 20rpx;
+    position: absolute;
+    top: 0;
+}
+
+.box .coupon_item .orange {
+    color: #ff4c4d;
+}
+
+.box .coupon_item .badge_box {
+    height: 50rpx;
+    transform: rotate(-45deg);
+    width: 100rpx;
+}
+
+.box .coupon_item .badge_box .badge {
+    background-color: #ffd8ad;
+    height: 40rpx;
+    transform: perspective(.4em) rotateX(10deg);
+    width: 100rpx;
+}
+
+.bgmains {
+    background-color: initial!important;
+    color: #fff;
+    position: fixed;
+    z-index: 99999999;
+}
+
+.action {
+    color: #fff!important;
+}

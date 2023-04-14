@@ -1,0 +1,24 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="e1493006-1" vueSlots="{{['content']}}">
+        <view slot="content">我的收藏</view>
+    </cu-custom>
+    <view class="trade_box">
+        <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+            <view bindtap="__e" class="trade2" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$0'],[ [ ['dataList','id',good.id,'m_id'] ] ] ] ] ] ]}}" data-id="{{good.m_id}}" data-status="{{good.status}}">
+                <image class="bookimage" mode="aspectFill" src="{{good.image}}"></image>
+                <view class="second-left">
+                    <view class="textdet">
+                        <view class="text-bookname">{{good.title}}</view>
+                    </view>
+                    <view class="price">{{'￥'+good.pay}}</view>
+                </view>
+                <image catchtap="__e" class="fav" data-event-opts="{{[ [ 'tap',[ [ 'cancelFav',['$event'] ] ] ] ]}}" data-id="{{good.id}}" src="/static/images/fav.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="nocontent" wx:if="{{dataList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">没有更多数据了~</view>
+</view>

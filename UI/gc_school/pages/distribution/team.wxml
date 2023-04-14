@@ -1,0 +1,17 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="698b205f-1" vueSlots="{{['content']}}">
+        <view slot="content">我的团队</view>
+    </cu-custom>
+    <view class="text-center margin-top text-lg" wx:if="{{dataList.length==0}}">暂无数据~</view>
+    <view bindtap="__e" class="margin box padding" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/team2?uid='+item.$orig.u_id] ] ] ] ]}}" wx:for="{{$root.l0}}" wx:key="index">
+        <view class="flex align-center">
+            <image class="avatar" src="{{item.$orig.avatar}}"></image>
+            <view class="userinfo">
+                <view class="nickname">{{item.$orig.nickname}}</view>
+                <view class="date">{{item.f0+''}}<text>{{'下级'+item.$orig.child+'人'}}</text>
+                </view>
+            </view>
+            <text class="cuIcon-right"></text>
+        </view>
+    </view>
+</view>

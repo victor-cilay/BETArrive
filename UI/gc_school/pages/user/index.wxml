@@ -1,0 +1,80 @@
+<view>
+    <scroll-view class="scrollPage" scrollY="{{true}}">
+        <cu-custom bgColor="bgmains" bind:__l="__l" class="bgmains" isBack="{{false}}" vueId="4f530c72-1" vueSlots="{{['content']}}">
+            <view slot="content">我的</view>
+        </cu-custom>
+        <view class="header" style="{{'padding-top:'+CustomBar+'px'+';'}}">
+            <view class="user_info row margin-lr-lg">
+                <image class="avatar" src="{{userInfo.avatar?userInfo.avatar:logo}}"></image>
+                <view class="info">
+                    <view class="nickname">{{''+(userInfo.nickname||'')+''}}<view bindtap="__e" class="m_btn" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/user/balance',1] ] ] ] ]}}" wx:if="{{!islogin}}">点击登录</view>
+                    </view>
+                </view>
+                <text bindtap="__e" class="cuIcon-edit text-white" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/user/userinfo'] ] ] ] ]}}" wx:if="{{islogin}}"></text>
+            </view>
+            <view class="other row margin-top">
+                <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/user/balance',1] ] ] ] ]}}">
+                    <view class="val">{{userInfo.balance}}</view>
+                    <view class="key">余额</view>
+                </view>
+                <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/user/follow',1] ] ] ] ]}}">
+                    <view class="val">{{userInfo.follow_num||0}}</view>
+                    <view class="key">关注</view>
+                </view>
+                <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/user/fans',1] ] ] ] ]}}">
+                    <view class="val">{{userInfo.fans_num||0}}</view>
+                    <view class="key">粉丝</view>
+                </view>
+                <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/article/my',1] ] ] ] ]}}" wx:if="{{sysparment.index_articles_switch==1}}">
+                    <view class="val">{{userInfo.articles_num||0}}</view>
+                    <view class="key">圈子</view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="__e" class="isrun" data-event-opts="{{[ [ 'tap',[ [ 'bindgetuserinfo',['$event'] ] ] ] ]}}" wx:if="{{!islogin&&sysparment.runner_auth_switch==1}}">
+            <image mode="widthFix" src="{{fileUrl+'auth.png'}}"></image>
+        </view>
+        <view bindtap="__e" class="isrun" data-event-opts="{{[ [ 'tap',[ [ 'link',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/register/index" wx:if="{{sysparment.runner_auth_switch==1}}">
+            <image mode="widthFix" src="{{fileUrl+'auth.png'}}" wx:if="{{islogin&&userInfo.run_status=='0'}}"></image>
+            <image mode="widthFix" src="{{fileUrl+'auth_ing.png'}}" wx:if="{{islogin&&userInfo.run_status=='1'}}"></image>
+            <image mode="widthFix" src="{{fileUrl+'auth_already.png'}}" wx:if="{{islogin&&userInfo.run_status=='2'}}"></image>
+            <image mode="widthFix" src="{{fileUrl+'auth_fail.png'}}" wx:if="{{islogin&&userInfo.run_status=='-1'}}"></image>
+        </view>
+        <view class="box padding margin-lr margin-bottom margin-top">
+            <view class="tit">常用工具</view>
+            <view class="row flex-wrap">
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'go',['$0','$1'],[ [ ['navList','',index,'path'] ],[ ['navList','',index,'is_login'] ] ] ] ] ] ]}}" wx:if="{{index<4&&(item.name=='我的打赏'&&sysparment.index_articles_switch==1||item.name!='我的打赏')}}" wx:for="{{navList}}" wx:key="index">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="{{item.icon}}"></image>{{''+item.name+''}}<view catchtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{item.func}}">
+                        <button class="other" openType="contact" wx:if="{{item.func=='cell'}}"></button>
+                        <view bindtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ 'msg',['$event'] ] ] ] ]}}" wx:if="{{item.func=='msg'}}"></view>
+                        <view bindtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ 'dian',['$event'] ] ] ] ]}}" data-url="{{'/gc_school/pages/shop/my?id='+userInfo.store_id}}" wx:if="{{item.func=='dian'}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="box padding margin-lr margin-bottom">
+            <view class="tit">我的服务</view>
+            <view class="row flex-wrap">
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/vip/index',1] ] ] ] ]}}" wx:if="{{sysparment.user_vip_switch==1}}">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="/static/icon/me/icon14.png"></image>VIP会员</view>
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'ruzhu',['$event'] ] ] ] ]}}" wx:if="{{userInfo.plat_has_store==0&&userInfo.store_check_status!=1&&sysparment.store_settle==1}}">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="/static/icon/me/icon15.png"></image>商家入驻</view>
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/distribution/index',1] ] ] ] ]}}" wx:if="{{userInfo.is_distribution==1}}">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="/static/icon/me/icon16.png"></image>我的推广</view>
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'dian',['$event'] ] ] ] ]}}" data-url="{{'/gc_school/pages/shop/my?id='+userInfo.store_id}}" wx:if="{{userInfo.has_store==1}}">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="/static/icon/me/icon9.png"></image>我的小店</view>
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/mygrab/index',1] ] ] ] ]}}" wx:if="{{userInfo.run_status==2}}">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="/static/icon/me/icon8.png"></image>我的接单</view>
+                <view bindtap="__e" class="nav row margin-tb" data-event-opts="{{[ [ 'tap',[ [ 'go',['$0','$1'],[ [ ['navList','',index,'path'] ],[ ['navList','',index,'is_login'] ] ] ] ] ] ]}}" wx:if="{{index>3}}" wx:for="{{navList}}" wx:key="index">
+                    <image class="icon margin-bottom" mode="scaleToFill" src="{{item.icon}}"></image>{{''+item.name+''}}<view catchtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{item.func}}">
+                        <button class="other" openType="contact" wx:if="{{item.func=='cell'}}"></button>
+                        <view bindtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ 'msg',['$event'] ] ] ] ]}}" wx:if="{{item.func=='msg'}}"></view>
+                        <view bindtap="__e" class="other" data-event-opts="{{[ [ 'tap',[ [ 'dian',['$event'] ] ] ] ]}}" data-url="{{'/gc_school/pages/shop/my?id='+userInfo.store_id}}" wx:if="{{item.func=='dian'}}"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view style="height:100rpx;"></view>
+    <pt-footer bind:__l="__l" flg="我的" vueId="4f530c72-2"></pt-footer>
+</view>

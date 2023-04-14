@@ -1,0 +1,32 @@
+<view>
+    <scroll-view class="scrollPage" scrollY="{{true}}">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="0ba9066b-1" vueSlots="{{['content']}}">
+            <view slot="content">提现</view>
+        </cu-custom>
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}">
+            <view class="padding padding-bottom-sm bg-white">
+                <view class="title text-grey text-lg">{{'可提现金额 ￥'+userInfo.balance}}</view>
+            </view>
+            <view class="cu-form-group">
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'moneyinput',['$event'] ] ] ] ]}}" name="price" placeholder="点此输入提现金额" type="digit" value="{{money}}"></input>
+            </view>
+            <view class="padding padding-bottom-sm bg-white margin-top" wx:if="{{is_pay==0}}">
+                <view class="title text-grey text-lg">提现方式</view>
+            </view>
+            <view class="cu-form-group" wx:if="{{is_pay==0}}">
+                <view class="title">姓名</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','name','$event',[] ],['form'] ] ] ] ]}}" name="name" placeholder="输入姓名" value="{{form.name}}"></input>
+            </view>
+            <view class="cu-form-group" wx:if="{{is_pay==0}}">
+                <view class="title">{{sys.withdraw_tips?sys.withdraw_tips:'手机号'}}</view>
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','account','$event',[] ],['form'] ] ] ] ]}}" name="account" placeholder="请输入" value="{{form.account}}"></input>
+            </view>
+            <view class="submit margin-top" wx:if="{{loading}}">
+                <view class="padding flex flex-direction">
+                    <button class="cu-btn bg-yellow lg round" formType="submit">提交申请</button>
+                    <view class="notice" wx:if="{{is_pay==1}}">提现的钱将会到账微信余额，请注意查收</view>
+                </view>
+            </view>
+        </form>
+    </scroll-view>
+</view>

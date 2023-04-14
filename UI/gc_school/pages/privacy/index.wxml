@@ -1,0 +1,8 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="79574a3c-1" vueSlots="{{['content']}}">
+        <view slot="content">认证隐私协议</view>
+    </cu-custom>
+    <view class="box">
+        <mp-html bind:__l="__l" content="{{article_fee_content}}" vueId="79574a3c-2"></mp-html>
+    </view>
+</view>

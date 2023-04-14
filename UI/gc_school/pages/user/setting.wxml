@@ -1,0 +1,47 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="26208449-1" vueSlots="{{['content']}}">
+        <view slot="content">设置管理</view>
+    </cu-custom>
+    <view wx:if="{{1==1}}">
+        <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+            <view class="cu-item arrow">
+                <navigator class="content" hoverClass="none" url="/gc_school/pages/replaylist/index">
+                    <image src="/static/images/cashout.png"></image>
+                    <text class="text-black">我的提现</text>
+                </navigator>
+            </view>
+            <view class="cu-item arrow" wx:if="{{sys.mp_name}}">
+                <navigator class="content" hoverClass="none" url="/gc_school/pages/webview/indexs">
+                    <image src="/static/images/auth1.png"></image>
+                    <text class="text-black">公众号授权</text>
+                </navigator>
+            </view>
+            <view class="cu-item arrow">
+                <navigator class="content" hoverClass="none" url="/gc_school/pages/help/index">
+                    <image src="/static/images/help.png"></image>
+                    <text class="text-black">帮助中心</text>
+                </navigator>
+            </view>
+            <view class="cu-item arrow">
+                <navigator class="content" hoverClass="none" url="/gc_school/pages/error/error">
+                    <text class="lg  cuIcon-copy text-main"></text>
+                    <text class="text-black">运行日志</text>
+                </navigator>
+            </view>
+            <view class="cu-item arrow">
+                <button class="cu-btn content">
+                    <text class="lg  cuIcon-tagfill text-main"></text>
+                    <text class="text-black">当前版本</text>
+                    <view class="ban">1.5.13</view>
+                </button>
+            </view>
+            <view bindtap="__e" class="cu-item arrow" data-event-opts="{{[ [ 'tap',[ [ 'bindCard',['$event'] ] ] ] ]}}" wx:if="{{sys.appid=='wxb40cc4d3fb44c393'}}">
+                <text class="lg  cuIcon-tagfill text-main"></text>
+                <text class="text-black">绑卡</text>
+                <text class="text-black">绑卡</text>
+            </view>
+            <view wx:if="{{sys.appid=='wxb40cc4d3fb44c393'}}">{{''+msg+''}}</view>
+            <image src="https://13477601127a.limeixinjy.com/images/1004/2021/03/AYP8ySYpeCPOcOD0Fe863DGP8B260E.png"></image>
+        </view>
+    </view>
+</view>

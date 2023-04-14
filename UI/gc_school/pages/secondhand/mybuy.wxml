@@ -1,0 +1,94 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="529adee7-1" vueSlots="{{['content']}}">
+        <view slot="content">我的订单</view>
+    </cu-custom>
+    <view class="tabs flex">
+        <view bindtap="__e" class="margin-left" data-event-opts="{{[ [ 'tap',[ [ 'tabs',[0] ] ] ] ]}}">
+            <view class="{{[states==0?'tabs-zhong':'tabs-lie']}}">我买的</view>
+            <view class="flex" style="align-items:center;width:100%;justify-content:center;" wx:if="{{states==0}}">
+                <view class="tabs-zhong-tiao"></view>
+            </view>
+        </view>
+        <view bindtap="__e" class="margin-left" data-event-opts="{{[ [ 'tap',[ [ 'tabs',[1] ] ] ] ]}}">
+            <view class="{{[states==1?'tabs-zhong':'tabs-lie']}}">我卖的</view>
+            <view class="flex" style="align-items:center;width:100%;justify-content:center;" wx:if="{{states==1}}">
+                <view class="tabs-zhong-tiao"></view>
+            </view>
+        </view>
+    </view>
+    <view class="trade_box">
+        <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+            <view bindtap="__e" class="trade2" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{good.id}}" data-status="{{good.status}}">
+                <image class="bookimage" mode="aspectFill" src="{{good.market.image}}"></image>
+                <view class="second-left">
+                    <view class="textdet flex">
+                        <view class="text-bookname flex" style="width:60%;align-items:center;">{{''+good.market.title}}</view>
+                        <view class="states" style="width:30%;text-align:right;" wx:if="{{good.paystate==1}}">已付款</view>
+                        <view class="states" style="width:30%;text-align:right;" wx:if="{{good.paystate==2}}">已完成</view>
+                        <view class="states" style="width:30%;text-align:right;" wx:if="{{good.paystate==3}}">退款中</view>
+                        <view class="states" style="width:30%;text-align:right;" wx:if="{{good.paystate==4}}">退款完成</view>
+                    </view>
+                    <view class="flex" style="align-items:center;">
+                        <view class="price">{{'￥'+good.pay}}</view>
+                        <view class="kucun" wx:if="{{states==1}}">{{'库存：'+good.market.stock}}</view>
+                        <view class="yuanjia" wx:if="{{states==0}}">{{'￥'+good.market.price}}</view>
+                    </view>
+                    <view class="flex" wx:if="{{states==1}}">
+                        <view>
+                            <image class="xihuan" src="../../../static/images/xihuans.png" wx:if="{{good.stay==1}}"></image>
+                            <image class="xihuan" src="../../../static/images/xihuan.png" wx:else></image>
+                        </view>
+                        <view class="kucun">{{good.con}}</view>
+                    </view>
+                    <view class="flex" wx:if="{{states==0}}">
+                        <view>
+                            <image class="xihuan" src="{{good.user.avatar}}"></image>
+                        </view>
+                        <view class="kucun">{{good.user.nickname}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="trade3">
+                <view class="margin-tb-sm-my text-center">
+                    <view class="flex" wx:if="{{good.paystate==1&&states==0}}">
+                        <view bindtap="__e" class="sm button " data-event-opts="{{[ [ 'tap',[ [ 'refund',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-status="{{good.status}}">申请退款</view>
+                        <view bindtap="__e" class="sm button refund" data-event-opts="{{[ [ 'tap',[ [ 'confirm',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-status="{{good.status}}">确认完成</view>
+                    </view>
+                    <view class="sm button" data-id="{{good.oid}}" data-status="{{good.status}}" wx:if="{{good.paystate==2}}">已完成</view>
+                    <view class="sm button refund" data-id="{{good.oid}}" data-status="{{good.status}}" wx:if="{{good.paystate==3&&states==0}}">退款中</view>
+                    <view class="flex" wx:if="{{good.paystate==3&&states==1}}">
+                        <view bindtap="__e" class="sm button refund" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-type="1">同意退款</view>
+                        <view bindtap="__e" class="sm button refund" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" data-id="{{good.oid}}" data-type="2">拒绝退款</view>
+                    </view>
+                    <view class="sm button" data-id="{{good.oid}}" data-status="{{good.status}}" wx:if="{{good.paystate==4}}">退款完成</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nocontent" wx:if="{{dataList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">没有更多数据了~</view>
+    <view class="toast-box" wx:if="{{ifName}}">
+        <view class="toastbg"></view>
+        <view class="showToast">
+            <view class="toast-title">
+                <text>退款理由</text>
+            </view>
+            <view class="toast-main">
+                <view class="toast-input">
+                    <textarea bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'setValue',['$event'] ] ] ] ]}}" placeholder="请填写退款原因" value="{{reason}}"></textarea>
+                </view>
+            </view>
+            <view class="toast-button">
+                <view class="button1">
+                    <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}">取消</view>
+                </view>
+                <view class="button2">
+                    <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'confirmRefund',['$event'] ] ] ] ]}}">确定</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

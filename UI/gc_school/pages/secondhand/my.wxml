@@ -1,0 +1,72 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="0ab2098f-1" vueSlots="{{['content']}}">
+        <view slot="content">我的发布</view>
+    </cu-custom>
+    <view class="tabs flex">
+        <view bindtap="__e" class="margin-left" data-event-opts="{{[ [ 'tap',[ [ 'tabs',[0] ] ] ] ]}}">
+            <view class="{{[states==0?'tabs-zhong':'tabs-lie']}}">全部</view>
+            <view class="flex" style="align-items:center;width:100%;justify-content:center;" wx:if="{{states==0}}">
+                <view class="tabs-zhong-tiao"></view>
+            </view>
+        </view>
+        <view bindtap="__e" class="margin-left" data-event-opts="{{[ [ 'tap',[ [ 'tabs',[1] ] ] ] ]}}" wx:if="{{examine==1}}">
+            <view class="{{[states==1?'tabs-zhong':'tabs-lie']}}">审核中</view>
+            <view class="flex" style="align-items:center;width:100%;justify-content:center;" wx:if="{{states==1}}">
+                <view class="tabs-zhong-tiao"></view>
+            </view>
+        </view>
+    </view>
+    <view class="trade_box">
+        <view class="list-table" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+            <view class="single-trade">
+                <view bindtap="__e" class="trade2" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{good.m_id}}" data-status="{{good.status}}">
+                    <image class="bookimage" mode="aspectFill" src="{{good.image}}"></image>
+                    <view class="second-left">
+                        <view class="flex">
+                            <view class="titles">{{''+good.title+''}}</view>
+                            <view class="paystates" wx:if="{{good.examine==0}}">审核中</view>
+                            <view class="paystates" wx:if="{{good.examine==1}}">审核通过</view>
+                            <view class="paystates" wx:if="{{good.examine==2}}">审核失败</view>
+                        </view>
+                        <view class="flex" style="align-items:center;">
+                            <view class="price">{{'￥'+good.pay}}</view>
+                            <view class="kucun">{{'库存：'+good.stock}}</view>
+                        </view>
+                        <view class="flex">
+                            <view>
+                                <image class="xihuan" src="../../../static/images/xihuans.png" wx:if="{{good.stay==1}}"></image>
+                                <image class="xihuan" src="../../../static/images/xihuan.png" wx:else></image>
+                            </view>
+                            <view class="kucun">{{good.con}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view style="width:100%;height:1px;background:#EEEEEE;margin-top:25rpx;margin-bottom:25rpx;"></view>
+                <view class="trade3">
+                    <view class="margin-tb-sm-my text-center">
+                        <view class="sm button" wx:if="{{good.examine==1}}">已通过</view>
+                        <view class="sm button" wx:if="{{good.examine==2}}">已拒绝</view>
+                        <view class="sm button" wx:if="{{good.examine==0}}">审核中</view>
+                    </view>
+                    <block wx:if="{{good.m_id>0}}">
+                        <view bindtap="__e" class="margin-tb-sm-my text-center" data-event-opts="{{[ [ 'tap',[ [ 'edit',['$event'] ] ] ] ]}}" data-id="{{good.m_id}}">
+                            <view class="sm button">编辑</view>
+                        </view>
+                        <view class="margin-tb-sm-my text-center">
+                            <view bindtap="__e" class="sm button bg-orange" data-event-opts="{{[ [ 'tap',[ [ 'delorder',['$event'] ] ] ] ]}}" data-id="{{good.m_id}}" wx:if="{{good.state==0}}">下架</view>
+                            <view bindtap="__e" class="sm button bg-orange" data-event-opts="{{[ [ 'tap',[ [ 'delorder',['$event'] ] ] ] ]}}" data-id="{{good.m_id}}" wx:else>上架</view>
+                        </view>
+                    </block>
+                    <view class="margin-tb-sm-my text-center" wx:else>
+                        <view class="sm button bg-orange">已售完</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nocontent" wx:if="{{dataList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">没有更多数据了~</view>
+</view>

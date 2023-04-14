@@ -1,0 +1,37 @@
+<view>
+    <image mode="widthFix" src="/static/images/mygoods_bg.png" style="width:100%;"></image>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="abda70e0-1" vueSlots="{{['content']}}">
+        <view slot="content">我的宝贝</view>
+    </cu-custom>
+    <view class="userinfo_box">
+        <image class="avatar" src="{{loginuserinfo.avatarUrl}}"></image>
+        <view class="nickname">{{loginuserinfo.nickName}}</view>
+        <view class="num_box">
+            <view bindtap="__e" class="num_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/secondfav/index">
+                <view class="num">{{data.stay}}</view>
+                <view class="title">收藏</view>
+            </view>
+            <view bindtap="__e" class="num_item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/secondhand/footprint">
+                <view class="num">{{data.footprint}}</view>
+                <view class="title">足迹</view>
+            </view>
+        </view>
+    </view>
+    <view class="menu">
+        <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/secondhand/my">
+            <image src="/static/images/user/fabu.png"></image>
+            <view class="name">我的发布</view>
+            <text class="cuIcon-right text-black"></text>
+        </view>
+        <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/secondhand/sale">
+            <image src="/static/images/user/sale.png"></image>
+            <view class="name">我卖出的</view>
+            <text class="cuIcon-right text-black"></text>
+        </view>
+        <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'jump',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/secondhand/mybuy">
+            <image src="/static/images/user/buy.png"></image>
+            <view class="name">我买的宝贝</view>
+            <text class="cuIcon-right text-black"></text>
+        </view>
+    </view>
+</view>

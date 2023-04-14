@@ -1,0 +1,86 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" vueId="02e1f8f6-1" vueSlots="{{['content']}}">
+        <view slot="content">我的订单</view>
+    </cu-custom>
+    <view class="container">
+        <view class="modal" wx:if="{{getUseInfo}}">
+            <view class="m_box tc">
+                <view class="title">提示</view>
+                <view class="fs30 p20">请先开启用户授权</view>
+                <view class="border_top_2">
+                    <button bindgetuserinfo="__e" class="m_btn" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getUsetInfo',['$event'] ] ] ] ]}}" openType="getUserInfo">确定</button>
+                </view>
+            </view>
+        </view>
+        <view class="page">
+            <scroll-view class="nav text-center bg-white" scrollLeft="{{scrollLeft}}" scrollWithAnimation="{{true}}" scrollX="{{true}}" style="{{'top:'+CustomBar+'px'+';'}}">
+                <view class="flex text-center ">
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(0==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="0" data-index=" ">全部</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(7==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="7" data-index="1">待付款</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(6==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="6" data-index="2">待接单</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(9==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="9" data-index="3">待取货</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(5==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="5" data-index="7">待送达</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(11==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="11" data-index="11">已送达</view>
+                    <view bindtap="__e" class="{{[ 'cu-item text-df flex-sub '+(3==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="3" data-index="4">已完成</view>
+                    <view bindtap="__e" class="{{[ 'cu-item  text-df flex-sub '+(4==TabCur?'text-white cur':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'tabSelect',['$event'] ] ] ] ]}}" data-id="4" data-index="5">已过期</view>
+                </view>
+            </scroll-view>
+            <view style="{{'padding-top:'+80+'rpx'+';'+'background:'+'#fff'+';'}}"></view>
+            <view class="page-container">
+                <view class="grid col-1 nodata" style="margin:100rpx auto;text-align:center;width:100%;" wx:if="{{list.length==0}}">
+                    <view class="padding-sm">
+                        <view class="padding radius text-center light">
+                            <text class="cuIcon-infofill lg text-lg" style="font-size:50rpx;"></text>
+                            <view class="text-lg padding-tb-sm'">暂无数据</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="block" style="width:100%;" wx:if="{{list.length>0}}">
+                    <view bindtap="__e" class="box bg-white padding align-center" data-event-opts="{{[ [ 'tap',[ [ 'detail',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:for="{{$root.l0}}" wx:key="index">
+                        <view class="flex align-center justify-between">
+                            <view class="text-lg text-bold text-black">{{''+item.$orig._type_txt+'-'+(item.$orig.type!=4?item.$orig.remarks:item.$orig.title)}}</view>
+                            <view class="status_btn" style="flex-shrink:0;">{{item.$orig._status_txt}}</view>
+                        </view>
+                        <view class="time">{{item.$orig.create_time}}</view>
+                        <view class="flex addr_box align-center">
+                            <view style="width:80%;">
+                                <view class="flex align-center">
+                                    <view class="blue circle"></view>
+                                    <view class="addr margin-left">{{(item.$orig.type!=4?item.$orig.qu_addres:item.$orig.remarks)+''}}</view>
+                                </view>
+                                <text class="cuIcon-moreandroid" wx:if="{{item.$orig.type!=4||item.$orig.sh_addres!=''}}"></text>
+                                <view class="flex align-center" wx:if="{{item.$orig.type!=4||item.$orig.sh_addres!=''}}">
+                                    <view class="orange circle"></view>
+                                    <view class="addr margin-left">{{item.$orig.sh_addres}}</view>
+                                </view>
+                            </view>
+                            <view style="flex-shrink:0;">
+                                <view class="text-red text-bold" style="font-size:34rpx;">￥{{''+item.g0+''}}</view>
+                                <view class="text-lg text-red text-bold margin-top-sm align-center flex" wx:if="{{item.$orig._status_txt=='已取消'&&item.$orig.plus_price>0}}">
+                                    <image mode="widthFix" src="/static/sheng.png" style="width:21rpx;"></image>{{'￥ \n\t\t\t\t\t\t\t\t\t\t'+item.$orig.plus_price+''}}</view>
+                            </view>
+                        </view>
+                        <view class="flex margin-top operate_box">
+                            <view catchtap="__e" class="operate" data-event-opts="{{[ [ 'tap',[ [ 'handleQX',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.$orig._status_txt=='待接单'||item.$orig._status_txt=='未支付'}}">取消订单</view>
+                            <view catchtap="__e" class="operate active margin-left" data-event-opts="{{[ [ 'tap',[ [ 'pricePlusModal',['$0'],[ [ ['list','',index,'id'] ] ] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.$orig._status_txt=='待接单'||item.$orig._status_txt=='待取货'}}">加价</view>
+                            <view catchtap="__e" class=" operate active margin-left" data-event-opts="{{[ [ 'tap',[ [ 'handleZF',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.$orig._status_txt=='未支付'}}">付款</view>
+                            <view catchtap="__e" class=" operate" data-event-opts="{{[ [ 'tap',[ [ 'handleDel',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.$orig._status_txt=='已取消'||item.$orig._status_txt=='已过期'}}">删除</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-tabbar-height"></view>
+        <pt-footer bind:__l="__l" flg="订单" vueId="02e1f8f6-2"></pt-footer>
+    </view>
+    <view class="cover" wx:if="{{price_modal}}">
+        <view class="white_box">
+            <view class="text-bold text-center text-black margin-bottom tit">订单加钱</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','plus_price','$event',[] ] ] ] ] ]}}" placeholder="请输入加价金额" type="digit" value="{{plus_price}}"></input>
+            <view class="flex justify-between btn_row">
+                <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">取消</view>
+                <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'pricePlusConfirm',['$event'] ] ] ] ]}}">确认</view>
+            </view>
+        </view>
+    </view>
+</view>

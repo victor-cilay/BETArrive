@@ -1,0 +1,197 @@
+page {
+    background: #f9f9f9;
+}
+
+.box {
+    background: #fff;
+    margin: 30rpx;
+    padding: 30rpx;
+}
+
+.box,.textarea {
+    border-radius: 10rpx;
+}
+
+.textarea {
+    background: #f9f9f9;
+    height: 150rpx;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    width: 100%;
+}
+
+.left_num {
+    bottom: 20rpx;
+    color: #d1d1d1;
+    position: absolute;
+    right: 20rpx;
+}
+
+.size30 {
+    font-size: 30rpx;
+}
+
+.name_input {
+    width: 50%;
+}
+
+.img {
+    height: 200rpx;
+    margin-top: 30rpx;
+    width: 200rpx;
+}
+
+.btn_row {
+    margin: 70rpx 50rpx 30rpx;
+}
+
+.btn_:first-child {
+    background: #00bb69!important;
+}
+
+.btn_ {
+    background: #ff6344;
+    color: #fff;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    width: 300rpx;
+}
+
+.add,.btn_ {
+    border-radius: 10rpx;
+}
+
+.add {
+    align-items: center;
+    background: #ffeae5;
+    color: #ff6344;
+    display: flex;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    height: 60rpx;
+    justify-content: center;
+    min-width: 128rpx;
+    padding: 0 20rpx;
+}
+
+.addAttr {
+    background: rgba(0,187,105,.13);
+    color: #00bb69;
+}
+
+.addModal {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.addModal .item {
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 10rpx;
+    height: 80rpx;
+    width: 590rpx;
+}
+
+.addModal .item .key {
+    color: #141414;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+}
+
+.addModal .item .val {
+    margin-left: auto;
+    text-align: right;
+}
+
+.addModal .item .no {
+    color: #c4cdd7;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+}
+
+.cu-bar .btns {
+    justify-content: center;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.specs {
+    flex-wrap: wrap;
+}
+
+.specs .item {
+    border: 2rpx solid #ff5434;
+    border-radius: 10rpx;
+    height: 54rpx;
+    position: relative;
+}
+
+.specs .item .type {
+    color: #141414;
+    font-family: PingFangSC-Regular,PingFang SC;
+}
+
+.specs .item .price,.specs .item .type {
+    font-size: 24rpx;
+    font-weight: 400;
+    padding: 0 10rpx;
+}
+
+.specs .item .price {
+    background: #fff4f2;
+    border-radius: 0 10rpx 10rpx 0;
+    color: #ff6344;
+    font-family: SourceHanSansCN-Regular,SourceHanSansCN;
+    height: 100%;
+}
+
+.specs .item .close {
+    height: 24rpx;
+    position: absolute;
+    right: -12rpx;
+    top: -12rpx;
+    width: 24rpx;
+}
+
+.specs .adds {
+    border: 2rpx solid #ff6344;
+    border-radius: 10rpx;
+    color: #ff6344;
+    height: 64rpx;
+    justify-content: center;
+    width: 80rpx;
+}
+
+.edit {
+    height: 26rpx;
+    margin-left: 20rpx;
+    width: 26rpx;
+}
+
+.del {
+    height: 36rpx;
+    margin-left: auto;
+    width: 36rpx;
+}
+
+.close,.enter {
+    background: #fff!important;
+    border-top: 2px solid #f9f9f9;
+    color: #141414;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    width: 50%;
+}
+
+.enter {
+    border-left: 2px solid #f9f9f9;
+    color: #de1111;
+}

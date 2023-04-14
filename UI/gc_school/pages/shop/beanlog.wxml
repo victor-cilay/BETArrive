@@ -1,0 +1,42 @@
+<scroll-view class="scrollPage" scrollY="{{true}}">
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="3de2cb8c-1" vueSlots="{{['content']}}">
+        <view slot="content">金豆明细</view>
+    </cu-custom>
+    <view class="padding bg-white flex align-center justify-between text-black">
+        <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindDateChange',['$event'] ] ] ] ]}}" end="{{endDate}}" fields="month" mode="date" start="{{startDate}}" value="{{date}}">
+            <view class="uni-input text-lg text-bold">{{date+''}}<text class="cuIcon-unfold"></text>
+            </view>
+        </picker>
+        <view bindtap="__e" class="type_box" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">{{type_list[type_index]}}<text class="cuIcon-triangledownfill text-lg"></text>
+        </view>
+    </view>
+    <view class="{{['cu-modal',modalName=='Modal'?'show':'']}}">
+        <view class="cu-dialog padding-bottom-xl">
+            <view class="cu-bar justify-end">
+                <view class="content">选择筛选项</view>
+                <view bindtap="__e" class="action" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view class="padding-xl flex">
+                <view wx:for="{{type_list}}" wx:key="index">
+                    <view bindtap="__e" class="{{['type_item','text-black',type_index==index?'type_active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'change_type',[index] ] ] ] ]}}">{{item}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{dataList.length>0}}">
+        <view class="margin-lg flex align-center justify-between padding list" wx:for="{{dataList}}" wx:key="index">
+            <view class="text-lg text-black" style="flex-grow:1;">
+                <view class="text-df text-bold flex align-center">
+                    <image src="../../../static/images/user/balance.png"></image>
+                    <block wx:if="{{item.o_id==99999999}}">{{''+(item.type==1?'后台充值':'订单扣除')+''}}</block>
+                    <block wx:else>{{''+(item.type==1?'充值':'订单扣除')+''}}</block>
+                </view>
+                <view class="text-sm date">{{item.addtime}}</view>
+            </view>
+            <view class="{{['text-xl','text-bold',item.type==1?'text-red':'']}}">{{(item.type==1?'+':'-')+item.number}}</view>
+        </view>
+    </block>
+    <view class="text-lg text-center margin-top" wx:else>暂无相关数据~</view>
+</scroll-view>

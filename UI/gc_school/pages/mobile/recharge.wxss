@@ -1,0 +1,78 @@
+page {
+    background-color: #fff;
+}
+
+.line {
+    background-color: #f5f7fe;
+    height: 16rpx;
+    width: 100%;
+}
+
+.item {
+    border: 1rpx solid #f2f2f2;
+    border-radius: 15rpx;
+    margin-bottom: 20rpx;
+    margin-right: 22rpx;
+    width: 30%;
+}
+
+.item .val {
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.item .price {
+    font-size: 22rpx;
+    margin-top: 10rpx;
+}
+
+.item_active {
+    background-color: #fef4f3;
+    border: 1rpx solid #eb2310;
+    color: #eb2310;
+}
+
+input {
+    border-bottom: 1rpx solid #d3d3d3;
+    font-size: 32rpx;
+    height: 60rpx;
+    margin-bottom: 0!important;
+    margin-top: 40rpx!important;
+}
+
+.submit {
+    background-color: #fe2502;
+    border-radius: 50rpx;
+    color: #fff;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 30rpx auto;
+    text-align: center;
+    width: 80%;
+}
+
+.radio_name {
+    flex-grow: 1;
+    font-size: 30rpx;
+    margin-left: 5rpx;
+    margin-right: 5rpx;
+}
+
+.icon {
+    height: 45rpx;
+    width: 45rpx;
+}
+
+.icons {
+    height: 55rpx;
+    width: 55rpx;
+}
+
+.margin-top0 {
+    margin-top: 0!important;
+}
+
+.margin-bottom0 {
+    margin-bottom: 0!important;
+}

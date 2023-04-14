@@ -1,0 +1,79 @@
+<view class="pages">
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="2bd9711e-1" vueSlots="{{['content']}}">
+        <view slot="content">{{class_name||'分类'}}</view>
+    </cu-custom>
+    <view class="padding-lr" style="padding-bottom:100rpx;">
+        <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+        <view bindtap="__e" class="article padding" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/article/detail?id='+item.article_id] ] ] ] ]}}" data-id="{{item.article_id}}" wx:for="{{dataList}}" wx:key="index">
+            <view class="flex row">
+                <image class="avatar" mode="scaleToFill" src="{{item.avatar?item.avatar:fileUrl+'avatar.jpg'}}" wx:if="{{item.is_anonymous==0}}"></image>
+                <image class="avatar" mode="scaleToFill" src="{{fileUrl+'avatar.jpg'}}" wx:else></image>
+                <view class="nickname">{{item.is_anonymous==1?'匿名用户':item.nickname}}</view>
+                <view class="date">{{item.createtime}}</view>
+                <image class="top" src="/static/icon/top.png" wx:if="{{item.is_expired==1}}"></image>
+            </view>
+            <view class="content margin-tb">
+                <text decode="{{true}}" space="nbsp" style="word-break:break-word;">{{item.content}}</text>
+            </view>
+            <view class="imgs row  margin-bottom" wx:if="{{item.image.length>0}}">
+                <image class="img" mode="aspectFill" src="{{image}}" wx:for="{{item.image}}" wx:for-item="image" wx:key="index"></image>
+            </view>
+            <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{item.video}}">
+                <video class="margin-bottom" src="{{item.video}}" style="width:100%;"></video>
+            </view>
+            <view class="footer row">
+                <view class="class_name" wx:if="{{item.class_name}}">{{''+item.class_name+''}}</view>
+                <view class="view">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/views.png" style="height:45rpx;"></image>{{''+item.views_num+''}}</view>
+                <view class="comment">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/comment.png"></image>{{''+item.comments_num+''}}</view>
+                <view class="{{['love',item.is_fav==1?'cur':'']}}">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/love.png"></image>{{''+item.likes_num+''}}</view>
+            </view>
+        </view>
+        <view bindtap="__e" class="article_box padding" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{item.article_id}}" wx:if="{{1==2}}" wx:for="{{dataList}}" wx:key="index">
+            <view class="flex">
+                <block wx:if="{{item.is_anonymous==0}}">
+                    <image class="avatar" src="{{item.avatar?item.avatar:'https://gcwe7.link1024.com/web/img/avatar.png'}}"></image>
+                    <view>
+                        <view class="nickname">{{item.nickname}}</view>
+                        <view class="date">{{item.createtime}}</view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <image class="avatar" src="https://gcwe7.link1024.com/web/img/avatar.png"></image>
+                    <view>
+                        <view class="nickname">匿名用户</view>
+                        <view class="date">{{item.createtime}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="content margin-top">{{item.content}}</view>
+            <view class="margin-top" wx:if="{{item.media_type=='1'}}">
+                <video catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'play',['$event'] ] ] ] ]}}" src="{{item.video}}" style="width:100%;"></video>
+            </view>
+            <block wx:else>
+                <view class="margin-top" wx:if="{{item.media_type=='2'}}">
+                    <image catchtap="__e" class="item_img" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-list="{{item.image}}" mode="aspectFill" src="{{img}}" wx:for="{{item.image}}" wx:for-index="index1" wx:for-item="img" wx:key="index1"></image>
+                </view>
+            </block>
+            <view class="flex justify-between margin-top">
+                <view class="flex icon_item">
+                    <image src="/static/images/article/share.png"></image>
+                    <text>{{item.collections_num}}</text>
+                </view>
+                <view class="flex icon_item">
+                    <image src="/static/images/article/comment.png"></image>
+                    <text>{{item.comments_num}}</text>
+                </view>
+                <view class="flex icon_item">
+                    <image src="/static/images/article/fav.png"></image>
+                    <text>{{item.likes_num}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="right_fixed" wx:if="{{class_id}}">
+        <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/article/post?cid='+class_id] ] ] ] ]}}" src="/static/images/article/i_fabu.png"></image>
+    </view>
+</view>

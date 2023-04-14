@@ -1,0 +1,33 @@
+<view>
+    <cu-custom bgColor bind:__l="__l" class="bgmains" isBack="{{true}}" vueId="6ab160aa-1" vueSlots="{{['content']}}">
+        <view slot="content">{{data.userinfo.nickname+'的团队'}}</view>
+    </cu-custom>
+    <image mode="widthFix" src="{{fileUrl+'dis/bg.png'}}" style="width:100%;"></image>
+    <view class="padding" style="position:absolute;top:15%;width:100%;">
+        <view class="flex margin-bottom">
+            <image class="avatar" src="{{data.userinfo.avatar}}"></image>
+            <view class="text-lg text-bold margin-top">{{data.userinfo.nickname}}</view>
+        </view>
+        <view class="userbox flex">
+            <view style="margin-left:200rpx;">
+                <view class="title">加入时间</view>
+                <view class="date">{{data.userinfo.create_time}}</view>
+            </view>
+            <view class="margin-left">
+                <view class="title">下级成员</view>
+                <view class="num">{{data.count+'人'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="position">
+        <view class="margin box padding" wx:for="{{$root.l0}}" wx:key="index">
+            <view class="flex align-center">
+                <image class="avatar" src="{{item.$orig.avatar}}"></image>
+                <view class="userinfo">
+                    <view class="nickname">{{item.$orig.nickname}}</view>
+                    <view class="date flex align-center">{{item.f0+''}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

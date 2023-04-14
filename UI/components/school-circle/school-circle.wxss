@@ -1,0 +1,149 @@
+.tab_bar .tab {
+    align-items: center;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    font-weight: 500;
+    margin-right: 30rpx;
+    position: relative;
+}
+
+.tab_bar .tab:after {
+    background: #ff6344;
+    border-radius: 6rpx;
+    bottom: 5rpx;
+    content: "";
+    display: block;
+    height: 12rpx;
+    opacity: 0;
+    position: absolute;
+    width: 72rpx;
+    z-index: -1;
+}
+
+.tab_bar .tab.cur {
+    color: #121212;
+    font-family: PingFang SC;
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.tab_bar .tab.cur::after {
+    opacity: 1;
+}
+
+.article {
+    background: #fff;
+    border-radius: 20rpx;
+    margin-top: 25rpx;
+    position: relative;
+    width: 690rpx;
+}
+
+.article .avatar {
+    border-radius: 50%;
+    height: 80rpx;
+    width: 80rpx;
+}
+
+.article .nickname {
+    color: #141414;
+    font-family: PingFang SC;
+    font-size: 32rpx;
+    font-weight: 700;
+    margin-left: 20rpx;
+}
+
+.article .date {
+    color: #999;
+    font-size: 26rpx;
+    margin-left: auto;
+}
+
+.article .content,.article .date {
+    font-family: PingFang SC;
+    font-weight: 400;
+}
+
+.article .content {
+    color: #141414;
+    font-size: 30rpx;
+}
+
+.article .imgs {
+    flex-flow: wrap;
+}
+
+.article .imgs .img {
+    border-radius: 10rpx;
+    height: 180rpx;
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+    width: 31%;
+}
+
+.article .imgs .img.num1,.article .imgs .img.num2 {
+    height: 400rpx;
+}
+
+.article .imgs .img:nth-last-child(1) {
+    margin: right 0;
+}
+
+.article .class_name {
+    background: #faf1f1;
+    border-radius: 24rpx;
+    color: #ff6344;
+    display: inline-block;
+    font-family: PingFang SC;
+    font-size: 24rpx;
+    font-weight: 500;
+    padding: 5rpx 20rpx;
+}
+
+.article .view>.icon {
+    height: 33rpx;
+    width: 44rpx;
+}
+
+.article .comment>.icon {
+    height: 34rpx;
+    width: 34rpx;
+}
+
+.article .love>.icon {
+    height: 34rpx;
+    width: 37rpx;
+}
+
+.article .comment,.article .love,.article .view {
+    align-items: center;
+    color: #ff6344;
+    display: flex;
+    filter: grayscale(199);
+    font-family: PingFang SC;
+    font-size: 26rpx;
+    font-weight: 400;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+}
+
+.article .comment .icon,.article .love .icon,.article .view .icon {
+    margin-right: 10rpx;
+}
+
+.article .comment.cur,.article .love.cur,.article .view.cur {
+    filter: grayscale(0);
+}
+
+.article .view {
+    margin-left: auto;
+}
+
+.top {
+    height: 77rpx;
+    margin-left: 30rpx;
+    width: 99rpx;
+}

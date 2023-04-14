@@ -1,0 +1,59 @@
+.page {
+    background-color: #fbfbfb;
+}
+
+.list {
+    padding: 15rpx;
+}
+
+.list .item {
+    background-color: #fff;
+    flex-wrap: wrap;
+    padding: 15rpx;
+}
+
+.list .item,.list .item .title {
+    display: flex;
+    margin-bottom: 10rpx;
+}
+
+.list .item .title {
+    flex: 1;
+    font-size: 28rpx;
+    justify-content: space-between;
+}
+
+.list .item .desc {
+    color: #999;
+    font-size: 26rpx;
+    margin-bottom: 10rpx;
+    width: 100%;
+}
+
+.list .item .footer {
+    color: #ccc;
+    display: flex;
+    font-size: 22rpx;
+    width: 100%;
+}
+
+.list .item .footer,.list .item .footer .sm {
+    justify-content: center;
+}
+
+.list .item .footer .sm {
+    flex: 1;
+    text-align: center;
+}
+
+.list .item .footer .sm text {
+    color: #64edac;
+}
+
+.list .item .footer .sm.none {
+    flex: none;
+}
+
+.list .item .footer .sm:first-child {
+    text-align: left;
+}

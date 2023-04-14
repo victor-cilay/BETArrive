@@ -1,0 +1,32 @@
+<view class="tixian">
+    <cu-custom bgColor="bgmains" bind:__l="__l" class="bgmains" isBack="{{true}}" vueId="2d7fba29-1" vueSlots="{{['content']}}">
+        <view slot="content">提现</view>
+    </cu-custom>
+    <view class="header">
+        <view class="key">我的余额（元）</view>
+        <view class="val">{{''+(userInfo.spread_balance||0)+''}}</view>
+        <view class="key">{{'提现最低额度为'+(sys.withdraw_min||0)+'元'}}</view>
+    </view>
+    <view class="box padding">
+        <view class="tit margin-top">提现金额</view>
+        <view class="money padding-lr row">
+            <view class="key margin-right-sm">￥</view>
+            <input bindinput="__e" class="val" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','price','$event',[] ] ] ] ] ]}}" placeholder="请输入提现金额" placeholderClass="no" type="digit" value="{{price}}"></input>
+        </view>
+        <view class="tips margin-top" wx:if="{{is_pay==1}}">提现金额将转至微信余额，请注意查收</view>
+        <view class="padding padding-bottom-sm bg-white margin-top" wx:if="{{is_pay==0}}">
+            <view class="title text-grey text-lg">提现方式</view>
+        </view>
+        <view class="cu-form-group" wx:if="{{is_pay==0}}">
+            <view class="title">姓名</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','name','$event',[] ],['form'] ] ] ] ]}}" name="name" placeholder="输入姓名" value="{{form.name}}"></input>
+        </view>
+        <view class="cu-form-group" wx:if="{{is_pay==0}}">
+            <view class="title">{{sys.withdraw_tips?sys.withdraw_tips:'手机号'}}</view>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '$0','account','$event',[] ],['form'] ] ] ] ]}}" name="account" placeholder="请输入" value="{{form.account}}"></input>
+        </view>
+        <view wx:if="{{loading}}">
+            <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ ['formSubmit'] ] ] ]}}">提交申请</view>
+        </view>
+    </view>
+</view>

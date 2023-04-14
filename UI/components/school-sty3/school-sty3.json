@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "school-store-classify": "/components/school-store-classify/school-store-classify",
+        "uni-notice-bar": "/uni_modules/uni-notice-bar/components/uni-notice-bar/uni-notice-bar",
+        "pt-footer": "/components/footer/footer"
+    },
+    "component": true
+}

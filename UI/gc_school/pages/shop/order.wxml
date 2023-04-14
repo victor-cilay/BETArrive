@@ -1,0 +1,69 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="9b3f7e80-1" vueSlots="{{['content']}}">
+        <view slot="content">订单列表</view>
+    </cu-custom>
+    <view class="tab_menu">
+        <view bindtap="__e" class="{{[ 'item '+(tab_index==3?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-index="3">待取货</view>
+        <view bindtap="__e" class="{{[ 'item '+(tab_index==7?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-index="7">待送达</view>
+        <view bindtap="__e" class="{{[ 'item '+(tab_index==10?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-index="10">待到店</view>
+        <view bindtap="__e" class="{{[ 'item '+(tab_index==9?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-index="9">待取消</view>
+        <view bindtap="__e" class="{{[ 'item '+(tab_index==4?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-index="4">已完成</view>
+    </view>
+    <view class="order_box">
+        <block wx:if="{{orderList.length>0}}">
+            <view class="order_item" wx:for="{{$root.l0}}" wx:key="index">
+                <view class="text-df" style="font-size:36rpx;">商品信息</view>
+                <view class="text-df" wx:for="{{item.$orig.good_details}}" wx:for-index="index1" wx:for-item="good" wx:key="index1">{{good}}</view>
+                <view class="flex justify-between align-center margin-top-xs">
+                    <view class="text-df" style="line-height:50rpx;">
+                        <text class="text-grey">商品价格:</text>
+                        <text class="text-orange text-bold text-xl">{{'￥'+my.tofixed(item.$orig.food_money)}}</text>
+                    </view>
+                </view>
+                <view class="text-df text-grey">下单时间：<view>{{''+item.f0+''}}</view>
+                </view>
+                <view class="text-df text-grey" wx:if="{{item.$orig.sh_name}}">用户姓名：<view>{{item.$orig.sh_name}}</view>
+                </view>
+                <view bindtap="__e" class="text-df text-grey" data-event-opts="{{[ [ 'tap',[ [ 'call',['$0'],[ [ ['orderList','',index,'phone'] ] ] ] ] ] ]}}" wx:if="{{item.$orig.phone}}">用户手机号：<view>{{''+item.$orig.phone+''}}<text class="cuIcon-phone margin-left-xs" style="color:#ff6344;"></text>
+                    </view>
+                </view>
+                <view class="text-df text-grey" wx:if="{{item.$orig.arrival_time}}">到店时间<view>{{''+item.$orig.arrival_time+''}}</view>
+                </view>
+                <view bindtap="__e" class="text-df text-grey" data-event-opts="{{[ [ 'tap',[ [ 'call',['$0'],[ [ ['orderList','',index,'sh_phone'] ] ] ] ] ] ]}}" wx:if="{{item.$orig.sh_phone}}">用户手机号：<view>{{''+item.$orig.sh_phone+''}}<text class="cuIcon-phone margin-left-xs" style="color:#ff6344;"></text>
+                    </view>
+                </view>
+                <view class="text-df text-grey">用户备注：<view>{{''+(item.$orig.remarks||'用户无备注')+''}}</view>
+                </view>
+                <view class="text-df text-grey" wx:if="{{item.$orig.rider_name}}">骑手姓名：<view>{{''+item.$orig.rider_name+''}}</view>
+                </view>
+                <view bindtap="__e" class="text-df text-grey" data-event-opts="{{[ [ 'tap',[ [ 'call',['$0'],[ [ ['orderList','',index,'rider_phone'] ] ] ] ] ] ]}}" wx:if="{{item.$orig.rider_phone}}">骑手手机号：<view>{{''+item.$orig.rider_phone+''}}<text class="cuIcon-phone margin-left-xs" style="color:#ff6344;"></text>
+                    </view>
+                </view>
+                <view class="text-df text-grey">是否骑手垫付<view>{{''+(item.$orig.is_open_pay==1?'是':'否')+''}}</view>
+                </view>
+                <view class="text-df text-grey" wx:if="{{item.$orig.cancel_reason&&tab_index==9}}">取消原因：<view>{{''+item.$orig.cancel_reason+''}}</view>
+                </view>
+                <view class="row opt_btn" wx:if="{{tab_index==9}}">
+                    <view bindtap="__e" class="btn btn1 row" data-event-opts="{{[ [ 'tap',[ [ 'agree',['$event'] ] ] ] ]}}" data-id="{{item.$orig.id}}">同意取消</view>
+                    <view bindtap="__e" class="btn btn2 row" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}" data-id="{{item.$orig.id}}" data-type="2">拒绝取消</view>
+                </view>
+            </view>
+        </block>
+        <view class="empty" wx:else>
+            <image mode="widthFix" src="/static/images/store/empty.png"></image>
+            <view>暂无相关数据~</view>
+        </view>
+    </view>
+</view>
+<wxs module="my">
+var tofixed = (function(str) {
+    if (str == 'NaN') {
+        return (0)
+    } else {
+        var pick = parseFloat(str).toFixed(2);
+        console.log(pick);
+        return (pick)
+    }
+});
+module.exports.tofixed = tofixed;
+</wxs>

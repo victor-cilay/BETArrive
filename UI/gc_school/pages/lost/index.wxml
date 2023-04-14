@@ -1,0 +1,61 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="42b63cce-1" vueSlots="{{['content']}}">
+        <view slot="content">失物招领</view>
+    </cu-custom>
+    <view class="padding-top-sm padding-bottom-sm padding bg-white">
+        <view bindtap="__e" class="search_box" data-event-opts="{{[ [ 'tap',[ [ 'jumps',['$event'] ] ] ] ]}}" data-url="/gc_school/pages/lost/search">
+            <text class="cuIcon-search"></text>搜索</view>
+    </view>
+    <view class="slide_box padding" style="padding-top:0;" wx:if="{{slideList.length>0}}">
+        <swiper autoplay="{{autoplay}}" bindchange="__e" circular="{{true}}" class="swiper-box" data-event-opts="{{[ [ 'change',[ [ 'index_swiperChange',['$event'] ] ] ] ]}}" duration="{{duration}}">
+            <swiper-item wx:for="{{slideList}}" wx:key="index">
+                <image bindtap="__e" class="{{[index_swiperCurrent==index?'on slide-image':' slide-image']}}" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="{{true}}" src="{{item.img}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="indicator-dots">
+            <view class="{{[index_swiperCurrent==index?'dots_on':'']}}" wx:for="{{slideList}}" wx:key="index"></view>
+        </view>
+    </view>
+    <view class="padding-top-sm padding bg-white">
+        <view class="cate_item_box flex">
+            <view bindtap="__e" class="{{[ 'cate_item '+(cate_index==index?'cate_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'cateChange',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="index">{{item.name}}</view>
+        </view>
+    </view>
+    <view class="padding-bottom" style="padding-bottom:100rpx;">
+        <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+        <block wx:else>
+            <view bindtap="__e" class="article_box padding margin" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{item.info_id}}" wx:for="{{dataList}}" wx:key="index">
+                <view class="flex align-center">
+                    <image class="avatar" src="{{item.avatar?item.avatar:'/images/code/c17.png'}}"></image>
+                    <view class="nickname">{{item.nickname}}</view>
+                    <view class="date">{{item.createtime}}</view>
+                </view>
+                <view class="item text-lg text-bolds">{{item.title}}</view>
+                <view class="margin-top" wx:if="{{item.media_type=='1'}}">
+                    <video catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'play',['$event'] ] ] ] ]}}" src="{{item.video}}" style="width:100%;"></video>
+                </view>
+                <block wx:else>
+                    <view class="margin-top" wx:if="{{item.media_type=='2'}}">
+                        <image catchtap="__e" class="item_img" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-list="{{item.image}}" mode="aspectFill" src="{{img}}" wx:for="{{item.image}}" wx:for-index="index1" wx:for-item="img" wx:key="index1"></image>
+                    </view>
+                </block>
+                <view class="item flex align-center text-bold">
+                    <image class="icon" src="../../../static/icon/lost/location.png"></image>{{''+(item.type==1?'拾物地点':'丢失地点')+'：'}}<text class="val">{{item.address}}</text>
+                </view>
+                <view class="item flex align-center text-bold" wx:if="{{item.pick_date}}">
+                    <image class="icon" src="../../../static/icon/lost/date.png"></image>{{''+(item.type==1?'拾物时间':'丢失时间')+'：'}}<text class="val">{{item.pick_date}}</text>
+                </view>
+                <view class="item flex align-center text-bold" wx:if="{{item.phone}}">
+                    <image class="icon" src="../../../static/icon/lost/phone.png"></image>联系电话：<text class="val">{{item.phone}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="allEntry">
+        <image bindtap="__e" class="entryoperation" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" mode="widthFix" src="/static/icon/lost/operate.png"></image>
+        <view class="{{[seeOperation?'OpenOperation':'']}}">
+            <image bindtap="__e" class="entryrelease childImage" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/lost/post'] ] ] ] ]}}" mode="widthFix" src="/static/icon/lost/fabu.png"></image>
+            <image bindtap="__e" class="entryadmin childImage" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/lost/my'] ] ] ] ]}}" mode="widthFix" src="/static/icon/lost/manage.png"></image>
+        </view>
+    </view>
+</view>

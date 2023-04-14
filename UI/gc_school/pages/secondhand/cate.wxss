@@ -1,0 +1,121 @@
+page {
+    background: #fff;
+}
+
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.search_bg {
+    padding: 30rpx;
+}
+
+.search_box {
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    display: flex;
+    justify-content: space-around;
+}
+
+.search_box,.search_box input {
+    border-radius: 10rpx;
+    line-height: 70rpx;
+}
+
+.search_box input {
+    background-color: #fff;
+    height: 70rpx;
+    padding-left: 10rpx;
+    width: 80%;
+}
+
+.cuIcon-search {
+    font-size: 34rpx;
+}
+
+.cate_box {
+    display: flex;
+    overflow: scroll;
+}
+
+.cate_item {
+    flex-shrink: 0;
+    font-size: 30rpx;
+    text-align: center;
+    width: 25%;
+}
+
+.goods_line {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    padding: 0 30rpx 30rpx;
+}
+
+.goods_item {
+    border: 10rpx;
+    border-radius: 10rpx;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    margin-top: 20rpx;
+    width: 48%;
+}
+
+.goods_item image {
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+    height: 300rpx;
+    width: 100%;
+}
+
+.goods_item .name {
+    font-size: 30rpx;
+    padding: 10rpx 20rpx;
+}
+
+.goods_item .price {
+    color: #919191;
+    display: flex;
+    font-size: 28rpx;
+    justify-content: space-between;
+    padding: 0rpx 20rpx 10rpx;
+}
+
+.goods_item .price view {
+    text-decoration: line-through;
+}
+
+.goods_item .price .price_item {
+    color: #ff6344!important;
+    font-size: 30rpx!important;
+    font-weight: 700;
+    text-decoration: none!important;
+}
+
+.goods_item .userInfo {
+    font-size: 22rpx;
+    justify-content: space-between;
+    padding: 10rpx 20rpx;
+}
+
+.goods_item .userInfo,.goods_item .userInfo .left {
+    align-items: center;
+    display: flex;
+}
+
+.goods_item .userInfo .avatar {
+    border-radius: 50%;
+    height: 35rpx;
+    margin-right: 10rpx;
+    width: 35rpx;
+}
+
+.cate_active {
+    color: #ff6344;
+}
+
+.nomore {
+    font-size: 30rpx;
+    text-align: center;
+}

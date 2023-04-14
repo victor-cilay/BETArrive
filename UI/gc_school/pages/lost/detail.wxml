@@ -1,0 +1,89 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="f3ddbdea-1" vueSlots="{{['content']}}">
+        <view slot="content">详情</view>
+    </cu-custom>
+    <view class="padding top_box">
+        <view class="flex article_box align-center">
+            <image class="avatar" src="{{detail.avatar?detail.avatar:'/images/code/c17.png'}}"></image>
+            <view class="nickname">{{detail.nickname}}</view>
+            <view class="date">{{detail.createtime}}</view>
+        </view>
+        <view class="item text-lg text-bold">{{detail.title}}</view>
+        <view class="margin-top" wx:if="{{detail.media_type=='1'}}">
+            <video src="{{detail.video}}" style="width:100%;"></video>
+        </view>
+        <block wx:else>
+            <view class="margin-top" wx:if="{{detail.media_type=='2'}}">
+                <image bindtap="__e" class="item_img" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-list="{{detail.image}}" mode="aspectFill" src="{{img}}" wx:for="{{detail.image}}" wx:for-item="img" wx:key="index"></image>
+            </view>
+        </block>
+        <view class="item flex align-center text-bold" wx:if="{{detail.address}}">
+            <image class="icon" src="../../../static/icon/lost/location.png"></image>{{''+(detail.type==1?'拾物地点':'丢失地点')+'：'}}<text class="val">{{detail.address}}</text>
+        </view>
+        <view class="item flex align-center text-bold" wx:if="{{detail.pick_date}}">
+            <image class="icon" src="../../../static/icon/lost/date.png"></image>{{''+(detail.type==1?'拾物时间':'丢失时间')+'：'}}<text class="val">{{detail.pick_date}}</text>
+        </view>
+        <view class="item flex align-center text-bold" wx:if="{{detail.phone}}">
+            <image class="icon" src="../../../static/icon/lost/phone.png"></image>联系电话：<text class="val">{{detail.phone}}</text>
+        </view>
+        <view class="item flex align-center text-bold" wx:if="{{detail.claim_method}}">
+            <image class="icon" src="../../../static/icon/lost/get.png"></image>认领方式：<text class="val">{{detail.claim_method}}</text>
+        </view>
+        <view class="item flex align-center text-bold" wx:if="{{detail.remarks}}">
+            <image class="icon" src="../../../static/icon/lost/remark.png"></image>备注信息：<text class="val">{{detail.remarks}}</text>
+        </view>
+    </view>
+    <view class="comment_box padding">
+        <view class="name" style="padding-left:0;" wx:if="{{comment_list.length>0}}">{{'共'+comment_list.length+'条留言'}}</view>
+        <block wx:for="{{comment_list}}" wx:key="index">
+            <view class="comment_item_first">
+                <view class="top">
+                    <image src="{{item.avatar}}"></image>
+                    <view class="nickname">{{item.nickname}}</view>
+                    <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="-1" style="flex-grow:2;">{{item.createtime}}</view>
+                    <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{item.id}}" wx:if="{{u_id==item.u_id}}"></text>
+                </view>
+                <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="-1">{{item.content}}</view>
+            </view>
+            <view class="comment_item_child" wx:if="{{index1<1}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child" wx:key="index1">
+                <view class="top justify-between">
+                    <image src="{{child.avatar}}"></image>
+                    <view class="nickname">{{child.nickname}}</view>
+                    <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}" style="flex-grow:2;">{{child.createtime}}</view>
+                    <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{child.id}}" wx:if="{{u_id==child.u_id}}"></text>
+                </view>
+                <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+            </view>
+            <view class="comment_item_child" wx:if="{{index1>=1&&item.block==true}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child" wx:key="index1">
+                <view class="top justify-between">
+                    <image src="{{child.avatar}}"></image>
+                    <view class="nickname">{{child.nickname}}</view>
+                    <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}" style="flex-grow:2;">{{child.createtime}}</view>
+                    <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{child.id}}" wx:if="{{u_id==child.u_id}}"></text>
+                </view>
+                <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+            </view>
+            <view bindtap="__e" class="more" data-event-opts="{{[ [ 'tap',[ [ 'showmore',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==false}}">展开<text class="cuIcon-unfold"></text>
+            </view>
+            <block wx:else>
+                <view bindtap="__e" class="more" data-event-opts="{{[ [ 'tap',[ [ 'showmore',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==true}}">收起<text class="cuIcon-fold"></text>
+                </view>
+                <view wx:else></view>
+            </block>
+        </block>
+        <view class="nocontent" wx:if="{{comment_list==0}}">
+            <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+            <view class="blank_text">暂无留言哦~</view>
+        </view>
+    </view>
+    <view class="comment_input" style="{{'bottom:'+bottom+'px'}}">
+        <button class="row padding-xs" openType="share" style="width:150rpx;flex-shrink:0;">
+            <image class="share_icon" src="/static/images/article/shares.png"></image>
+            <text class="text-df margin-left-sm">分享</text>
+        </button>
+        <input adjustPosition="{{false}}" bindblur="__e" bindfocus="__e" bindinput="__e" data-event-opts="{{[ [ 'focus',[ [ 'inputFocus',['$event'] ] ] ],[ 'blur',[ [ 'inputBlur',['$event'] ] ] ],[ 'input',[ [ 'inputFun',['$event'] ] ] ] ]}}" placeholder="{{placeholder}}" value="{{input}}"></input>
+        <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">
+            <image src="../../../static/icon/lost/send.png" style="width:60rpx;height:60rpx;"></image>
+        </view>
+    </view>
+</view>

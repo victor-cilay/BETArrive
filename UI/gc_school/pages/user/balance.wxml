@@ -1,0 +1,30 @@
+<scroll-view class="scrollPage" scrollY="{{true}}">
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="6a799b3d-1" vueSlots="{{['content']}}">
+        <view slot="content">余额</view>
+    </cu-custom>
+    <view class="padding-lg padding-bottom-sm" style="position:relative;">
+        <image mode="widthFix" src="../../../static/images/user/balance-bg.png"></image>
+        <view class="text-white content">
+            <view class="text-lg30">可用余额</view>
+            <view class="text-bold" style="font-size:75rpx;">{{userInfo.balance}}</view>
+            <view class="flex justify-between margin-top" style="width:80%;">
+                <view>
+                    <view class="text-lg30">跑腿昨日收入</view>
+                    <view class="text-xl">{{userInfo.yesterday}}</view>
+                </view>
+                <view>
+                    <view class="text-lg30">跑腿总收入</view>
+                    <view class="text-xl">{{userInfo.brokerage}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="__e" class="bg-white margin-lg flex align-center justify-between padding border-radius20" data-event-opts="{{[ [ 'tap',[ [ 'link',['/gc_school/pages/user/accountlog'] ] ] ] ]}}">
+        <view class="text-lg text-black">余额明细</view>
+        <text class="cuIcon-right text-gray"></text>
+    </view>
+    <view bindtap="__e" class="bg-white margin-lg flex align-center justify-between padding border-radius20" data-event-opts="{{[ [ 'tap',[ [ 'link',['/gc_school/pages/replay/index'] ] ] ] ]}}">
+        <view class="text-lg text-black">余额提现</view>
+        <text class="cuIcon-right text-gray"></text>
+    </view>
+</scroll-view>

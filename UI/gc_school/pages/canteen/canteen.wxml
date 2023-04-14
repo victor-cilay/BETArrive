@@ -1,0 +1,63 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="3cdb50fc-1" vueSlots="{{['backText','content']}}" wx:if="{{type==0}}">
+        <view slot="backText"></view>
+        <view slot="content">商家列表</view>
+    </cu-custom>
+    <view class="header"></view>
+    <view bindtap="__e" class="search margin" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/canteen/list'] ] ] ] ]}}">
+        <image class="icon" mode="scaleToFill" src="/static/search.png"></image>
+        <view class="input-placeholder">搜你喜欢</view>
+    </view>
+    <view class="slide_box padding-left padding-right margin-top" style="max-height:250rpx;" wx:if="{{slideList.length>0}}">
+        <swiper autoplay="{{autoplay}}" bindchange="__e" circular="{{true}}" class="swiper-box" data-event-opts="{{[ [ 'change',[ [ 'index_swiperChange',['$event'] ] ] ] ]}}" duration="{{duration}}" style="height:240rpx;">
+            <swiper-item wx:for="{{slideList}}" wx:key="index">
+                <image bindtap="__e" class="{{[index_swiperCurrent==index?'on slide-image':' slide-image']}}" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="{{true}}" mode="widthFix" src="{{item.img}}" style="height:240rpx;"></image>
+            </swiper-item>
+        </swiper>
+        <view class="indicator-dots">
+            <view class="{{[index_swiperCurrent==index?'dots_on':'']}}" wx:for="{{slideList}}" wx:key="index"></view>
+        </view>
+    </view>
+    <view class="navs flex margin">
+        <view bindtap="__e" class="nav" data-event-opts="{{[ [ 'tap',[ [ 'go',['/gc_school/pages/canteen/list?type_id='+item.type_id] ] ] ] ]}}" wx:for="{{list}}" wx:key="index">
+            <image class="icon" mode="scaleToFill" src="{{item.type_image}}"></image>{{''+item.type_name+''}}</view>
+    </view>
+    <view class="tit padding-lr margin-top">附近商家</view>
+    <block wx:if="{{list.length>0}}"></block>
+    <view class="padding-bottom-xl store_list" wx:if="{{goods.length>0}}">
+        <view bindtap="__e" class="goods_item padding flex" data-event-opts="{{[ [ 'tap',[ [ 'toStore',['$event'] ] ] ] ]}}" data-id="{{item.business_id}}" wx:if="{{1==2}}" wx:for="{{goods}}" wx:key="index">
+            <image class="goods_img" src="{{item.business_image}}"></image>
+            <view class="flex margin-left justify-between right_content">
+                <view>
+                    <view class="name text-lg text-bold">{{item.business_name}}</view>
+                    <view class="text-sm text-grey">{{item.business_address}}</view>
+                </view>
+                <view class="text-df" style="color:#00bb67;">{{'营业时间：'+item.start_time+'-'+item.end_time}}</view>
+            </view>
+            <view class="badge text-df" wx:if="{{item.type==1}}">校内</view>
+            <view class="badge text-df" wx:else>校外</view>
+        </view>
+        <view bindtap="__e" class="store margin-lr row padding box-shadow margin-top" data-event-opts="{{[ [ 'tap',[ [ 'toStore',['$event'] ] ] ] ]}}" data-id="{{item.business_id}}" wx:for="{{goods}}" wx:key="index">
+            <image class="main_img" src="{{item.business_image==''||item.business_image=='undefined/undefined'?fileUrl+'empty.jpg':item.business_image}}"></image>
+            <view class="store_info margin-left-sm  padding-tb-xs ">
+                <view class="tit">{{''+item.business_name+''}}</view>
+                <image mode class="store_close" src="/static/icon/store_closes.png" wx:if="{{item.is_open==0}}"></image>
+                <view class="flex margin-top-xs">
+                    <view class="sale">{{'已售:'+item.sale_num}}</view>
+                    <view class="mi" style="margin-left:auto;">{{item.juli+'km'}}</view>
+                </view>
+                <view class="tags flex">
+                    <view class="typenei" wx:if="{{item.type==1}}">校内</view>
+                    <view class="typewai" wx:else>校外</view>
+                    <view class="tag">{{'起送￥'+item.starting_fee}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nodatas" wx:else>
+        <image mode="widthFix" src="/static/images/store/empty.png" style="width:250rpx;"></image>
+        <view>暂无数据~</view>
+    </view>
+    <view class="text-center margin-bottom text-df" wx:if="{{!is_loadmore&&goods.length>0}}">没有更多数据了~</view>
+    <image bindtap="__e" class="top_icon" data-event-opts="{{[ [ 'tap',[ [ 'top',['$event'] ] ] ] ]}}" src="/static/images/article/tops2.png" wx:if="{{isTop}}"></image>
+</view>

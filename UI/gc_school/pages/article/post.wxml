@@ -1,0 +1,81 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="279b8b48-1" vueSlots="{{['content']}}">
+        <view slot="content">发布</view>
+    </cu-custom>
+    <view class="box margin padding">
+        <view class="tit padding-bottom">
+            <image mode class="icon margin-right-sm" src="/static/icon/fabu/content.png"></image>内容</view>
+        <textarea bindinput="__e" class="margin-top" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','content','$event',[] ] ] ] ] ]}}" maxlength="-1" placeholder="请输入此刻的想法" value="{{content}}"></textarea>
+        <view class="flex" style="font-size:32rpx;" wx:if="{{content.length>0}}">
+            <view style="margin-left:auto;">{{''+content.length+'个字'}}</view>
+        </view>
+        <view>
+            <view wx:if="{{type=='video'}}">
+                <image bindtap="__e" class="add" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="/static/images/article/add.png" wx:if="{{video==''}}"></image>
+                <view class="preview" wx:else>
+                    <video class="add margin-right-sm" src="{{video}}"></video>
+                    <text bindtap="__e" class="cuIcon-close close" data-event-opts="{{[ [ 'tap',[ [ 'delvideo',['$event'] ] ] ] ]}}"></text>
+                </view>
+            </view>
+            <block wx:else>
+                <view class="flex" style="flex-flow:wrap;" wx:if="{{type=='image'}}">
+                    <view class="preview" wx:for="{{picList}}" wx:key="index">
+                        <image class="add margin-right-sm" src="{{item}}"></image>
+                        <text bindtap="__e" class="cuIcon-close close" data-event-opts="{{[ [ 'tap',[ [ 'delimg',['$event'] ] ] ] ]}}" data-index="{{index}}"></text>
+                    </view>
+                    <image bindtap="__e" class="add" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="/static/images/article/add.png" wx:if="{{picList.length<9}}"></image>
+                </view>
+                <image bindtap="__e" class="add" data-event-opts="{{[ [ 'tap',[ [ 'choose',['$event'] ] ] ] ]}}" src="/static/images/article/add.png" wx:else></image>
+            </block>
+        </view>
+    </view>
+    <view class="box margin padding" wx:if="{{!classId}}">
+        <view class="tit padding-bottom">
+            <image mode class="icon margin-right-sm" src="/static/icon/fabu/quan.png"></image>圈子类型</view>
+        <view class="types row">
+            <view bindtap="__e" class="{{['type','margin-right','margin-top',index==i?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" data-event-params="{{i}}" wx:for="{{cateList}}" wx:for-index="i" wx:key="i">{{item.class_name}}</view>
+        </view>
+    </view>
+    <view class="box margin padding" wx:if="{{!classId}}">
+        <view bindtap="__e" class="tit padding-bottom" data-event-opts="{{[ [ 'tap',[ ['gettopic'] ] ] ]}}">
+            <image mode class="icon margin-right-sm" src="/static/icon/fabu/huati.png"></image>选择话题<image class="icon margin-right-sm rights" src="/static/icon/fabu/hualiyou.png"></image>
+        </view>
+        <view class="types row ">
+            <view class="type margin-right margin-top paddings flex" wx:for="{{getlist}}" wx:for-index="i" wx:key="i">{{'# '+item.title+''}}<view bindtap="__e" class="fork" data-event-opts="{{[ [ 'tap',[ [ 'getfork',[i] ] ] ] ]}}">
+                    <image class="fork-image" src="/static/icon/fabu/cha.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="box margin padding" wx:if="{{sysparment.is_anonymous_switch}}">
+        <view class="title">
+            <view class="tit  row" style="border-width:0px;">是否匿名<switch bindchange="__e" checked="{{is_agree}}" class="{{['is_agree',is_agree?'checked':'']}}" color="#ff6344" data-event-opts="{{[ [ 'change',[ [ 'checkagree',['$event'] ] ] ] ]}}"></switch>
+            </view>
+        </view>
+    </view>
+    <view class="box margin padding" wx:if="{{payList.length>0}}">
+        <view class="tit padding-bottom row">置顶圈子<switch bindchange="__e" checked="{{is_top}}" class="{{['is_agree',is_top?'checked':'']}}" color="#ff6344" data-event-opts="{{[ [ 'change',[ [ 'e1',['$event'] ] ] ] ]}}"></switch>
+        </view>
+        <scroll-view class="padding-top" scrollX="{{true}}">
+            <view class="pay_list flex" wx:if="{{is_top==1}}">
+                <view bindtap="__e" class="{{['pay','padding-top',payIndex==index?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e2',['$event'] ] ] ] ]}}" data-event-params="{{index}}" wx:for="{{payList}}" wx:key="index">
+                    <view class="price flex">
+                        <view class="num">{{item.price}}</view>元</view>
+                    <view class="day">{{'置顶'+item.day+'天'}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="padding" wx:if="{{1==2}}">
+        <view class="flex justify-between">
+            <view>所属分类</view>
+            <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'bindPickerChange',['$event'] ] ] ] ]}}" range="{{cateList}}" rangeKey="class_name" value="{{index}}">{{''+cateList[index]['class_name']+''}}<text class="cuIcon-right"></text>
+            </picker>
+        </view>
+        <view class="margin-top margin-bottom">上传图片/视频</view>
+        <view class="margin-bottom-sm text-df margin-top flex align-center" wx:if="{{sysparment.is_anonymous_switch}}">
+            <checkbox bindtap="__e" class="checkbox" data-event-opts="{{[ [ 'tap',[ [ 'checkagree',['$event'] ] ] ] ]}}"></checkbox>是否匿名</view>
+        <view bindtap="__e" class="btn" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">发布</view>
+    </view>
+    <view bindtap="__e" class="btn" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">发布</view>
+</view>

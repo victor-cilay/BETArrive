@@ -1,0 +1,4 @@
+<view class="footer flex">
+    <view bindtap="__e" class="{{['item','flex',flg==item.text?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'go',['$0'],[ [ ['tabBar','',index] ] ] ] ] ] ]}}" style="{{style}}" wx:for="{{tabBar}}" wx:key="index">
+        <image class="icon" mode="scaleToFill" src="{{flg==item.text?item.selectedIconPath:item.iconPath}}"></image>{{''+item.text+''}}</view>
+</view>

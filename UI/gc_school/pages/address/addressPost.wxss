@@ -1,0 +1,38 @@
+page {
+    background-color: #f7f5f6;
+}
+
+.addr_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx;
+}
+
+.cu-form-group {
+    padding: 1rpx 10rpx;
+}
+
+radio .wx-radio-input {
+    height: 26rpx;
+    left: -8rpx;
+    margin-top: -4rpx;
+    width: 26rpx;
+}
+
+radio .wx-radio-input .wx-radio-input-checked::before {
+    background-color: #e02e24;
+    border: 1rpx solid #e02e24;
+    left: -8rpx;
+}
+
+.bg-yellow {
+    background: linear-gradient(90deg,#ff484a,#ff716c);
+}
+
+input {
+    text-align: right;
+}
+
+radio {
+    zoom: 1.5;
+}

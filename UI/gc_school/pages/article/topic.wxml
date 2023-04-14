@@ -1,0 +1,45 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="441e9dd1-1" vueSlots="{{['content']}}">
+        <view slot="content">选择话题</view>
+    </cu-custom>
+    <view class="cu-bar search bg-white">
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input bindinput="__e" confirmType="search" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','title','$event',[] ] ] ] ] ]}}" placeholder="搜索话题" type="text" value="{{title}}"></input>
+            <button bindtap="__e" class="cu-btn bg-green shadow-blur round" data-event-opts="{{[ [ 'tap',[ [ 'getsou',['$event'] ] ] ] ]}}" style="height:55rpx;margin-right:9rpx;background-color:#FF4C4D;font-size:28rpx;">搜索</button>
+        </view>
+    </view>
+    <view class="heat">
+        <view class="heat-text flex">已选择话题<view bindtap="__e" class="heat-empty" data-event-opts="{{[ [ 'tap',[ ['getempty'] ] ] ]}}">
+                <image src="../../../static/icon/fabu/shua.png" style="width:25rpx;height:25rpx;"></image>清空</view>
+        </view>
+    </view>
+    <view class="cu-list menu lists">
+        <view class="list-tab flex" wx:for="{{lists}}" wx:for-index="indexs" wx:for-item="items" wx:key="indexs">
+            <view class="list-text">{{'#'+items.title+''}}</view>
+            <view bindtap="__e" class="fork" data-event-opts="{{[ [ 'tap',[ [ 'getfork',[indexs] ] ] ] ]}}">
+                <image src="../../../static/icon/fabu/cha.png" style="width:16rpx;height:16rpx;"></image>
+            </view>
+        </view>
+    </view>
+    <view class="heat">
+        <view class="heat-text flex">热门话题<view class="heat-tips">(最多选择3个)</view>
+        </view>
+    </view>
+    <view class="cu-list menu">
+        <view class="{{['cu-item',menuArrow?'arrow':'']}}" style="margin-top:-95rpx;"></view>
+        <view bindtap="__e" class="cu-item" data-event-opts="{{[ [ 'tap',[ [ 'getchoice',[index] ] ] ] ]}}" wx:for="{{list}}" wx:key="index">
+            <view class="content flex xuan">
+                <checkbox checked="{{item.chad}}" class="round checked chad"></checkbox>
+                <view style="margin-left:30rpx;">
+                    <view class="con-title">{{'#'+item.title+''}}</view>
+                    <view class="con-details">{{''+item.con+'人参与'}}</view>
+                </view>
+            </view>
+        </view>
+        <view style="height:200rpx;"></view>
+        <view class="bottoms">
+            <view bindtap="__e" class="btn" data-event-opts="{{[ [ 'tap',[ ['getchoose'] ] ] ]}}">选好了</view>
+        </view>
+    </view>
+</view>

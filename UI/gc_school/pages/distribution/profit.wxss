@@ -1,0 +1,30 @@
+.bgmains {
+    background-color: #fff!important;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+
+.box .date {
+    color: #121212;
+    font-size: 30rpx;
+    font-weight: 700;
+    margin-bottom: 10rpx;
+}
+
+.box .flex view {
+    color: #121212;
+    font-size: 22rpx;
+    margin-top: 10rpx;
+    opacity: .7;
+    width: 33%;
+}
+
+.box .num view {
+    color: #121212;
+    font-size: 34rpx!important;
+    font-weight: 700;
+    opacity: 1!important;
+}

@@ -1,0 +1,6 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "pt-footer": "/components/footer/footer"
+    }
+}

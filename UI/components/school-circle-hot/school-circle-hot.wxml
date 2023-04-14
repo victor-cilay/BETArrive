@@ -1,0 +1,21 @@
+<view>
+    <view class="quan margin">
+        <view class="flex tit">
+            <image mode="scaleToFill" src="/static/icon/quan.png"></image>热门圈子<view bindtap="__e" class="all" data-event-opts="{{[ [ 'tap',[ ['goQuan'] ] ] ]}}" wx:if="{{schoolInfo.article_cate.length>0}}">更多+</view>
+        </view>
+    </view>
+    <view class="quan_list flex margin-lr">
+        <block wx:if="{{schoolInfo.article_cate.length>0}}">
+            <view bindtap="__e" class="quan" data-event-opts="{{[ [ 'tap',[ [ 'toList',[1,'$0','$1','$2','$3'],[ [ ['schoolInfo.article_cate','',index,'class_id'] ],[ ['schoolInfo.article_cate','',index,'is_auth_watch'] ],[ ['schoolInfo.article_cate','',index,'url'] ],[ ['schoolInfo.article_cate','',index,'class_name'] ] ] ] ] ] ]}}" wx:if="{{index<3}}" wx:for="{{schoolInfo.article_cate}}" wx:key="index">
+                <image class="quan_img" src="{{item.img}}"></image>
+                <view class="tag">{{item.class_name}}</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="quan" wx:for="{{article_cate}}" wx:key="index">
+                <image class="quan_img" src="{{item.img}}"></image>
+                <view class="tag">{{item.class_name}}</view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,41 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="3305e6ae-1" vueSlots="{{['content']}}">
+        <view slot="content">我的地址</view>
+    </cu-custom>
+    <view class="container">
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}">
+            <view class="margin addr_box">
+                <view class="cu-form-group">
+                    <view class="title text-bold">选择地址</view>
+                    <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" range="{{school}}" rangeKey="s_name" value="{{index}}">
+                        <view class="picker">{{''+(index?school[index].s_name:'选择地址')+''}}</view>
+                    </picker>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">楼号-门牌号</view>
+                    <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'change',['$event'] ] ] ] ]}}" data-type="addres" name="addres" placeholder="楼号-门牌号" value="{{form.addres}}"></input>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">联系人</view>
+                    <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'change',['$event'] ] ] ] ]}}" data-type="name" name="name" placeholder="联系人" value="{{form.name}}"></input>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">性别</view>
+                    <radio-group bindchange="__e" class="radio" data-event-opts="{{[ [ 'change',[ [ 'ycf',['$event'] ] ] ] ]}}">
+                        <label class="radio">
+                            <radio checked="{{form.sex==0?true:false}}" color="#fff" value="0"></radio>男<radio checked="{{form.sex==1?true:false}}" color="#fff" style="margin-left:10rpx;" value="1"></radio>女</label>
+                    </radio-group>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">手机号</view>
+                    <input name="phone" placeholder="手机号" value="{{form.phone}}"></input>
+                </view>
+            </view>
+            <view class="submit margin-top">
+                <view class="padding flex flex-direction">
+                    <button class="cu-btn bg-yellow lg round" formType="submit">保存</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

@@ -1,0 +1,44 @@
+<view>
+    <scroll-view class="scrollPage" scrollY="{{true}}">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="5ce2946f-1" vueSlots="{{['content']}}">
+            <view slot="content">骑手认证</view>
+        </cu-custom>
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'formSubmit',['$event'] ] ] ] ]}}">
+            <view class="white_box margin padding-sm" wx:if="{{num==0}}">
+                <view class="cu-form-group">
+                    <view class="title text-bold">姓名</view>
+                    <input bindinput="__e" class="text-right" data-event-opts="{{[ [ 'input',[ [ 'change',['$event'] ] ] ] ]}}" data-type="t_name" disabled="{{userInfo.run_status==0||userInfo.run_status==-1?false:true}}" name="t_name" placeholder="请输入姓名" value="{{t_name}}"></input>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">手机</view>
+                    <input data-type="phone" disabled="{{true}}" name="phone" placeholder="请获取手机" value="{{phone}}"></input>
+                    <button bindgetphonenumber="__e" class="getPhone" data-event-opts="{{[ [ 'getphonenumber',[ [ 'getPhoneNumber',['$event'] ] ] ] ]}}" openType="getPhoneNumber" wx:if="{{userInfo.run_status==0||userInfo.run_status==-1}}">获取手机号</button>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">所属区域</view>
+                    <picker bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'PickerChange',['$event'] ] ] ] ]}}" range="{{school}}" rangeKey="s_name" value="{{sindex}}">
+                        <view class="picker">{{''+(school[sindex].s_name?school[sindex].s_name:'选择区域')+''}}</view>
+                    </picker>
+                </view>
+                <view class="cu-form-group">
+                    <view class="title text-bold">性别选择</view>
+                    <picker bindchange="__e" class="picker_name" data-event-opts="{{[ [ 'change',[ [ 'bindSexChange',['$event'] ] ] ] ]}}" range="{{gender}}" rangeKey="name" style="text-align:right;padding-right:0;" value="{{index}}">{{''+gender[gender_index].name+''}}<text class="cuIcon-right"></text>
+                    </picker>
+                </view>
+            </view>
+            <view style="margin-top:200rpx;">
+                <view class="agreement margin-top-xl align-center" wx:if="{{userInfo.run_status==0||userInfo.run_status==-1}}">
+                    <checkbox bindtap="__e" checked="{{check}}" class="checkbox" data-event-opts="{{[ [ 'tap',[ [ 'checkagree',['$event'] ] ] ] ]}}"></checkbox>
+                    <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'agreelink',['$event'] ] ] ] ]}}">我已阅读并同意<text style="color:#FF4C4D;">《平台协议》</text>
+                    </view>
+                </view>
+                <view class="submit margin-top">
+                    <view class="padding flex flex-direction">
+                        <view class="cu-btn lg round" style="background:gray !important;" wx:if="{{userInfo.run_status>0}}">{{userInfo.run_status==1?'审核中':'已认证'}}</view>
+                        <button class="cu-btn lg round" formType="submit" wx:if="{{userInfo.run_status==0||userInfo.run_status==-1}}">提交申请</button>
+                    </view>
+                </view>
+            </view>
+        </form>
+    </scroll-view>
+</view>

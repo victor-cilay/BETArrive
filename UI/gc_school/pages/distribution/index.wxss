@@ -1,0 +1,109 @@
+.bgmains {
+    background: transparent!important;
+    position: absolute;
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 70rpx;
+    margin-right: 10rpx;
+    width: 70rpx;
+}
+
+.number_box {
+    position: relative;
+}
+
+.number_box .info_box {
+    padding: 30rpx;
+    position: absolute;
+    top: 7%;
+    width: 100%;
+}
+
+.number_box .info_box .balance {
+    color: #fad9ab;
+    font-size: 54rpx;
+}
+
+.number_box .info_box .btns {
+    background: linear-gradient(98deg,#fce0b2,#efb368);
+    border-radius: 40rpx;
+    color: #222;
+    font-size: 30rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 50rpx;
+}
+
+.number_box .title {
+    color: #fff;
+    font-size: 24rpx;
+    margin-bottom: 10rpx;
+    opacity: .8;
+}
+
+.number_box .price_box .price_item {
+    text-align: center;
+}
+
+.number_box .price_box .price_item .price {
+    color: #fad9ab;
+    font-size: 36rpx;
+}
+
+.middle_box .middle_item {
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 40rpx 30rpx;
+    width: 48%;
+}
+
+.middle_box .middle_item image {
+    height: 66rpx;
+    margin-right: 20rpx;
+    width: 74rpx;
+}
+
+.middle_box .middle_item .num {
+    color: #232323;
+    font-size: 38rpx;
+    font-weight: 700;
+}
+
+.middle_box .middle_item .explain {
+    color: #666;
+    font-size: 22rpx;
+    margin-top: 5rpx;
+}
+
+.menu {
+    background-color: #fff;
+    border-radius: 10rpx;
+    flex-wrap: wrap;
+    margin: 10rpx 30rpx;
+}
+
+.menu .menu_item {
+    margin-bottom: 10rpx;
+    margin-top: 20rpx;
+    width: 50%;
+}
+
+.menu .menu_item image {
+    height: 54rpx;
+    margin-right: 20rpx;
+    width: 54rpx;
+}
+
+.menu .menu_item .explain {
+    color: #232323;
+    font-size: 28rpx;
+    font-weight: 700;
+}
+
+.menu .menu_item .num {
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 5rpx;
+}

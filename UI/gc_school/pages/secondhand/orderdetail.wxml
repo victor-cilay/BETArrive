@@ -1,0 +1,88 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="1447e7fc-1" vueSlots="{{['content']}}">
+        <view slot="content">订单详情</view>
+    </cu-custom>
+    <view class="zhuangtai">
+        <view class="paysstate" wx:if="{{data.paystate==1}}">已付款</view>
+        <view class="paysstate" wx:if="{{data.paystate==2}}">已完成</view>
+        <view class="paysstate" wx:if="{{data.paystate==3}}">退款中</view>
+        <view class="paysstate" wx:if="{{data.paystate==4}}">退款完成</view>
+        <view class="paytime">{{'支付时间：'+data.pay_time+''}}</view>
+    </view>
+    <view>
+        <view class="bg-tab">
+            <view class="detail_box flex padding-lg">
+                <image class="img" src="{{data.market.image}}"></image>
+                <view class="justify-between " style="flex-direction:column;">
+                    <view class="pay-title">{{data.market.title}}</view>
+                    <view class="flex" style="margin-top:82rpx;align-items:center;">
+                        <view class="pay-pay">{{'￥'+data.market.pay}}</view>
+                        <view class="pay-price">{{'￥'+data.market.price}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="bg-tab">
+            <view class="detail-center">
+                <view class="flex" style="width:100%;">
+                    <view class="number-title">{{''+(data.purchase==uids?'卖家':'买家')+'电话：'}}</view>
+                    <view class="number-number">{{''+(data.purchase==uids?data.market.phone:data.phone)}}</view>
+                </view>
+                <view class="flex" style="width:100%;">
+                    <view class="number-title">备注信息：</view>
+                    <view class="number-number">{{''+data.other}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="bg-tab">
+            <view class="detail-center">
+                <view class="flex" style="width:100%;">
+                    <view class="number-title">订单编号：</view>
+                    <view class="number-number">{{''+data.oid}}</view>
+                </view>
+                <view class="flex" style="width:100%;">
+                    <view class="number-title">下单时间：</view>
+                    <view class="number-number">{{''+data.create_time}}</view>
+                </view>
+                <view class="flex" style="width:100%;">
+                    <view class="number-title">订单金额：</view>
+                    <view class="number-number" style="color:#FF4C4D;">{{'￥'+data.pay}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom flex">
+        <view class="kefu">
+            <image src="../../../static/images/kefus.png" style="width:57rpx;height:50rpx;"></image>
+            <view class="kefu-text">客服</view>
+            <button class="btn" openType="contact" style="background-color:white;height:70rpx;"></button>
+        </view>
+        <view class="kefu">
+            <view bindtap="__e" class="tuikuan" data-event-opts="{{[ [ 'tap',[ ['refund'] ] ] ]}}" wx:if="{{data.paystate==1&&uids!=data.uid}}">申请退款</view>
+            <view bindtap="__e" class="tuikuan" data-event-opts="{{[ [ 'tap',[ ['refund'] ] ] ]}}" wx:if="{{data.paystate==3&&uids!=data.uid}}">退款中</view>
+            <view bindtap="__e" class="tuikuan" data-event-opts="{{[ [ 'tap',[ ['confirm'] ] ] ]}}" style="background-color:#FF4C49;" wx:if="{{data.paystate==1&&uids!=data.uid}}">确认完成</view>
+            <view class="tuikuan" style="background-color:#FF4C49;" wx:if="{{data.paystate==2&&uids!=data.uid}}">已完成</view>
+        </view>
+    </view>
+    <view class="toast-box" wx:if="{{ifName}}">
+        <view class="toastbg"></view>
+        <view class="showToast">
+            <view class="toast-title">
+                <text>退款理由</text>
+            </view>
+            <view class="toast-main">
+                <view class="toast-input">
+                    <textarea bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'setValue',['$event'] ] ] ] ]}}" placeholder="请填写退款原因" value="{{reason}}"></textarea>
+                </view>
+            </view>
+            <view class="toast-button">
+                <view class="button1">
+                    <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'cancel',['$event'] ] ] ] ]}}">取消</view>
+                </view>
+                <view class="button2">
+                    <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'confirmRefund',['$event'] ] ] ] ]}}">确定</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

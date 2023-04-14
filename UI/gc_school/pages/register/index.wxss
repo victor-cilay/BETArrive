@@ -1,0 +1,58 @@
+page {
+    background-color: #f7f5f6!important;
+}
+
+.student {
+    padding: 30rpx 30rpx 0;
+}
+
+.cu-form-group+.cu-form-group {
+    border-top: 1rpx solid #f5f3f4;
+}
+
+.white_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+}
+
+.agreement {
+    display: flex;
+    font-size: 30rpx;
+    justify-content: center;
+    margin: 30rpx 0;
+    text-align: center;
+}
+
+.agreement view {
+    margin-left: 20rpx;
+}
+
+.agreement text {
+    font-weight: 700;
+}
+
+.checkbox {
+    transform: scale(.8);
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    background-color: #e54d42!important;
+    border-color: #e54d42!important;
+    color: #fff!important;
+}
+
+.rule {
+    margin-left: 20rpx;
+}
+
+.getPhone {
+    background: #ff4c49;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 70rpx;
+}
+
+.cu-btn {
+    background: linear-gradient(90deg,#ff484a,#ff716c)!important;
+    color: #fff;
+}

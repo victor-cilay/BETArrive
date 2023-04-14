@@ -1,0 +1,25 @@
+page {
+    background-color: #f7f5f6;
+}
+
+.bgmain {
+    background-color: #fff;
+    color: #000;
+}
+
+.content {
+    left: 10%;
+    position: absolute;
+    top: 20%;
+    width: 80%;
+}
+
+.text-lg30 {
+    font-size: 30rpx;
+    margin-bottom: 10rpx;
+    opacity: .9;
+}
+
+.border-radius20 {
+    border-radius: 20rpx;
+}

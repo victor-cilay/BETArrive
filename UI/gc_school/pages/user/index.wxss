@@ -1,0 +1,242 @@
+.UCenter-bg,page {
+    background: #fff;
+}
+
+.UCenter-bg {
+    align-items: center;
+    background-size: cover;
+    border-bottom: 1px solid #f5f5f5;
+    border-top: 1px solid #f5f5f5;
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    font-weight: 300;
+    overflow: hidden;
+    padding: 50rpx 60rpx;
+    position: relative;
+}
+
+.contents {
+    background: #ff6444;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 70rpx 0 30rpx;
+    text-align: center;
+}
+
+.two_flex image {
+    height: 2em!important;
+    margin-right: 20rpx!important;
+    width: 2em!important;
+}
+
+.flex-direction {
+    text-align: left;
+}
+
+.middle {
+    padding-left: 60rpx;
+}
+
+.isrun {
+    padding: 0 20rpx;
+}
+
+.content image {
+    height: 1.3em!important;
+    margin-right: 20rpx!important;
+    width: 1.3em!important;
+}
+
+.UCenter-bg text {
+    opacity: .8;
+}
+
+.UCenter-bg image {
+    flex-shrink: 0;
+    height: 140rpx;
+    margin-right: 30rpx;
+    width: 140rpx;
+}
+
+.UCenter-bg .gif-wave {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.UCenter-bg .gif-wave,.mapBox,map {
+    height: 100rpx;
+    left: 0;
+    mix-blend-mode: screen;
+    z-index: 99;
+}
+
+.mapBox,map {
+    height: 300rpx;
+    width: 750rpx;
+}
+
+#cuIcon-homefills {
+    height: 48rpx!important;
+    position: relative!important;
+    width: 48rpx!important;
+}
+
+#cuIcon-homefills,#cuIcon-homefillt {
+    display: block!important;
+    font-size: 40rpx!important;
+    margin: 0 auto 10rpx!important;
+    text-align: center!important;
+}
+
+#cuIcon-homefillt {
+    height: 72rpx!important;
+    left: 0;
+    position: absolute!important;
+    top: 0;
+    width: 72rpx!important;
+}
+
+.indedx,.indedxs {
+    color: #010101;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.indedxs {
+    box-sizing: border-box;
+    margin-top: 10rpx;
+}
+
+.indedxt {
+    color: #ff6444;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.bgmains {
+    background-color: #fff!important;
+}
+
+.menu {
+    margin: 0!important;
+}
+
+.bgmains {
+    background: transparent!important;
+    color: #fff;
+    position: absolute;
+}
+
+.header {
+    background-image: url(https://test.fkynet.net/wximage/user_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50rpx;
+    position: relative;
+    top: 0pxp;
+    width: 750rpx;
+}
+
+.user_info {
+    margin-top: 60rpx;
+}
+
+.user_info .info {
+    flex-grow: 1;
+}
+
+.user_info .nickname {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 38rpx;
+    font-weight: 700;
+}
+
+.user_info .phone {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+}
+
+.user_info .avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 140rpx;
+    margin-right: 20rpx;
+    width: 140rpx;
+}
+
+.user_info .cuIcon-edit {
+    font-size: 40rpx;
+    margin-left: 10rpx;
+}
+
+.other {
+    justify-content: space-around;
+    width: 100%;
+}
+
+.other,.other .item {
+    display: flex;
+}
+
+.other .item {
+    align-items: center;
+    flex-direction: column;
+}
+
+.other .item .key {
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 30rpx;
+    font-weight: 400;
+}
+
+.other .item .val {
+    color: #fff;
+    font-family: WeChat Sans Std;
+    font-size: 40rpx;
+    font-weight: 700;
+}
+
+.isrun {
+    border-radius: 40rpx;
+    margin-bottom: 30rpx;
+    margin-top: -30rpx;
+    overflow: hidden;
+    position: relative;
+}
+
+.box {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 21px 0 rgba(0,0,0,.1);
+    flex-wrap: wrap;
+    width: 690rpx;
+}
+
+.box .nav {
+    flex-direction: column;
+    position: relative;
+    width: 25%;
+}
+
+.box .nav .icon {
+    height: 80rpx;
+    width: 80rpx;
+}
+
+.box .nav .other {
+    background-color: rgba(255,255,170,0);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

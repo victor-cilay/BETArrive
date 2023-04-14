@@ -1,0 +1,171 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="53d4751a-1" vueSlots="{{['content']}}">
+        <view slot="content">商品列表</view>
+    </cu-custom>
+    <view class="shore_info padding row">
+        <image class="main_img margin-right" mode="scaleToFill" src="{{store.business_image||'https://test.fkynet.net/wximage/empty.jpg'}}"></image>
+        <view class="flex" style="height:148rpx;" wx:if="{{store.business_id}}">
+            <view bindtap="__e" class="name" data-event-opts="{{[ [ 'tap',[ [ 'call',['$0'],['store.phone'] ] ] ] ]}}">{{store.business_name+''}}<text class="cuIcon-phone margin-left-xs" style="color:#ff6344;"></text>
+            </view>
+            <view class="time row">{{'营业时间：\n                    '+store.timeslot+''}}<view class="margin-left">{{'销量：'+store.sale_num}}</view>
+            </view>
+            <view class="tags row">
+                <view class="tag">{{'起送￥'+starting_fee}}</view>
+                <view class="tag" wx:if="{{store.is_dormitory_store==1}}">宿舍小店</view>
+                <view class="tag" wx:else>{{store.type==1?'校内':'校外'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="store-container">
+        <view class="food">
+            <view class="food-class" style="{{'height:'+listHeight+'px'}}">
+                <scroll-view scrollIntoView="{{viewToLeft}}" scrollWithAnimation="{{true}}" scrollY="{{true}}" style="{{'height:'+listHeight+'px;padding-bottom:110rpx;'}}">
+                    <view bindtap="__e" class="{{[ 'food-class-item '+(activeIndex==index?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'selectFood',['$event'] ] ] ] ]}}" data-index="{{index}}" data-titleId="{{item.titleId}}" id="{{item.titleId+'left'}}" wx:for="{{food}}" wx:key="title">
+                        <view class="text" data-index="{{index}}" data-titleId="{{item.titleId}}">{{item.goods_type_name}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="food-detail">
+                <scroll-view bindscroll="__e" data-event-opts="{{[ [ 'scroll',[ [ 'scroll',['$event'] ] ] ] ]}}" scrollIntoView="{{viewTo}}" scrollWithAnimation="{{true}}" scrollY="{{true}}" style="{{'height:'+listHeight+'px;padding-bottom:110rpx;'}}">
+                    <view class="title-group" wx:for="{{$root.l1}}" wx:for-index="groupindex" wx:for-item="Pitem" wx:key="name">
+                        <view class="title" id="{{Pitem.$orig.titleId}}">{{Pitem.$orig.goods_type_name}}</view>
+                        <view class="food-info" wx:for="{{Pitem.l0}}" wx:key="goodId">
+                            <view class="end" wx:if="{{item.$orig.stock==0}}">已售空</view>
+                            <view class="img">
+                                <image bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-url="{{item.$orig.goods_img}}" src="{{item.$orig.goods_img}}"></image>
+                            </view>
+                            <view class="info">
+                                <view class="name">{{item.$orig.goods_name}}</view>
+                                <view class="stock">{{'库存：'+item.$orig.stock}}</view>
+                                <view class="price-count">
+                                    <view class="price">{{'￥'+item.$orig.price}}</view>
+                                    <block wx:if="{{item.$orig.stock>0}}">
+                                        <view class="count row" wx:if="{{!item.$orig.attribute&&!item.$orig.specs}}">
+                                            <view style="width:76rpx;">
+                                                <image bindtap="__e" class="jia" data-event-opts="{{[ [ 'tap',[ [ 'add',['$event'] ] ] ] ]}}" data-groupindex="{{groupindex}}" data-index="{{index}}" data-item="{{item.$orig}}" mode="scaleToFill" src="/static/icon/shop/jia.png" wx:if="{{!item.$orig.quota||item.$orig.quota&&item.$orig.count<item.$orig.quota}}"></image>
+                                            </view>
+                                            <view class="num">{{item.$orig.count}}</view>
+                                            <image bindtap="__e" class="jian" data-event-opts="{{[ [ 'tap',[ [ 'reduce',['$event'] ] ] ] ]}}" data-groupindex="{{groupindex}}" data-index="{{index}}" data-item="{{item.$orig}}" mode="scaleToFill" src="/static/icon/shop/jian.png" wx:if="{{item.$orig.count>0?true:false}}"></image>
+                                        </view>
+                                        <view wx:else>
+                                            <view wx:if="{{item.g0}}">
+                                                <view bindtap="__e" class=" changeSpecs" data-event-opts="{{[ [ 'tap',[ [ 'showSpecs',['$event'] ] ] ] ]}}" data-item="{{item.$orig}}" wx:if="{{item.g1}}">选规格</view>
+                                            </view>
+                                            <view wx:else>
+                                                <view bindtap="__e" class=" changeSpecs" data-event-opts="{{[ [ 'tap',[ [ 'showSpecs',['$event'] ] ] ] ]}}" data-item="{{item.$orig}}">选规格</view>
+                                            </view>
+                                        </view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="notData" wx:if="{{food.length==0}}">
+                        <image class="icon" mode="widthFix" src="/static/icon/notDatas.png"></image>暂无商品</view>
+                </scroll-view>
+            </view>
+        </view>
+        <view class="cart">
+            <view class="cart-container">
+                <view bindtap="__e" class="{{[ 'cart-img '+(cart.length>0?'has-food':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'listCart',['$event'] ] ] ] ]}}">
+                    <image src="{{cart.length>0?'/static/images/gouwuche-black.png':'/static/images/gouwuche.png'}}"></image>
+                </view>
+                <view class="del-price-money">
+                    <view class="money">{{'￥'+totalMoney}}</view>
+                </view>
+                <view class="start-del end" wx:if="{{status==2||time_status==0}}">已打烊</view>
+                <view bindtap="__e" class="{{[ 'start-del '+(totalMoney>=starting_fee&&cart.length>0?'has-food':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'check',['$event'] ] ] ] ]}}" wx:else>{{''+(totalMoney>=starting_fee&&cart.length>0?'去结算':'起送费'+starting_fee)+''}}</view>
+            </view>
+            <view class="cart-list" wx:if="{{showCart==123}}">
+                <view bindtap="__e" class="cart-list-header" data-event-opts="{{[ [ 'tap',[ [ 'listCart',['$event'] ] ] ] ]}}">关闭</view>
+                <view class="cart-list-item">
+                    <view class="item" wx:for="{{cart}}" wx:key="index">
+                        <view class="cart-detail">{{item.goods_name}}</view>
+                        <view class="cart-detail" style="color:red;">{{'￥'+item.price}}</view>
+                        <view class="cart-detail cart-count">
+                            <view bindtap="__e" class="add btns" data-event-opts="{{[ [ 'tap',[ [ 'reduce',['$event'] ] ] ] ]}}" data-groupindex="{{item.groupindex}}" data-id="{{item.id}}" data-index="{{item.index}}">-</view>{{''+item.count+''}}<view bindtap="__e" class="add btns" data-event-opts="{{[ [ 'tap',[ [ 'add',['$event'] ] ] ] ]}}" data-groupindex="{{item.groupindex}}" data-id="{{item.id}}" data-index="{{item.index}}">+</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="new_cart padding-lr-xl row">
+        <image bindtap="__e" class="icon margin-right" data-event-opts="{{[ [ 'tap',[ [ 'listCart',['$event'] ] ] ] ]}}" mode="scaleToFill" src="/static/icon/shop/car.png"></image>合计：<view class="price row">￥<view class="f40">{{totalMoney}}</view>
+        </view>
+        <view class="buy" style="background-color:gray;" wx:if="{{store.is_open==0}}">已打烊</view>
+        <view bindtap="__e" class="buy" data-event-opts="{{[ [ 'tap',[ [ 'check',['$event'] ] ] ] ]}}" wx:else>{{''+($root.m0<$root.m1?'起送费'+starting_fee:'确认购买')+''}}</view>
+    </view>
+    <view bindtap="__e" class="{{['cu-modal','bottom-modal','specs_modal',modalName=='specs'?'show':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">
+        <view catchtap="__e" class="cu-dialog" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{curItem.id}}">
+            <view class="padding">
+                <view class="goods_info row">
+                    <image class="goods_img" mode="scaleToFill" src="{{curItem.goods_img}}"></image>
+                    <view class="main">
+                        <view class="name row">{{curItem.goods_name}}</view>
+                        <view class="price row">{{'￥'+$root.g2+''}}</view>
+                    </view>
+                    <view bindtap="__e" class="cuIcon-close" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}"></view>
+                </view>
+                <view class="sku_box">
+                    <view class="flex-col  margin-top">
+                        <view class="key row">{{curItem.specs.name}}</view>
+                        <view class="tags row margin-top-sm">
+                            <view bindtap="__e" class="{{['tag','margin-right','margin-bottom-sm',curItem.changeSpecs==item.type?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changeSpecs',['$0'],[ [ ['curItem.specs.list','',index] ] ] ] ] ] ]}}" wx:for="{{curItem.specs.list}}" wx:key="index">{{''+item.type+'\n                                        ￥'+item.price+''}}</view>
+                        </view>
+                    </view>
+                    <view class="flex-col  margin-top dgg" wx:for="{{curItem.specs_list}}" wx:for-index="Pindex" wx:for-item="Pitem" wx:key="Pindex">
+                        <view class="key row">{{Pitem.name}}</view>
+                        <view class="tags row margin-top-sm">
+                            <view bindtap="__e" class="{{['tag','margin-right','margin-bottom-sm','row',specss[Pindex].type==item.type?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'changeSpecss',['$0',Pindex],[ [ ['curItem.specs_list','',Pindex],['list','',index] ] ] ] ] ] ]}}" style="{{item.price>0?'':'padding-right:20rpx;'}}" wx:for="{{Pitem.list}}" wx:key="index">{{''+item.type+''}}<view class="price" wx:if="{{item.price>0}}">{{'￥'+item.price+''}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="row margin-tb-sm">
+                        <view class="key">数量</view>
+                        <view class="nums row" style="margin-left:auto;">
+                            <image bindtap="__e" class="jian" data-event-opts="{{[ [ 'tap',[ [ 'new_jian',['$event'] ] ] ] ]}}" data-groupindex="{{curItem.groupindex}}" data-id="{{curItem.id}}" data-index="{{curItem.index}}" data-items="{{curItem}}" mode="scaleToFill" src="/static/icon/shop/jian.png" wx:if="{{curItem.count>1}}"></image>
+                            <view class="num">{{curItem.count}}</view>
+                            <view style="width:76rpx;">
+                                <view wx:if="{{$root.g3}}">
+                                    <image bindtap="__e" class="jia" data-event-opts="{{[ [ 'tap',[ [ 'new_jia',['$event'] ] ] ] ]}}" data-groupindex="{{curItem.groupindex}}" data-id="{{curItem.id}}" data-index="{{curItem.index}}" data-items="{{curItem}}" mode="scaleToFill" src="/static/icon/shop/jia.png" wx:if="{{$root.g4}}"></image>
+                                </view>
+                                <view wx:else>
+                                    <image bindtap="__e" class="jia" data-event-opts="{{[ [ 'tap',[ [ 'new_jia',['$event'] ] ] ] ]}}" data-groupindex="{{curItem.groupindex}}" data-id="{{curItem.id}}" data-index="{{curItem.index}}" data-items="{{curItem}}" mode="scaleToFill" src="/static/icon/shop/jia.png" wx:if="{{!curItem.quota||curItem.quota&&curItem.count<curItem.quota}}"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="__e" class="add margin-top" data-event-opts="{{[ [ 'tap',[ [ 'addCar',['$event'] ] ] ] ]}}">加入购物车</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="__e" class="{{['cu-modal','bottom-modal','car_modal',showCart?'show':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'hideModal',['$event'] ] ] ] ]}}">
+        <view catchtap="__e" class="cu-dialog padding" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}">
+            <view class="row">已选商品<view bindtap="__e" class="clear_all row" data-event-opts="{{[ [ 'tap',[ [ 'clearAll',['$event'] ] ] ] ]}}">
+                    <image class="icon margin-right-xs" mode="scaleToFill" src="/static/icon/shop/del.png"></image>清空购物车</view>
+            </view>
+            <view class="car_list margin-bottom-xl">
+                <view class="car_item row margin-top" wx:for="{{$root.l2}}" wx:key="index">
+                    <image class="main_img margin-right" mode="scaleToFill" src="{{item.$orig.goods_img}}"></image>
+                    <view class="main flex-col">
+                        <view class="name row">{{item.$orig.goods_name}}</view>
+                        <view class="spec row">{{''+(item.$orig.changeSpecs||'')+' '+(item.$orig.changeAttribute||'')+''}}<block wx:if="{{item.$orig.specss}}">{{''+item.g5+''}}</block>
+                        </view>
+                        <view class="row">
+                            <view class="price">{{'￥'+item.$orig.price}}</view>
+                            <view class="nums row">
+                                <image bindtap="__e" class="jian" data-event-opts="{{[ [ 'tap',[ [ 'new_jian',['$event'] ] ] ] ]}}" data-groupindex="{{item.$orig.groupindex}}" data-id="{{item.$orig.id}}" data-index="{{item.$orig.index}}" data-indexs="{{index}}" data-items="{{item.$orig}}" mode="scaleToFill" src="/static/icon/shop/jian.png"></image>
+                                <view class="num">{{item.$orig.count}}</view>
+                                <view style="width:76rpx;">
+                                    <image bindtap="__e" class="jia" data-event-opts="{{[ [ 'tap',[ [ 'new_jia',['$event'] ] ] ] ]}}" data-groupindex="{{item.$orig.groupindex}}" data-id="{{item.$orig.id}}" data-index="{{item.$orig.index}}" data-indexs="{{index}}" data-items="{{item.$orig}}" mode="scaleToFill" src="/static/icon/shop/jia.png" wx:if="{{!item.$orig.quota||item.$orig.quota&&item.$orig.count<item.$orig.quota}}"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

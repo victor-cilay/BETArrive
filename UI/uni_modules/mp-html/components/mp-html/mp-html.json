@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "node": "/uni_modules/mp-html/components/mp-html/node/node",
+        "pt-footer": "/components/footer/footer"
+    }
+}

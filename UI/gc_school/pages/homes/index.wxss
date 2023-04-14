@@ -1,0 +1,577 @@
+.search_box {
+    background: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+    display: flex;
+    font-size: 42rpx;
+    height: 70rpx;
+    justify-content: space-between;
+    line-height: 70rpx;
+    margin: -40rpx 3% 0;
+    padding: 0 20rpx;
+    position: absolute;
+    width: 94%;
+    z-index: 999;
+}
+
+.search_input {
+    color: #000!important;
+    font-size: 30rpx;
+    margin-top: 16rpx;
+    width: 85%;
+}
+
+.location {
+    align-items: center;
+    background-color: #64edac;
+    color: #fff;
+    display: flex;
+    font-size: 26rpx;
+    padding: 15rpx 10rpx;
+}
+
+.location image {
+    margin-right: 10rpx;
+    width: 50rpx;
+}
+
+.page-guide {
+    box-sizing: border-box;
+    margin-top: 30rpx;
+}
+
+.content {
+    background: #fff0d8;
+    color: #000;
+    font-size: 30rpx;
+    padding: 70rpx 0 30rpx;
+    text-align: center;
+}
+
+#tops {
+    padding-bottom: 150rpx;
+}
+
+.page-guide .nav {
+    background-color: #fafafa;
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
+}
+
+.page-guide .nav,.page-guide .nav .nav-item {
+    align-items: center;
+    display: flex;
+}
+
+.page-guide .nav .nav-item {
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 50%;
+}
+
+.page-guide .nav .nav-item.active {
+    color: #ff2d4b;
+}
+
+.page-guide .nav .nav-item.active:after {
+    background: #ff2d4b;
+    border-radius: 999px;
+    content: " ";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    top: 39px;
+    transform: translate(-50%);
+    width: 33px;
+}
+
+.page-guide .shop-wrapper {
+    flex: 1;
+    width: 100%;
+}
+
+.page-guide .shop-wrapper .shop {
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s linear;
+    transition: transform .2s linear,-webkit-transform .2s linear;
+    width: 100%;
+}
+
+.page-guide .shop-wrapper .shop-banner {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 20rpx;
+    bottom: 100rpx;
+    height: 143px;
+    width: 100%;
+}
+
+.swiper-slide {
+    background-position: 50%;
+    background-size: cover;
+}
+
+.page-guide .shop-wrapper .shop-banner .rider-nearby-content {
+    align-items: center;
+    background-color: #623c15;
+    border-radius: 55px;
+    bottom: 90px;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    font-size: 13px;
+    height: 25px;
+    justify-content: center;
+    left: 50%;
+    line-height: 18px;
+    padding: 0 11px;
+    position: absolute;
+    right: 0;
+    transform: translate3d(-50%,0,0);
+    white-space: nowrap;
+    width: 142px;
+    z-index: 100;
+}
+
+.page-guide .shop-wrapper .shop-banner .rider-nearby-icon {
+    background-image: url(https://xs01.meituan.net/banma_paotui/dist/images/paotui-rider.png);
+    background-size: 20px 17px;
+    display: inline-block;
+    height: 17px;
+    margin-right: 6px;
+    width: 20px;
+}
+
+.page-guide .shop-wrapper .shop-banner .rider-nearby-content .num {
+    color: #f6ce00;
+}
+
+.page-guide .shop-wrapper .shop-banner .swiper-container {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.page-guide .shop-wrapper .swiper-container .swiper-wrapper {
+    box-sizing: initial;
+    display: flex;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    width: 100%;
+    z-index: 1;
+}
+
+.page-guide .shop-wrapper .swiper-container .swiper-wrapper .swiper-slide {
+    border-radius: 20rpx;
+    height: 100%;
+    width: 100%;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input {
+    flex: 1;
+    padding: 0 6px;
+    position: relative;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-placeholder.active {
+    display: inline-flex;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-placeholder {
+    align-items: flex-start;
+    color: #999;
+    display: none;
+    font-size: 18px;
+    height: 110px;
+    line-height: 1;
+    width: 100%;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-icon {
+    height: 18px;
+    margin-right: 7px;
+    width: 16px;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-content {
+    align-items: center;
+    display: none;
+    height: 110px;
+    justify-content: center;
+    padding-bottom: 7px;
+    width: 100%;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-content.active {
+    display: flex;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-content .good-input-textarea {
+    border: none;
+    color: #333;
+    flex: 1;
+    font-size: 18px;
+    height: 100%;
+    line-height: 26px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: 6px;
+    resize: none;
+}
+
+.page-guide .shop-wrapper .good-edit .good-input-content .good-input-submit {
+    background-image: url(https://xs01.meituan.net/banma_paotui/dist/images/good-submit.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-size: 15px;
+    height: 72px;
+    margin-top: 18px;
+    width: 73px;
+}
+
+.paotui-order {
+    border: 1px solid #87ceeb;
+    border-radius: 50px;
+    bottom: 80px;
+    height: 50px;
+    position: fixed;
+    right: 10px;
+    text-align: center;
+    width: 50px;
+    z-index: 9999;
+}
+
+.paotui-order .icon {
+    color: #87ceeb;
+    font-size: 24px;
+}
+
+.paotui-order .order-text {
+    color: #87ceeb;
+    font-size: 12px;
+    margin-top: -8px;
+}
+
+.page-guide .tagbg {
+    height: 60rpx;
+    left: -20rpx;
+    position: absolute;
+    top: -20rpx;
+    width: 60rpx;
+}
+
+.good-edit {
+    border-radius: 10rpx;
+    box-sizing: border-box;
+    margin: 20rpx auto 30rpx;
+    overflow: hidden;
+    width: 100%;
+}
+
+.good-edit .bgmain {
+    background-color: #f2f2f2;
+    color: #878787;
+}
+
+.good-edit .text-sm {
+    font-size: 24rpx;
+}
+
+.rank .t-right {
+    text-align: right;
+}
+
+scroll-view {
+    white-space: nowrap;
+    width: 100%;
+}
+
+.tab-container,.tab-item {
+    width: 100%;
+}
+
+.tab-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tab-item>image {
+    height: 170rpx;
+    margin-top: 30rpx;
+    width: 48%!important;
+}
+
+#cus {
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    padding: 10rpx 25rpx;
+}
+
+.titl {
+    color: #010101;
+    font-size: 32rpx;
+    font-weight: 700;
+    padding: 40rpx 0 10rpx;
+}
+
+.contents {
+    background-color: #fff;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 30rpx;
+    padding: 10rpx 15rpx;
+    width: 100%;
+}
+
+.content_top {
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.crol {
+    color: #010101;
+    font-size: 28rpx;
+    padding: 30rpx 0 20rpx;
+}
+
+.geng {
+    color: #7a7a7a;
+    font-size: 24rpx;
+}
+
+.cont_con {
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+    padding: 0 8rpx;
+    width: 100%;
+}
+
+.cont_con,.img {
+    align-items: center;
+    display: flex;
+}
+
+.img>image {
+    border-radius: 50%;
+    height: 100rpx;
+    width: 100rpx;
+}
+
+.names {
+    color: #676767;
+    font-size: 26rpx;
+    padding-left: 20rpx;
+}
+
+.money {
+    color: #ff6445;
+    font-size: 36rpx;
+    font-weight: 700;
+}
+
+.order_box {
+    box-shadow: 1px 2px 10px 0 rgba(0,0,0,.1);
+    height: 150rpx;
+    margin: 10rpx 20rpx;
+}
+
+.moneyst {
+    color: #9a9a9a;
+    float: right;
+    padding-top: 10rpx;
+}
+
+#ustp {
+    padding: 10rpx 15rpx;
+    width: 100%;
+}
+
+#lops,#ustp {
+    box-sizing: border-box;
+}
+
+#lops {
+    border-radius: 16rpx;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+    margin: 30rpx 10rpx;
+    padding: 0 20rpx 30rpx;
+}
+
+#bgmain {
+    background-color: #12a6ee;
+    color: #fff;
+}
+
+#text-xl {
+    color: #00bc6a;
+    font-size: 36rpx;
+    font-weight: 700;
+    margin-top: 30rpx;
+}
+
+#cu-btn {
+    background-color: #e4e4e4;
+    color: #000!important;
+    font-size: 24rpx;
+    padding: 6rpx 10rpx;
+}
+
+#text-df {
+    color: #676767;
+    font-size: 32rpx;
+    font-weight: 500;
+    max-width: 400rpx;
+}
+
+.type_icon {
+    height: 40rpx;
+    margin-right: 10rpx;
+    width: 40rpx;
+}
+
+.ft {
+    margin-left: 50rpx;
+}
+
+#radius {
+    background-color: #fbf6f2;
+    color: #ff6444;
+}
+
+#cuIcon-homefills {
+    height: 48rpx!important;
+    margin: 0 auto!important;
+    position: relative!important;
+    width: 48rpx!important;
+}
+
+#cuIcon-homefills,#cuIcon-homefillt {
+    display: block!important;
+    font-size: 40rpx!important;
+    text-align: center!important;
+}
+
+#cuIcon-homefillt {
+    height: 72rpx!important;
+    left: 0;
+    margin: 0 auto 10rpx!important;
+    position: absolute!important;
+    top: 0;
+    width: 72rpx!important;
+}
+
+.indedx {
+    color: #ff6444;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.indedxs {
+    box-sizing: border-box;
+    margin-top: 10rpx;
+}
+
+.indedxs,.indedxt {
+    color: #010101;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.bgmain {
+    background-color: #fff!important;
+}
+
+#swipers {
+    height: 100%;
+    position: absolute;
+    transform: translate(0) translateZ(0);
+    width: 100%;
+}
+
+.school {
+    background-color: #ff6444;
+    color: #fff;
+    font-size: 30rpx;
+    padding: 80rpx 30rpx 30rpx;
+}
+
+.cover {
+    background: rgba(0,0,0,.7);
+    height: 100%;
+    left: 0;
+    padding: 160rpx 40rpx 40rpx;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.toast {
+    color: #fff;
+    max-height: 80%;
+    overflow-y: scroll;
+}
+
+.sure {
+    background: #ff6444;
+    border-radius: 10rpx;
+    color: #fff;
+    margin: 100rpx auto;
+    padding: 20rpx;
+    text-align: center;
+    width: 200rpx;
+}
+
+.newest_toast {
+    color: #000;
+    height: 125rpx;
+    left: 3%;
+    position: absolute;
+    top: 20%;
+    width: 400rpx;
+}
+
+.newest_toast image {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 35rpx;
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+    width: 35rpx;
+}
+
+.newest_toast .item {
+    background: hsla(0,0%,75%,.8);
+    border-radius: 30rpx;
+    color: #fff;
+    display: flex;
+    font-size: 22rpx;
+    line-height: 50rpx;
+    margin-top: 10rpx;
+    max-width: 320rpx!important;
+    padding: 0 10rpx;
+}
+
+.newest_toast .item .word {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-orange {
+    color: var(--orange)!important;
+}

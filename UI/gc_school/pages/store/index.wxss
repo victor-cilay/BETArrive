@@ -1,0 +1,52 @@
+page {
+    background-color: #fff;
+}
+
+.tops {
+    box-sizing: border-box;
+    margin-top: 10rpx;
+    padding: 30rpx;
+    width: 100%;
+}
+
+.contents {
+    align-items: center;
+    border-bottom: 1px solid #e7e7e7;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40rpx;
+    padding-bottom: 20rpx;
+    width: 100%;
+}
+
+image {
+    height: 30rpx;
+    width: 16rpx;
+}
+
+.title {
+    font-size: 30rpx;
+    width: 85%;
+}
+
+.nodatas {
+    color: #000;
+    font-size: 30rpx;
+    left: 50%;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.bgmain {
+    background-color: #ff6344;
+}
+
+.bgmain,.cuIcon-back {
+    color: #fff;
+}
+
+.cuIcon-right {
+    font-size: 36rpx;
+}

@@ -1,0 +1,39 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="bc87b8e0-1" vueSlots="{{['content']}}">
+        <view slot="content">我的发布</view>
+    </cu-custom>
+    <view class="cate_item_box flex">
+        <view bindtap="__e" class="{{[ 'cate_item '+(cate_index==index?'cate_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'cateChange',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="index">{{item.name}}</view>
+    </view>
+    <view class="padding" style="padding-top:0;">
+        <view class="padding-bottom">
+            <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+            <block wx:else>
+                <view bindtap="__e" class="article_box padding" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{item.info_id}}" wx:for="{{dataList}}" wx:key="index">
+                    <view class="item text-lg text-bold">{{item.title}}</view>
+                    <view class="margin-top" wx:if="{{item.media_type=='1'}}">
+                        <video src="{{item.video}}" style="width:100%;"></video>
+                    </view>
+                    <block wx:else>
+                        <view class="margin-top" wx:if="{{item.media_type=='2'}}">
+                            <image catchtap="__e" class="item_img" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-list="{{item.img}}" mode="aspectFill" src="{{img}}" wx:for="{{item.image}}" wx:for-index="index1" wx:for-item="img" wx:key="index1"></image>
+                        </view>
+                    </block>
+                    <view class="item flex align-center text-bold">
+                        <image class="icon" src="../../../static/icon/lost/location.png"></image>{{''+(item.type==1?'拾物地点':'丢失地点')+'：'}}<text class="val">{{item.address}}</text>
+                    </view>
+                    <view class="item flex align-center text-bold" wx:if="{{item.pick_date}}">
+                        <image class="icon" src="../../../static/icon/lost/date.png"></image>{{''+(item.type==1?'拾物时间':'丢失时间')+'：'}}<text class="val">{{item.pick_date}}</text>
+                    </view>
+                    <view class="item flex align-center text-bold" wx:if="{{item.phone}}">
+                        <image class="icon" src="../../../static/icon/lost/phone.png"></image>联系电话：<text class="val">{{item.phone}}</text>
+                    </view>
+                    <view class="margin-top-sm flex text-sm operate align-center" style="line-height:40rpx;">
+                        <view class="text-df">{{item.createtime}}</view>
+                        <view catchtap="__e" class="text-orange margin-left del_btn" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{item.info_id}}">删除</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

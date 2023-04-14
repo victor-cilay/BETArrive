@@ -1,0 +1,32 @@
+.error {
+    background-color: #fff;
+    width: 690rpx;
+}
+
+.error .header {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.error .header .row {
+    text-indent: 1em;
+    width: 100%;
+}
+
+.error .Authorization .key {
+    flex-shrink: 0;
+    width: 100rpx;
+}
+
+.error .Authorization .val {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.del {
+    bottom: 20vh;
+    position: fixed;
+    right: 30rpx;
+}

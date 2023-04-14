@@ -1,0 +1,98 @@
+<view>
+    <view class="Highlight">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="bba3bb22-1" vueSlots="{{['content']}}">
+            <view slot="content">二手市场</view>
+        </cu-custom>
+        <view class="search_bg">
+            <view class="search_box" data-id="9999">
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'setKeyWord',['$event'] ] ] ] ]}}" placeholder="输入您要搜索的内容"></input>
+                <text class="cuIcon-search text-black"></text>
+            </view>
+        </view>
+        <view class="slide_box" wx:if="{{slideList.length>0}}">
+            <swiper autoplay="{{autoplay}}" bindchange="__e" circular="{{true}}" class="swiper-box" data-event-opts="{{[ [ 'change',[ [ 'index_swiperChange',['$event'] ] ] ] ]}}" duration="{{duration}}">
+                <block wx:if="{{slideList.length>0}}">
+                    <swiper-item wx:for="{{slideList}}" wx:key="index">
+                        <image bindtap="__e" class="{{['banner',index_swiperCurrent==index?'on slide-image':' slide-image']}}" data-event-opts="{{[ [ 'tap',[ [ 'slideJump',['$event'] ] ] ] ]}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="{{true}}" src="{{item.img}}"></image>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <view class="indicator-dots">
+                <view class="{{[index_swiperCurrent==index?'dots_on':'']}}" wx:for="{{slideList}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="cate_box">
+            <view bindtap="__e" class="{{[ 'cate_item '+(current_cate==9999?'cate_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-id="9999" data-index="9999">全部</view>
+            <view bindtap="__e" class="{{[ 'cate_item '+(current_cate==item.id?'cate_active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'changeTab',['$event'] ] ] ] ]}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="index">{{''+item.title+''}}</view>
+        </view>
+        <view class="filterList">
+            <view class="filter">
+                <view bindtap="__e" class="filterItem" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">
+                    <text class="names">排序</text>
+                    <image mode class="downGrayIcon" src="/static/images/downGrayIcon.png"></image>
+                </view>
+                <view bindtap="__e" class="filterItem" data-event-opts="{{[ [ 'tap',[ [ 'setfilter',['priceFlag',!priceFlag] ] ] ] ]}}">
+                    <text class="names">价格</text>
+                    <image mode class="downUpGrayIcon" src="/static/images/downUpGrayIcon.png"></image>
+                </view>
+                <view bindtap="__e" class="filterItem" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">
+                    <text class="names">新旧</text>
+                    <image mode class="downGrayIcon" src="/static/images/downGrayIcon.png"></image>
+                </view>
+            </view>
+            <view class="sortList" wx:if="{{sotrFlag||oldDegreeFlag}}">
+                <view class="sotrTitle" wx:if="{{sotrFlag}}">
+                    <view bindtap="__e" class="{{[sotrvalue==item?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'setfilter',['sotrvalue','$0'],[ [ ['sotrList','',index] ] ] ] ] ] ]}}" wx:for="{{sotrList}}" wx:key="index">{{''+item+''}}</view>
+                </view>
+                <view wx:if="{{oldDegreeFlag}}">
+                    <view class="oldtitle">
+                        <view bindtap="__e" class="{{[oldDegreeValue==item?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e2',['$event'] ] ] ] ]}}" data-event-params="{{item}}" wx:for="{{oldDegree}}" wx:key="index">{{''+item+''}}</view>
+                        <view class="nulls"></view>
+                        <view class="nulls"></view>
+                    </view>
+                    <view class="Button">
+                        <view bindtap="__e" class="Reset" data-event-opts="{{[ [ 'tap',[ [ 'setfilter',['oldDegreeValue',''] ] ] ] ]}}">重置</view>
+                        <view bindtap="__e" class="sure" data-event-opts="{{[ [ 'tap',[ [ 'setfilter',['oldDegreesureValue','$0'],['oldDegreeValue'] ] ] ] ]}}">确认</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="modality" wx:if="{{sotrFlag||oldDegreeFlag}}"></view>
+    <view class="newest">
+        <view class="goods_line">
+            <view bindtap="__e" class="goods_item" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$0'],[ [ ['goodsList','',index,'m_id'] ] ] ] ] ] ]}}" data-id="{{item.m_id}}" wx:for="{{goodsList}}" wx:key="index">
+                <image mode="aspectFill" src="{{item.image}}"></image>
+                <view class="name">{{item.title}}</view>
+                <view class="oldArrangement">{{''+item.degree+''}}</view>
+                <view class="price">
+                    <view class="price_item">
+                        <text class="Company">￥</text>{{item.pay}}</view>
+                    <view>{{'￥'+item.price}}</view>
+                </view>
+                <view class="userInfo">
+                    <view class="left">
+                        <image class="avatar" src="{{item.avatar}}"></image>
+                        <view class="nickname">{{item.nickname}}</view>
+                    </view>
+                    <view>
+                        <image class="xihuan" src="../../../static/images/xihuans.png" wx:if="{{item.stay==1}}"></image>
+                        <image class="xihuan" src="../../../static/images/xihuan.png" wx:else></image>{{''+item.con+''}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="nomore" wx:if="{{!loadmore&&goodsList.length>0}}">暂无更多数据~</view>
+    </view>
+    <view class="nocontent" wx:if="{{goodsList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="allEntry">
+        <image bindtap="__e" class="entryoperation" data-event-opts="{{[ [ 'tap',[ [ 'e3',['$event'] ] ] ] ]}}" mode="widthFix" src="/static/images/entryoperation.png"></image>
+        <view class="{{[seeOperation?'OpenOperation':'']}}">
+            <image bindtap="__e" class="entryorder childImage" data-event-opts="{{[ [ 'tap',[ [ 'dingdan',['$event'] ] ] ] ]}}" mode="widthFix" src="/static/images/entryorder.png"></image>
+            <image bindtap="__e" class="entryrelease childImage" data-event-opts="{{[ [ 'tap',[ [ 'publish',['$event'] ] ] ] ]}}" mode="widthFix" src="/static/images/entryrelease.png"></image>
+            <image bindtap="__e" class="entryadmin childImage" data-event-opts="{{[ [ 'tap',[ [ 'my',['$event'] ] ] ] ]}}" mode="widthFix" src="/static/images/entryadmin.png"></image>
+        </view>
+    </view>
+</view>

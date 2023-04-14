@@ -1,0 +1,15 @@
+{
+    "navigationStyle": "custom",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "uni-notice-bar": "/uni_modules/uni-notice-bar/components/uni-notice-bar/uni-notice-bar",
+        "school-circle-hot": "/components/school-circle-hot/school-circle-hot",
+        "school-store": "/components/school-store/school-store",
+        "school-store-recommend": "/components/school-store-recommend/school-store-recommend",
+        "school-circle": "/components/school-circle/school-circle",
+        "school-sty3": "/components/school-sty3/school-sty3",
+        "mp-html": "/uni_modules/mp-html/components/mp-html/mp-html",
+        "drag-button": "/components/drag-button/drag-button",
+        "pt-footer": "/components/footer/footer"
+    }
+}

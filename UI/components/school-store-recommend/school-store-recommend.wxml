@@ -1,0 +1,12 @@
+<view class="store_box margin-lr padding margin-top">
+    <view class="tit row">商家推荐<view bindtap="__e" class="all" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/canteen/canteen'] ] ] ] ]}}">查看更多<text class="cuIcon-right"></text>
+        </view>
+    </view>
+    <view class="store_list row">
+        <view bindtap="__e" class="store_info" data-event-opts="{{[ [ 'tap',[ [ 'goStore',['/gc_school/pages/foold/foold?id='+item.business_id] ] ] ] ]}}" wx:if="{{index<3}}" wx:for="{{schoolInfo.store}}" wx:key="index">
+            <image class="main_img" mode="scaleToFill" src="{{item.business_image}}"></image>
+            <view class="name">{{item.business_name}}</view>
+            <view class="song">{{'起送￥'+item.starting_fee}}</view>
+        </view>
+    </view>
+</view>

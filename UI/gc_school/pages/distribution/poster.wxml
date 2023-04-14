@@ -1,0 +1,8 @@
+<view style="overflow:hidden;width:100vw;">
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="012eb022-1" vueSlots="{{['content']}}">
+        <view slot="content">分享海报</view>
+    </cu-custom>
+    <canvas canvasId="firstCanvas" class="firse_cavas" id="firstCanvas" style="width:414px;height:736px;"></canvas>
+    <image mode="widthFix" src="{{poster}}" style="width:100%;position:absolute;"></image>
+    <view bindtap="__e" class="notice" data-event-opts="{{[ [ 'tap',[ [ 'saveCanvas',['$event'] ] ] ] ]}}" wx:if="{{code&&poster}}">点此保存图片</view>
+</view>

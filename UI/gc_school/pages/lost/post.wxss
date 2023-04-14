@@ -1,0 +1,91 @@
+page {
+    background: #f0f0f0;
+}
+
+.icon {
+    height: 32rpx;
+    width: 32rpx;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 20rpx;
+}
+
+.name_input {
+    border-bottom: 1rpx solid #eee;
+    height: 80rpx;
+    padding-left: 0;
+    text-align: left;
+}
+
+.name_input,textarea {
+    font-size: 30rpx;
+    width: 100%;
+}
+
+textarea {
+    background: #f9f9f9;
+    border-radius: 20rpx;
+    padding: 10rpx;
+}
+
+.add {
+    height: 200rpx;
+    width: 200rpx;
+}
+
+.btn {
+    background: #ff6344;
+    font-size: 28rpx;
+    margin: 100rpx auto;
+    padding: 25rpx 0;
+}
+
+.btn,.btns {
+    border-radius: 50rpx;
+    color: #fff;
+    display: block;
+    width: 90%;
+}
+
+.btns {
+    background: linear-gradient(90deg,#ff484a,#ff716c);
+    border: none;
+    font-size: 32rpx;
+    margin: 70rpx auto 40rpx;
+    padding: 8rpx 0;
+}
+
+.preview {
+    position: relative;
+    width: 230rpx;
+}
+
+.close {
+    font-size: 40rpx;
+    position: absolute;
+    right: 30rpx;
+}
+
+.input_item {
+    align-items: center;
+    border-bottom: 1rpx solid #f5f5f5;
+    font-size: 28rpx;
+    margin: 30rpx 0;
+    padding-bottom: 25rpx;
+}
+
+.item_name {
+    flex-shrink: 0;
+}
+
+input {
+    padding-left: 20rpx;
+    text-align: right;
+    width: 100%;
+}
+
+.checkbox {
+    transform: scale(.8);
+}

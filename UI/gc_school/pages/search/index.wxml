@@ -1,0 +1,29 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="843713ec-1" vueSlots="{{['content']}}">
+        <view slot="content">搜索</view>
+    </cu-custom>
+    <view class="search">
+        <input bindconfirm="__e" bindinput="__e" data-event-opts="{{[ [ 'input',[ [ 'kwdinput',['$event'] ] ] ],[ 'confirm',[ [ 'searchs',['$event'] ] ] ] ]}}" placeholder="请输入关键词"></input>
+        <view bindtap="__e" class="text" data-event-opts="{{[ [ 'tap',[ [ 'searchs',['$event'] ] ] ] ]}}">搜索</view>
+    </view>
+    <view class="nocontent" wx:if="{{goodsList.length==0}}">
+        <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+        <view class="blank_text">暂无数据哦~</view>
+    </view>
+    <view class="list">
+        <view bindtap="__e" class="list_item" data-event-opts="{{[ [ 'tap',[ [ 'toDetail',['$event'] ] ] ] ]}}" data-id="{{item.id}}" wx:for="{{goodsList}}" wx:key="index">
+            <navigator url="{{'../details/details?id='+item._id}}">
+                <view class="img">
+                    <image mode="scaleToFill" src="{{item.img[0]}}"></image>
+                </view>
+                <view class="info">
+                    <view class="title">{{item.name}}</view>
+                    <view class="price">
+                        <view class="p">{{'￥'+item.price}}</view>
+                    </view>
+                </view>
+            </navigator>
+            <view class="clear"></view>
+        </view>
+    </view>
+</view>

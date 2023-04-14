@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "pt-footer": "/components/footer/footer"
+    },
+    "component": true
+}

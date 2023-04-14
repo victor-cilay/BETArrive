@@ -1,0 +1,28 @@
+page {
+    background: #fff;
+}
+
+.box {
+    padding: 40rpx 5%;
+}
+
+textarea {
+    border: 1rpx solid #d3d3d3;
+    font-size: 30rpx;
+    padding: 10rpx 0;
+    width: 100%;
+}
+
+.submit,textarea {
+    border-radius: 10rpx;
+}
+
+.submit {
+    background: #ff6444;
+    color: #fff;
+    font-size: 32rpx;
+    margin: 20rpx auto;
+    padding: 20rpx;
+    text-align: center;
+    width: 200rpx;
+}

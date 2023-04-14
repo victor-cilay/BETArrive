@@ -1,0 +1,130 @@
+.wrap {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.wrap_title {
+    flex: 1;
+    height: 150rpx;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.wrap_title_top {
+    color: #4687f7;
+    font-size: 40rpx;
+    font-weight: 600;
+    height: 75rpx;
+    line-height: 75rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.topstyle {
+    margin-top: 80rpx;
+}
+
+.wrap_middle {
+    flex: 1;
+    height: 450rpx;
+    width: 100%;
+}
+
+.wrap_middle image {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    width: 530rpx;
+}
+
+.wrap_bottom {
+    flex: 1;
+    padding-top: 90rpx;
+    width: 100%;
+}
+
+.form_box {
+    background-color: #999;
+    height: 300rpx;
+    width: 100%;
+}
+
+.form_box_btn_ {
+    align-items: center;
+    display: flex;
+    font-size: 24rpx;
+    justify-content: center;
+    line-height: 34rpx;
+    word-break: break-all;
+}
+
+.form_box_btn,.form_box_btn_ {
+    background-color: #fff;
+    background: linear-gradient(90deg,#5093ee,#06b4f1);
+    border-radius: 100%;
+    color: #fff;
+    height: 190rpx;
+    margin: 0 auto;
+    position: relative;
+    width: 195rpx;
+}
+
+.form_box_btn {
+    line-height: 190rpx;
+}
+
+.wrap_bottom_img {
+    height: 200rpx;
+    width: 100%;
+}
+
+.wrap_bottom_img image {
+    display: block;
+    height: 200rpx;
+    margin: 50rpx auto 0;
+    width: 200rpx;
+}
+
+.wrap_bottom_num {
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 50rpx;
+    text-align: center;
+}
+
+.wrap_bottom_num .num {
+    color: #4687f7;
+    display: inline;
+    font-size: 30rpx;
+}
+
+.form_box_btn text {
+    color: #fff;
+    left: 106rpx;
+    position: absolute;
+    top: 95rpx;
+}
+
+.form_box_btn::after {
+    border: none;
+}
+
+.ex_tip {
+    background: rgba(0,0,0,.6);
+    border-radius: 6px;
+    bottom: 0;
+    color: #fff;
+    height: 40rpx;
+    left: 0;
+    margin: auto;
+    padding: 20rpx;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 650rpx;
+    z-index: 100;
+}

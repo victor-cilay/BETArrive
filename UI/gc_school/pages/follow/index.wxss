@@ -1,0 +1,71 @@
+page {
+    background-color: #fff;
+}
+
+.bgmain,.cu-bar .action:first-child {
+    background-color: #fff;
+    color: #000;
+}
+
+.item {
+    align-items: center;
+    border-bottom: 1rpx solid hsla(0,0%,79%,.6);
+    display: flex;
+    padding: 20rpx 30rpx;
+    width: 100%;
+}
+
+.item .info {
+    flex-grow: 1;
+}
+
+.item image {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 100rpx;
+    margin-right: 10rpx;
+    width: 100rpx;
+}
+
+.item .name {
+    font-size: 28rpx;
+    margin: 10rpx;
+    max-width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item .num {
+    color: #919191;
+    font-size: 22rpx;
+    margin: 10rpx;
+}
+
+.item .cancel_btn {
+    border: 2rpx solid #c8c8c8;
+    border-radius: 50rpx;
+    font-size: 25rpx;
+    padding: 10rpx 15rpx;
+}
+
+.nocontent {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nocontent image {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.blank_text {
+    color: #c6c6c8;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-top: 10rpx;
+}

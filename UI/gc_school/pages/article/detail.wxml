@@ -1,0 +1,125 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="1bc0b5cb-1" vueSlots="{{['content']}}">
+        <view slot="content">详情</view>
+    </cu-custom>
+    <view class="header">
+        <view class="article margin-lr">
+            <view class="flex row">
+                <image class="avatar" src="{{detail.avatar?detail.avatar:fileUrl+'avatar.jpg'}}" wx:if="{{detail.is_anonymous==0}}"></image>
+                <image class="avatar" src="{{fileUrl+'avatar.jpg'}}" wx:else></image>
+                <view>
+                    <view class="nickname">{{''+(detail.is_anonymous==1?'匿名用户':detail.nickname)+''}}</view>
+                    <view class="date ">{{detail.createtime}}</view>
+                </view>
+                <block wx:if="{{detail.is_anonymous==0&&detail.is_my==0}}">
+                    <view bindtap="__e" class="focus" data-event-opts="{{[ [ 'tap',[ [ 'guanzhu',[0] ] ] ] ]}}" wx:if="{{detail.is_follow==0}}">关注</view>
+                    <view bindtap="__e" class="focus" data-event-opts="{{[ [ 'tap',[ [ 'guanzhu',[1] ] ] ] ]}}" wx:else>取关</view>
+                </block>
+                <image class="top" src="/static/icon/top.png" wx:if="{{item.is_top==1}}"></image>
+            </view>
+            <view class="content margin-tb">
+                <text decode="{{true}}" space="nbsp" style="word-break:break-word;">{{detail.content}}</text>
+            </view>
+            <view class="imgs row  margin-bottom " wx:if="{{detail.image.length>0}}">
+                <image bindtap="__e" class="{{[ 'img','num'+(detail.image.length<3?detail.image.length:3) ]}}" data-event-opts="{{[ [ 'tap',[ [ 'preview',['$event'] ] ] ] ]}}" data-img="{{img}}" data-index="{{index}}" data-list="{{detail.image}}" mode="aspectFill" src="{{image}}" wx:for="{{detail.image}}" wx:for-item="image" wx:key="index"></image>
+            </view>
+            <view catchtap="__e" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}" wx:if="{{detail.video}}">
+                <video class="margin-bottom" src="{{detail.video}}" style="width:100%;"></video>
+            </view>
+            <view class="footer row">
+                <view class="class_name" wx:if="{{detail.class_name}}">{{''+detail.class_name+''}}</view>
+                <view class="view">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/views.png" style="height:45rpx;"></image>{{''+(detail.views_num||0)+''}}</view>
+                <view class="comment">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/comment.png"></image>{{''+detail.comments_num+''}}</view>
+                <view bindtap="__e" class="{{['love',detail.is_fav?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'fav',['$event'] ] ] ] ]}}" data-id="{{detail.article_id}}">
+                    <image class="icon" mode="scaleToFill" src="/static/icon/love.png"></image>{{''+detail.likes_num+''}}</view>
+            </view>
+        </view>
+        <view class="row padding-lr margin-top">
+            <view class="userList row justify-between" style="width:100%;">
+                <view wx:if="{{detail.reward_user_list.length>0&&sysparment.is_open_reward}}">
+                    <view class="cu-avatar-group" wx:if="{{detail.reward_user_list.length>0}}">
+                        <view class="cu-avatar round" style="{{'background-image:'+'url('+item.avatar+')'+';'}}" wx:if="{{index<5}}" wx:for="{{detail.reward_user_list}}" wx:key="index"></view>
+                    </view>{{''+detail.reward_user_list.length+'人已打赏'}}</view>
+                <view class="row" style="margin-left:auto;">
+                    <view bindtap="__e" class="shang row " data-event-opts="{{[ [ 'tap',[ ['sixin'] ] ] ]}}" wx:if="{{chatStatus==1}}">私信</view>
+                    <view bindtap="__e" class="shang row margin-left" data-event-opts="{{[ [ 'tap',[ ['show'] ] ] ]}}" style="margin-left:30rpx;" wx:if="{{sysparment.is_open_reward}}">
+                        <image class="icon margin-right-sm" mode="scaleToFill" src="/static/icon/shang.png"></image>打赏</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="__e" class="{{['cu-modal',modalName?'show':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'close',['$event'] ] ] ] ]}}">
+        <view catchtap="__e" class="cu-dialog  padding-bottom" data-event-opts="{{[ [ 'tap',[ [ '',['$event'] ] ] ] ]}}">
+            <view class="bg-img">
+                <view class="cu-bar justify-end text-block">
+                    <view class="action">
+                        <text bindtap="__e" class="cuIcon-close " data-event-opts="{{[ [ 'tap',[ ['close'] ] ] ]}}"></text>
+                    </view>
+                </view>
+            </view>
+            <view class="user_info">
+                <image class="avatar" src="{{detail.avatar?detail.avatar:fileUrl+'avatar.jpg'}}" wx:if="{{detail.is_anonymous==0}}"></image>
+                <image class="avatar" src="{{fileUrl+'avatar.jpg'}}" wx:else></image>
+                <view class="nickname">{{''+(detail.is_anonymous==1?'匿名用户':detail.nickname)+''}}</view>
+            </view>
+            <view class="price_list row">
+                <view bindtap="__e" class="{{['price',price==item?'cur':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'change',['$0'],[ [ ['detail.reward_list','',index] ] ] ] ] ] ]}}" wx:if="{{item}}" wx:for="{{detail.reward_list}}" wx:key="index">{{'￥'+item+''}}</view>
+            </view>
+            <view bindtap="__e" class="pay margin-top" data-event-opts="{{[ [ 'tap',[ ['shang'] ] ] ]}}">打赏</view>
+        </view>
+    </view>
+    <view class="padding-lr" style="margin-bottom:100rpx;">
+        <view class="comment_box">
+            <view class="name margin-bottom" style="padding-left:0;">{{'共有'+detail.comment.length+'条评论'}}</view>
+            <block wx:for="{{comment_list}}" wx:key="index">
+                <view class="comment_item_first">
+                    <view class="flex">
+                        <image src="{{item.avatar}}"></image>
+                        <view class="nickname" style="flex-grow:2;">{{item.nickname}}</view>
+                        <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{item.id}}" wx:if="{{detail.user.u_id==item.u_id}}"></text>
+                    </view>
+                    <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="-1">{{''+item.contents+''}}</view>
+                    <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="-1">{{item.createtime+''}}</view>
+                </view>
+                <view>
+                    <view class="comment_item_child bg-write" wx:if="{{index1<1}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child" wx:key="index1">
+                        <view class="flex justify-between">
+                            <image src="{{child.avatar}}"></image>
+                            <view class="nickname" style="flex-grow:2;">{{child.nickname}}</view>
+                            <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{child.id}}" wx:if="{{detail.user.u_id==child.u_id}}"></text>
+                        </view>
+                        <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{''+child.contents+''}}</view>
+                        <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{''+child.createtime+''}}</view>
+                    </view>
+                    <view class="comment_item_child bg-write" wx:if="{{index1>=1&&item.block==true}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child" wx:key="index1">
+                        <view class="flex justify-between">
+                            <image src="{{child.avatar}}"></image>
+                            <view class="nickname" style="flex-grow:2;">{{child.nickname}}</view>
+                            <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{child.id}}" wx:if="{{detail.user.u_id==child.u_id}}"></text>
+                        </view>
+                        <view bindtap="__e" class="content" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{''+child.contents+''}}</view>
+                        <view bindtap="__e" class="time" data-event-opts="{{[ [ 'tap',[ [ 'comment',['$event'] ] ] ] ]}}" data-groupindex="{{index}}" data-index="{{index1}}">{{''+child.createtime+''}}</view>
+                    </view>
+                    <view bindtap="__e" class="more bg-write" data-event-opts="{{[ [ 'tap',[ [ 'showmore',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==false}}">查看全部</view>
+                    <block wx:else>
+                        <view bindtap="__e" class="more bg-write" data-event-opts="{{[ [ 'tap',[ [ 'showmore',['$event'] ] ] ] ]}}" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==true}}">收起</view>
+                    </block>
+                </view>
+            </block>
+            <view class="nocontent" wx:if="{{comment_list==0}}">
+                <image lazyLoad="{{true}}" mode="aspectFit" src="/static/images/empty.png"></image>
+                <view class="blank_text" style="text-align:center;">暂无留言哦~</view>
+            </view>
+        </view>
+        <view class="comment_input" style="{{'bottom:'+bottom+'px'}}">
+            <button class="row padding-xs" openType="share" style="width:150rpx;flex-shrink:0;">
+                <image class="share_icon" src="/static/images/article/shares.png"></image>
+                <text class="text-df margin-left-sm">分享</text>
+            </button>
+            <input adjustPosition="{{false}}" bindblur="__e" bindfocus="__e" bindinput="__e" data-event-opts="{{[ [ 'focus',[ [ 'inputFocus',['$event'] ] ] ],[ 'blur',[ [ 'inputBlur',['$event'] ] ] ],[ 'input',[ [ 'inputFun',['$event'] ] ] ] ]}}" placeholder="{{placeholder}}" value="{{input}}"></input>
+            <view bindtap="__e" class="submit" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">发送</view>
+        </view>
+    </view>
+</view>

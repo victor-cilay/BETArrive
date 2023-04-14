@@ -1,0 +1,42 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" class="bgmains" isBack="{{true}}" vueId="465af047-1" vueSlots="{{['content']}}">
+        <view slot="content">我的优惠券</view>
+    </cu-custom>
+    <view style="position:relative;">
+        <image mode="widthFix" src="{{fileUrl+'coupon.png'}}" style="width:100%;"></image>
+        <view class="box padding">
+            <view class="tab flex">
+                <view bindtap="__e" class="{{['tab_item','text-df','text-bold',tab_index==0?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">领券中心</view>
+                <view bindtap="__e" class="{{['tab_item','text-df','text-bold',tab_index==1?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">我的卡券</view>
+            </view>
+            <view wx:if="{{tab_index==0&&list.length>0}}">
+                <view bindtap="__e" class="margin-top-lg margin-bottom coupon_item padding flex justify-between align-center" data-event-opts="{{[ [ 'tap',[ [ 'handleGet',['$event'] ] ] ] ]}}" data-id="{{item.o_id}}" wx:if="{{list.length!=0}}" wx:for="{{list}}" wx:key="index">
+                    <view class="type_name text-df">{{item.type==0?'立减券':'满减券'}}</view>
+                    <view class="text-xl text-white">{{item.c_name}}</view>
+                    <view class="justify-between" style="position:relative;">
+                        <image mode="widthFix" src="{{fileUrl+'/coupon_item.png'}}" style="width:250rpx;"></image>
+                        <view class="flex-direction justify-between flex align-center" style="position:absolute;top:10%;height:100rpx;width:100%;">
+                            <view class="orange text-xxl">{{'￥'+item.price}}</view>
+                            <view class="orange text-df">立即领取</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="text-df text-center margin-top" wx:if="{{tab_index==0&&list.length==0}}">暂无数据~</view>
+            <view wx:if="{{tab_index==1&&mylist.length>0}}">
+                <view bindtap="__e" class="margin-top-lg margin-bottom coupon_item padding flex justify-between align-center" data-cut_num="{{item.cut_num}}" data-event-opts="{{[ [ 'tap',[ [ 'handleUser',['$event'] ] ] ] ]}}" data-id="{{item.id}}" data-title="{{item.c_name}}" data-type="{{item.type}}" data-y_money="{{item.price}}" wx:if="{{mylist.length!=0}}" wx:for="{{mylist}}" wx:key="index">
+                    <view class="type_name text-df">{{item.type==0?'立减券':'满减券'}}</view>
+                    <view class="text-xl text-white">{{item.c_name}}</view>
+                    <view class="justify-between" style="position:relative;">
+                        <image mode="widthFix" src="{{fileUrl+'coupon_item.png'}}" style="width:250rpx;"></image>
+                        <view class="flex-direction justify-between flex align-center" style="position:absolute;top:10%;height:100rpx;width:100%;">
+                            <view class="orange text-xxl">{{'￥'+item.price}}</view>
+                            <view class="orange text-df">已领取</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="text-df text-center margin-top" wx:if="{{tab_index==1&&mylist.length==0}}">暂无数据~</view>
+        </view>
+    </view>
+</view>

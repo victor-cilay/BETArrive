@@ -1,0 +1,70 @@
+page {
+    background-color: #fff;
+}
+
+.bgmain,.cu-bar .action:first-child {
+    background-color: #fff;
+    color: #000;
+}
+
+.box {
+    display: flex;
+    flex-flow: wrap;
+    padding: 30rpx 20rpx;
+}
+
+.item {
+    border-radius: 10rpx;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+    margin: 20rpx 0 20rpx 2.5%;
+    width: 30%;
+}
+
+.item image {
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+    height: 220rpx;
+    width: 100%;
+}
+
+.item .name {
+    font-size: 30rpx;
+    margin: 10rpx 10rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item .price {
+    color: #ff6344;
+    font-size: 30rpx;
+    font-weight: 700;
+    margin: 10rpx;
+}
+
+.item .time {
+    color: #919191;
+    font-size: 22rpx;
+    margin: 10rpx;
+}
+
+.nocontent {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nocontent image {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.blank_text {
+    color: #c6c6c8;
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    padding-top: 10rpx;
+}

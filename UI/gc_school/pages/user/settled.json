@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "商家入驻",
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom",
+        "add-image": "/colorui/components/upload/upload",
+        "pt-footer": "/components/footer/footer"
+    }
+}

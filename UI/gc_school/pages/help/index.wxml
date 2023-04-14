@@ -1,0 +1,8 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="6442f091-1" vueSlots="{{['content']}}">
+        <view slot="content">帮助中心</view>
+    </cu-custom>
+    <view class="box">
+        <mp-html bind:__l="__l" content="{{article_guide}}" vueId="6442f091-2"></mp-html>
+    </view>
+</view>

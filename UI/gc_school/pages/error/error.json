@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "错误",
+    "usingComponents": {
+        "cu-custom": "/colorui/components/cu-custom",
+        "pt-footer": "/components/footer/footer"
+    }
+}

@@ -1,0 +1,35 @@
+<view>
+    <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="0490d360-1" vueSlots="{{['content']}}">
+        <view slot="content">我的地址</view>
+    </cu-custom>
+    <view class="container">
+        <view class="content" wx:if="{{address.available.length>0}}">
+            <scroll-view class="scroll" scrollY="{{true}}">
+                <block wx:if="{{sid>0||erranderId>0}}">
+                    <block wx:if="{{address.available.length>0}}">
+                        <view class="{{[ 'addr_box','wui-cell '+(index>0?'border-1px-t':'') ]}}" wx:for="{{address.available}}" wx:key="index">
+                            <view class="wui-cell-bd">
+                                <view bindtap="__e" class="top" data-addres="{{item.addres}}" data-available="{{item.available}}" data-event-opts="{{[ [ 'tap',[ [ 'handleUser',['$event'] ] ] ] ]}}" data-id="{{item.a_id}}" data-index="{{index}}" data-name="{{item.name}}" data-sid="{{item.s_id}}">
+                                    <view class="more_info justify-between">
+                                        <view class="name">{{item.name}}</view>
+                                        <view class="phone">{{item.phone}}</view>
+                                    </view>
+                                    <view class="addres">{{item.addres}}</view>
+                                </view>
+                                <view class="icon">
+                                    <text bindtap="__e" class="cuIcon-edit" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-event-type="jsUrl" data-url="{{'/gc_school/pages/address/addressPost?id='+item.a_id}}" openType="navigate"></text>
+                                    <text bindtap="__e" class="cuIcon-delete" data-event-opts="{{[ [ 'tap',[ [ 'del',['$event'] ] ] ] ]}}" data-id="{{item.a_id}}"></text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+            </scroll-view>
+        </view>
+        <view class="no-data" wx:else>
+            <image class="no-coupon" src="http://cos.lalawaimai.com/we7_wmall/wxapp/store_no_con.png"></image>
+            <text class="no-record">您还没有收货地址</text>
+        </view>
+        <view bindtap="__e" class="margin btns" data-event-opts="{{[ [ 'tap',[ [ 'onJsEvent',['$event'] ] ] ] ]}}" data-event-type="jsUrl" data-url="/gc_school/pages/address/addressPost?id=0">添加地址</view>
+    </view>
+</view>

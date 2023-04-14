@@ -1,0 +1,22 @@
+<view>
+    <cu-custom bgColor="bgmains" bind:__l="__l" isBack="{{true}}" vueId="68e3bd72-1" vueSlots="{{['content']}}">
+        <view slot="content">商家会员</view>
+    </cu-custom>
+    <view class="box">
+        <view bindtap="__e" class="{{[ 'item '+(type==1?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'current',['$event'] ] ] ] ]}}" data-money="{{data.store_week_fee}}" data-type="1">
+            <view class="name">周卡费用</view>
+            <view>￥<text>{{data.store_week_fee}}</text>
+            </view>
+        </view>
+        <view style="width:16%;"></view>
+        <view bindtap="__e" class="{{[ 'item '+(type==2?'active':'') ]}}" data-event-opts="{{[ [ 'tap',[ [ 'current',['$event'] ] ] ] ]}}" data-money="{{data.store_month_fee}}" data-type="2">
+            <view class="name">月卡费用</view>
+            <view>￥<text>{{data.store_month_fee}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="time" wx:if="{{userInfo.is_vip==1}}">{{'会员有效期至：'+userInfo.dead_time}}</view>
+    <view bindtap="__e" class="btns" data-event-opts="{{[ [ 'tap',[ [ 'submit',['$event'] ] ] ] ]}}">{{'确认支付'+money+'元'}}</view>
+    <view class="rule_line" wx:if="{{false}}">开通前阅读<navigator class="rule" hoverClass="none" url="/gc_school/pages/rule/index">《会员服务协议》</navigator>
+    </view>
+</view>

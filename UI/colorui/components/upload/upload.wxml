@@ -1,0 +1,6 @@
+<view class="images-box">
+    <view class="images">
+        <image bindlongpress="__e" bindtap="__e" class="image" data-event-opts="{{[ [ 'tap',[ [ 'previewImage',['$event'] ] ] ],[ 'longpress',[ [ 'deleteImage',['$event'] ] ] ] ]}}" data-index="{{index}}" mode="aspectFill" src="{{item}}" wx:for="{{images}}" wx:key="index"></image>
+        <view hoverClass bindtap="__e" class="image addImageIcon" data-event-opts="{{[ [ 'tap',[ [ 'chooseImage',['$event'] ] ] ] ]}}" hoverStayTime="200" wx:if="{{addedCount<count}}">+</view>
+    </view>
+</view>

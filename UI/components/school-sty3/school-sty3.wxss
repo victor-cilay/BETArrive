@@ -1,0 +1,238 @@
+.headers {
+    background: linear-gradient(180deg,#ffdcd6,hsla(8,100%,90%,0));
+    height: 560rpx;
+    position: relative;
+    top: 0;
+    width: 750rpx;
+}
+
+.headers .search {
+    background: #fff;
+    border-radius: 16rpx;
+    height: 72rpx;
+    margin: 20rpx 30rpx;
+    padding: 0 30rpx;
+    width: 690rpx;
+}
+
+.headers .search .cuIcon-search {
+    margin-left: auto;
+}
+
+.headers .banner {
+    height: 220rpx;
+}
+
+.navs {
+    margin-top: -50rpx;
+    position: relative;
+    top: 0;
+}
+
+.tipss {
+    background: #fff;
+    border-radius: 16rpx;
+    height: 70rpx;
+    margin: 30rpx;
+    padding-top: 10rpx;
+    width: 690rpx;
+}
+
+.tipss .tips {
+    display: block;
+}
+
+.hart_store {
+    background: linear-gradient(180deg,#ffe6e2,#fff);
+    border-radius: 16rpx;
+    height: 340rpx;
+    margin: 20rpx 30rpx 0;
+    padding: 24rpx;
+    width: 690rpx;
+}
+
+.hart_store .tit {
+    color: #141414;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.hart_store .tit .cuIcon {
+    color: #d0423b;
+    margin-right: 10rpx;
+}
+
+.hart_store .tit .sub_tit {
+    color: #a79e93;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    margin-left: 10rpx;
+}
+
+.hart_store .hart_list {
+    overflow-x: auto;
+}
+
+.hart_store .hart_list .hart_item {
+    color: #141414;
+    flex-shrink: 0;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    margin: 20rpx 20rpx 20rpx 0;
+    width: 156rpx;
+}
+
+.hart_store .hart_list .hart_item .main_img {
+    background-color: #eee;
+    border-radius: 10rpx;
+    height: 156rpx;
+    margin-bottom: 10rpx;
+    width: 156rpx;
+}
+
+.hart_store .hart_list .hart_item .title {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.cates {
+    margin: 20rpx 30rpx;
+    overflow-x: auto;
+    width: 690rpx;
+}
+
+.cates .cate {
+    align-items: center;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    margin-right: 60rpx;
+}
+
+.cates .cate,.cates .cate.cur {
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+}
+
+.cates .cate.cur {
+    color: #141414;
+    font-weight: 400;
+}
+
+.cates .cate.cur::after {
+    background: #ff795c;
+    border-radius: 0 0 30rpx 30rpx;
+    content: "";
+    display: block;
+    height: 14rpx;
+    width: 30rpx;
+}
+
+.store_list .store_item {
+    background: #fff;
+    border-radius: 16rpx;
+    margin: 0 30rpx 25rpx;
+    padding: 24rpx;
+    width: 690rpx;
+}
+
+.store_list .store_item .store_info .main_img {
+    background: #888;
+    border-radius: 10rpx;
+    height: 110rpx;
+    margin-right: 20rpx;
+    width: 110rpx;
+}
+
+.store_list .store_item .store_info .info {
+    width: 510rpx;
+}
+
+.store_list .store_item .store_info .info .name {
+    color: #141414;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-size: 32rpx;
+    font-weight: 500;
+    margin-bottom: 10rpx;
+    width: 100%;
+}
+
+.store_list .store_item .store_info .info .name .tag {
+    border-radius: 8rpx;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    height: 48rpx;
+    justify-content: center;
+    margin-left: auto;
+    width: 100rpx;
+}
+
+.store_list .store_item .store_info .info .name .tag.tag1 {
+    background: #e9faf1;
+    color: #3db473;
+}
+
+.store_list .store_item .store_info .info .name .tag.tag2 {
+    background: #ffece9;
+    color: #ff795c;
+}
+
+.store_list .store_item .store_info .info .date {
+    color: #969aa4;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 20rpx;
+    font-weight: 400;
+}
+
+.store_list .store_item .goods_list {
+    margin-left: 110rpx;
+    margin-top: 30rpx;
+    overflow-x: auto;
+    width: 510rpx;
+}
+
+.store_list .store_item .goods_list .goods_item {
+    margin-right: 20rpx;
+    width: 170rpx;
+}
+
+.store_list .store_item .goods_list .goods_item .main_img {
+    background: #888;
+    flex-shrink: 0;
+    height: 170rpx;
+    width: 170rpx;
+}
+
+.store_list .store_item .goods_list .goods_item .title {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    color: #141414;
+    display: -webkit-box;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    overflow: hidden;
+}
+
+.store_list .store_item .goods_list .goods_item .price {
+    color: #f51919;
+    font-family: Roboto-Black,Roboto;
+    font-size: 24rpx;
+    font-weight: 900;
+}
+
+.topp {
+    background: #f9fafb;
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    position: sticky;
+    top: 0rpx;
+    z-index: 996;
+}

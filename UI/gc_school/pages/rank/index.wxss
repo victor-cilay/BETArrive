@@ -1,0 +1,94 @@
+page {
+    background: #fff;
+}
+
+.tagbg {
+    right: -20rpx;
+}
+
+.page-guide .tagbg,.tagbg {
+    height: 60rpx;
+    position: absolute;
+    top: -20rpx;
+    width: 60rpx;
+}
+
+.page-guide .tagbg {
+    left: -20rpx;
+}
+
+.bgmain {
+    background: #ff6344!important;
+    color: #fff;
+}
+
+.action {
+    color: #fff!important;
+}
+
+.cu-avatar {
+    border: 3px solid #f9f9f9;
+    box-shadow: 2rpx 2rpx 10rpx #d3d3d3;
+    height: 120rpx!important;
+    width: 120rpx!important;
+}
+
+.radius {
+    border-bottom: 1px solid #f9f9f9;
+    padding: 40rpx 10rpx;
+}
+
+.text-xxl {
+    font-weight: 700;
+}
+
+.left {
+    font-size: 30rpx;
+    height: 60rpx;
+    text-align: center;
+    width: 20%;
+}
+
+.middle {
+    width: 60%;
+}
+
+.right {
+    margin-right: 20rpx;
+    text-align: right;
+    width: 20%;
+}
+
+.mine_box {
+    border-radius: 10rpx;
+    box-shadow: 2rpx 2rpx 6rpx #d3d3d3;
+    display: flex;
+    margin: 30rpx;
+    padding: 40rpx;
+}
+
+.avatar {
+    border: 3px solid #f9f9f9;
+    border-radius: 50%;
+    box-shadow: 2rpx 2rpx 10rpx #d3d3d3;
+    height: 160rpx;
+    width: 160rpx;
+}
+
+.username {
+    font-size: 32rpx;
+    font-weight: 700;
+    margin: 30rpx 0 0 40rpx;
+}
+
+.rank {
+    display: flex;
+    font-size: 30rpx;
+    justify-content: space-between;
+    margin: 20rpx 0 0 40rpx;
+}
+
+.rank view:first-child {
+    border-right: 2rpx solid #d3d3d3;
+    width: 50%;
+}

@@ -1,0 +1,89 @@
+.bg-color {
+    padding: 30rpx;
+    width: 100%;
+}
+
+.bg-colors {
+    background-color: #fff;
+    border-radius: 20rpx;
+    height: 100%;
+    padding: 15rpx 0;
+    width: 100%;
+}
+
+.inp-riget {
+    text-align: right;
+}
+
+.xing {
+    color: red;
+    margin-right: 4rpx;
+}
+
+.text-title {
+    color: #323232;
+    font-size: 34rpx;
+    font-weight: 800;
+    height: 81rpx;
+    line-height: 48rpx;
+}
+
+.text-red-title,.text-title {
+    font-family: PingFang SC;
+    padding: 0 30rpx;
+    width: 100%;
+}
+
+.text-red-title {
+    color: #e82323;
+    font-size: 26rpx;
+    font-weight: 400;
+    height: 61rpx;
+    line-height: 36rpx;
+    margin-bottom: 24rpx;
+    margin-top: 24rpx;
+}
+
+.zhengjian {
+    height: 428rpx;
+    padding: 30rpx;
+    width: 100%;
+}
+
+.img {
+    height: 100%;
+    width: 100%;
+}
+
+.shuoming {
+    color: #323232;
+    font-family: PingFang SC;
+    font-size: 34rpx;
+    font-weight: 800;
+    line-height: 48rpx;
+    padding: 0 30rpx;
+}
+
+.shuoming-neirong {
+    padding: 30rpx;
+}
+
+.but {
+    background: linear-gradient(90deg,#ff484a,#ff716c);
+    border-radius: 44rpx;
+    box-shadow: 0rpx 6rpx 30rpx 0rpx #ff4b4c;
+    color: #fff;
+    height: 88rpx;
+    width: 657rpx;
+}
+
+.but,.buts {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.buts {
+    height: 200rpx;
+    width: 100%;
+}

@@ -1,0 +1,233 @@
+page {
+    background: #f7f5f6;
+}
+
+.content .ft,.page-container {
+    display: flex;
+}
+
+.content .ft {
+    margin-bottom: 5rpx;
+}
+
+#cuIcon-homefills {
+    height: 48rpx!important;
+    position: relative!important;
+    width: 48rpx!important;
+}
+
+#cuIcon-homefills,#cuIcon-homefillt {
+    display: block!important;
+    font-size: 40rpx!important;
+    margin: 0 auto 10rpx!important;
+    text-align: center!important;
+}
+
+#cuIcon-homefillt {
+    height: 72rpx!important;
+    left: 0;
+    position: absolute!important;
+    top: 0;
+    width: 72rpx!important;
+}
+
+.indedx {
+    color: #010101;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.indedxs {
+    box-sizing: border-box;
+    color: #12a6ee;
+    font-size: 22rpx;
+    margin-top: 10rpx;
+    padding: -1rpx 0 10rpx;
+}
+
+.indedxt {
+    color: #010101;
+    font-size: 22rpx;
+    padding: 10rpx 0;
+}
+
+.bgmains {
+    background-color: #fff!important;
+}
+
+.line-gray,.lines-gray,.text-gray {
+    color: #e7e7e7!important;
+}
+
+.text-white {
+    color: #ff6344;
+}
+
+.box {
+    border-radius: 20rpx;
+    margin: 30rpx;
+}
+
+.cu-tags {
+    background: #fbf6f2;
+    color: #ff6444;
+}
+
+.type_icon {
+    height: 40rpx;
+    margin-right: 10rpx;
+    width: 40rpx;
+}
+
+.text-xl {
+    color: #00bc6a;
+    font-weight: 700;
+}
+
+.ft {
+    margin-left: 50rpx;
+}
+
+.bg-del {
+    border: 1px solid #999;
+}
+
+.margin-top-sm .cu-tag {
+    padding: 20rpx;
+}
+
+.contents {
+    font-size: 30rpx;
+    padding: 70rpx 0 30rpx;
+    text-align: center;
+}
+
+.bg-yellows {
+    background: #fff;
+    border: 1px solid #ff6344;
+    color: #ff6344;
+}
+
+.text-cut {
+    max-width: 350rpx;
+}
+
+.status_btn {
+    background-color: #fef5f5;
+    border-radius: 20rpx;
+    color: #ff4c4d;
+    font-size: 24rpx;
+    padding: 10rpx 0;
+    text-align: center;
+    width: 100rpx;
+}
+
+.time {
+    color: #666;
+    font-size: 26rpx;
+    margin-top: 10rpx;
+}
+
+.addr_box {
+    background-color: #f9f9f9;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+    padding: 30rpx;
+}
+
+.addr {
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.circle {
+    background-color: #fff;
+    border: 6rpx solid #3792f5;
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 22rpx;
+    width: 22rpx;
+}
+
+.bule {
+    border: 6rpx solid #3792f5;
+}
+
+.orange {
+    border: 6rpx solid #fb4119;
+}
+
+.cuIcon-moreandroid {
+    color: grey;
+    margin-left: -5rpx;
+}
+
+.operate_box .operate:first-child {
+    margin-left: auto;
+}
+
+.operate {
+    border: 1rpx solid #e5e5e5;
+    border-radius: 28rpx;
+    color: #323232;
+    padding: 10rpx 30rpx;
+}
+
+.active {
+    background-color: #ff4c4d;
+    border: none;
+    color: #fff;
+}
+
+.nav {
+    position: fixed;
+    z-index: 11;
+}
+
+.cover {
+    background: rgba(0,0,0,.5);
+    height: 100%;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.cover .white_box {
+    background-color: #fff;
+    border-radius: 20rpx;
+    left: 10%;
+    padding: 40rpx;
+    position: absolute;
+    top: 30%;
+    width: 80%;
+}
+
+.cover .white_box .tit {
+    font-size: 36rpx;
+}
+
+.cover .white_box input {
+    background-color: #f7f7f7;
+    border-radius: 10rpx;
+    height: 80rpx;
+    margin-bottom: 40rpx;
+    padding-left: 10rpx;
+}
+
+.cover .white_box .btn_row view {
+    border: 2rpx solid #e5e5e5;
+    border-radius: 40rpx;
+    font-size: 32rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    width: 240rpx;
+}
+
+.cover .white_box .btn_row view:last-child {
+    background: #ff4c4d;
+    border: none;
+    color: #fff;
+}

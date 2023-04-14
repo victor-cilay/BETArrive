@@ -1,0 +1,136 @@
+<view>
+    <view class="bgcolor">
+        <cu-custom bgColor="bgmain" bind:__l="__l" isBack="{{true}}" vueId="1b18edd0-1" vueSlots="{{['content']}}">
+            <view slot="content">{{sUserInfo.nickname}}</view>
+        </cu-custom>
+    </view>
+    <view bindtouchstart="__e" class="content" data-event-opts="{{[ [ 'touchstart',[ [ 'hideDrawer',['$event'] ] ] ] ]}}">
+        <scroll-view bindscrolltoupper="__e" class="msg-list" data-event-opts="{{[ [ 'scrolltoupper',[ [ 'loadHistory',['$event'] ] ] ] ]}}" scrollIntoView="{{scrollToView}}" scrollTop="{{scrollTop}}" scrollWithAnimation="{{scrollAnimation}}" scrollY="true" upperThreshold="100">
+            <view class="loading">
+                <view class="spinner"></view>
+            </view>
+            <view class="row" id="{{'msg'+row.msg.id}}" wx:for="{{msgList}}" wx:for-item="row" wx:key="index">
+                <view class="system" wx:if="{{row.type=='system'}}">
+                    <view class="text" wx:if="{{row.msg.type=='text'}}">{{''+row.msg.content.text+''}}</view>
+                    <view bindtap="__e" class="text" data-event-opts="{{[ [ 'tap',[ [ 'subscribe',['$event'] ] ] ] ]}}" wx:if="{{row.msg.type=='submsg'}}">{{''+row.msg.content.text+''}}<text style="color:#7F5AFF;margin-left:10rpx;">❤ 订阅
+								❤</text>
+                    </view>
+                    <view class="red-envelope" wx:if="{{row.msg.type=='redEnvelope'}}">
+                        <image src="/static/img/red-envelope-chat.png"></image>{{''+row.msg.content.text+''}}</view>
+                </view>
+                <block wx:if="{{row.type=='user'}}">
+                    <view class="my" wx:if="{{row.msg.userinfo.u_id==myuid}}">
+                        <view class="left">
+                            <view class="bubble" wx:if="{{row.msg.type=='text'}}">
+                                <rich-text nodes="{{row.msg.content.text}}"></rich-text>
+                            </view>
+                            <view bindtap="__e" class="{{['bubble','voice',playMsgid==row.msg.id?'play':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'playVoice',['$0'],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='voice'}}">
+                                <view class="length">{{row.msg.content.length}}</view>
+                                <view class="icon my-voice"></view>
+                            </view>
+                            <view bindtap="__e" class="bubble img" data-event-opts="{{[ [ 'tap',[ [ 'showPic',['$0'],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='img'}}">
+                                <image src="{{row.msg.content.url}}" style="{{'width:'+row.msg.content.w+'px'+';'+'height:'+row.msg.content.h+'px'+';'}}"></image>
+                            </view>
+                            <view bindtap="__e" class="bubble red-envelope" data-event-opts="{{[ [ 'tap',[ [ 'openRedEnvelope',['$0',index],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='redEnvelope'}}">
+                                <image src="/static/img/red-envelope.png"></image>
+                                <view class="tis"></view>
+                                <view class="blessing">{{''+row.msg.content.blessing+''}}</view>
+                            </view>
+                        </view>
+                        <view class="right">
+                            <image src="{{row.msg.userinfo.face}}"></image>
+                        </view>
+                    </view>
+                    <view class="other" wx:if="{{row.msg.userinfo.u_id!=myuid}}">
+                        <view class="left">
+                            <image src="{{row.msg.userinfo.face}}"></image>
+                        </view>
+                        <view class="right">
+                            <view class="username">
+                                <view class="name">{{row.msg.userinfo.username}}</view>
+                                <view class="time">{{row.msg.time}}</view>
+                            </view>
+                            <view class="bubble" wx:if="{{row.msg.type=='text'}}">
+                                <rich-text nodes="{{row.msg.content.text}}"></rich-text>
+                            </view>
+                            <view bindtap="__e" class="{{['bubble','voice',playMsgid==row.msg.id?'play':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'playVoice',['$0'],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='voice'}}">
+                                <view class="icon other-voice"></view>
+                                <view class="length">{{row.msg.content.length}}</view>
+                            </view>
+                            <view bindtap="__e" class="bubble img" data-event-opts="{{[ [ 'tap',[ [ 'showPic',['$0'],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='img'}}">
+                                <image src="{{row.msg.content.url}}" style="{{'width:'+row.msg.content.w+'px'+';'+'height:'+row.msg.content.h+'px'+';'}}"></image>
+                            </view>
+                            <view bindtap="__e" class="bubble red-envelope" data-event-opts="{{[ [ 'tap',[ [ 'openRedEnvelope',['$0',index],[ [ ['msgList','',index,'msg'] ] ] ] ] ] ]}}" wx:if="{{row.msg.type=='redEnvelope'}}">
+                                <image src="/static/img/red-envelope.png"></image>
+                                <view class="tis"></view>
+                                <view class="blessing">{{''+row.msg.content.blessing+''}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
+    <view catchtouchmove="__e" class="{{['popup-layer',popupLayerClass]}}" data-event-opts="{{[ [ 'touchmove',[ [ 'discard',['$event'] ] ] ] ]}}">
+        <swiper class="{{['emoji-swiper',hideEmoji?'hidden':'']}}" duration="150" indicatorDots="true">
+            <swiper-item wx:for="{{emojiList}}" wx:for-index="pid" wx:for-item="page" wx:key="pid">
+                <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'addEmoji',['$0'],[ [ ['emojiList','',pid],['','',eid] ] ] ] ] ] ]}}" wx:for="{{page}}" wx:for-index="eid" wx:for-item="em" wx:key="eid">
+                    <image mode="widthFix" src="{{emojiUrl+'/static/emoji/'+em.url}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="{{['more-layer',hideMore?'hidden':'']}}">
+            <view class="list">
+                <view bindtap="__e" class="box" data-event-opts="{{[ [ 'tap',[ [ 'chooseImage',['$event'] ] ] ] ]}}">
+                    <view class="icon tupian2"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="__e" class="{{['input-box',popupLayerClass+bottomClass]}}" data-event-opts="{{[ [ 'touchmove',[ [ 'discard',['$event'] ] ] ] ]}}" style="{{'bottom:'+bottom+'px'}}">
+        <view class="textbox">
+            <view bindtouchcancel="__e" bindtouchend="__e" bindtouchstart="__e" catchtouchmove="__e" class="{{['voice-mode',isVoice?'':'hidden',recording?'recording':'']}}" data-event-opts="{{[ [ 'touchstart',[ [ 'voiceBegin',['$event'] ] ] ],[ 'touchmove',[ [ 'voiceIng',['$event'] ] ] ],[ 'touchend',[ [ 'voiceEnd',['$event'] ] ] ],[ 'touchcancel',[ [ 'voiceCancel',['$event'] ] ] ] ]}}">{{voiceTis}}</view>
+            <view class="{{['text-mode',isVoice?'hidden':'']}}">
+                <view class="box">
+                    <textarea autoHeight="true" bindblur="__e" bindfocus="__e" bindinput="__e" cursorSpacing="10" data-event-opts="{{[ [ 'blur',[ [ 'inputBlur',['$event'] ] ] ],[ 'focus',[ [ 'textareaFocus',['$event'] ] ] ],[ 'input',[ [ '__set_model',[ '','textMsg','$event',[] ] ] ] ] ]}}" placeholder="  " showConfirmBar="{{false}}" value="{{textMsg}}"></textarea>
+                </view>
+                <view bindtap="__e" class="em" data-event-opts="{{[ [ 'tap',[ [ 'chooseEmoji',['$event'] ] ] ] ]}}">
+                    <view class="icon biaoqing"></view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="__e" class="more" data-event-opts="{{[ [ 'tap',[ [ 'showMore',['$event'] ] ] ] ]}}">
+            <view class="icon add"></view>
+        </view>
+        <view bindtap="__e" class="{{['send',isVoice?'hidden':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'sendText',['$event'] ] ] ] ]}}">
+            <view class="btn">发送</view>
+        </view>
+    </view>
+    <view class="{{['record',recording?'':'hidden']}}">
+        <view class="{{['ing',willStop?'hidden':'']}}">
+            <view class="icon luyin2"></view>
+        </view>
+        <view class="{{['cancel',willStop?'':'hidden']}}">
+            <view class="icon chehui"></view>
+        </view>
+        <view class="{{['tis',willStop?'change':'']}}">{{recordTis}}</view>
+    </view>
+    <view class="{{['windows',windowsState]}}">
+        <view bindtap="__e" catchtouchmove="__e" class="mask" data-event-opts="{{[ [ 'touchmove',[ [ 'discard',['$event'] ] ] ],[ 'tap',[ [ 'closeRedEnvelope',['$event'] ] ] ] ]}}"></view>
+        <view catchtouchmove="__e" class="layer" data-event-opts="{{[ [ 'touchmove',[ [ 'discard',['$event'] ] ] ] ]}}">
+            <view class="open-redenvelope">
+                <view class="top">
+                    <view class="close-btn">
+                        <view bindtap="__e" class="icon close" data-event-opts="{{[ [ 'tap',[ [ 'closeRedEnvelope',['$event'] ] ] ] ]}}"></view>
+                    </view>
+                    <image src="/static/img/im/face/face_1.jpg"></image>
+                </view>
+                <view class="from">{{'来自'+redenvelopeData.from}}</view>
+                <view class="blessing">{{redenvelopeData.blessing}}</view>
+                <view class="money">{{redenvelopeData.money}}</view>
+                <view bindtap="__e" class="showDetails" data-event-opts="{{[ [ 'tap',[ [ 'toDetails',['$0'],['redenvelopeData.rid'] ] ] ] ]}}">查看领取详情<view class="icon to"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
